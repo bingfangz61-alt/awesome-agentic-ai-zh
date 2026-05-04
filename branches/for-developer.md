@@ -1,47 +1,49 @@
-# For Developers — Specialized Branch
+# 給開發者 — 專業分支
 
-> Branching from end of Stage 7. Apply agentic AI to coding workflows.
+> [English](./for-developer.en.md) | **繁體中文**
 
-## Use Cases
+> 從 Stage 7 結尾分支出來。把 agentic AI 應用到 coding 流程上。
 
-- AI pair programming (Cursor, Aider, Claude Code)
-- Code review automation
-- Test generation
-- Multi-agent coding tasks (planning + execution)
-- CLI delegation (Codex, Gemini for token-heavy code)
+## 使用情境
 
-## Curated Projects
+- AI 結對程式設計（Cursor、Aider、Claude Code）
+- Code review 自動化
+- 測試生成
+- Multi-agent coding 任務（規劃 + 執行)
+- CLI 委派（Codex、Gemini 處理重 token 的程式碼工作）
+
+## 精選 Projects
 
 ### Coding Agents
 
 #### [Cursor](https://www.cursor.com/) ⭐⭐⭐⭐⭐
-Editor-integrated AI pair programmer. Industry standard for AI-assisted coding.
+編輯器整合的 AI 結對程式設計工具。AI 輔助 coding 的業界標準。
 
 #### [Aider](https://github.com/Aider-AI/aider) ⭐⭐⭐⭐⭐
-CLI pair programmer that edits code in your repo. Open source, model-agnostic. Strong for terminal users.
+直接修改你 repo 中程式碼的 CLI 結對工具。Open source，模型不限。對終端機使用者很友善。
 
 #### [anthropics/claude-code](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐
-Anthropic's official agentic coding assistant. Skills + plugins ecosystem.
+Anthropic 官方的 agentic coding 助理。有 Skills + plugin 生態系。
 
-#### [OpenHands (formerly OpenDevin)](https://github.com/All-Hands-AI/OpenHands) ⭐⭐⭐⭐
-Open-source autonomous software development agent.
+#### [OpenHands (前身為 OpenDevin)](https://github.com/All-Hands-AI/OpenHands) ⭐⭐⭐⭐
+Open source 的自主軟體開發 agent。
 
-### CLI Delegation
+### CLI 委派
 
 #### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐
-Claude Code skill for delegating token-heavy code work to Codex CLI. Wrapper script + result.json contract pattern.
+把重 token 的程式碼工作委派給 Codex CLI 的 Claude Code skill。Wrapper script + result.json 契約模式。
 
 #### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
-Same pattern but for Gemini CLI — long-context synthesis, bilingual drafting, second-opinion review.
+同樣的模式但給 Gemini CLI——長 context 整合、雙語撰寫、第二意見審查。
 
 ### Code Review
 
 #### [obra/superpowers](https://github.com/obra/superpowers) ⭐⭐⭐⭐
-20+ battle-tested skills including TDD patterns, debugging, collaboration patterns. Good source for code-review skill design.
+20+ 個經過實戰驗證的 skill，包括 TDD 模式、debug、協作模式。設計 code-review skill 時的好參考。
 
-## Workflows To Master
+## 必練流程
 
-- **AI pair programming**: Claude Code or Cursor for daily work
-- **Multi-agent coding**: agent-task-splitter → codex-delegate (impl) + gemini-delegate (review) → reconciler
-- **Test generation**: write skill that generates pytest tests from a function signature
-- **Code review automation**: GitHub Action calling Claude API on every PR
+- **AI 結對程式設計**：日常工作用 Claude Code 或 Cursor
+- **Multi-agent coding**：agent-task-splitter → codex-delegate（實作）+ gemini-delegate（審查）→ reconciler
+- **測試生成**：寫一個 skill，從 function signature 生出 pytest 測試
+- **Code review 自動化**：在每一個 PR 上呼叫 Claude API 的 GitHub Action

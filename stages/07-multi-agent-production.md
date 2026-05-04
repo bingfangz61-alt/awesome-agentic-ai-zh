@@ -1,62 +1,64 @@
 # Stage 7 — Multi-Agent · Production
 
-⏱ **Time estimate**: 2-4 weeks (~15-30 hours)
+> [English](./07-multi-agent-production.en.md) | **繁體中文**
 
-The final stage. You're moving from "I can build agents" to "I can run them in production with multiple agents coordinating, evaluation, observability, and deployment."
+⏱ **時間估計**：2-4 週（約 15-30 小時）
 
-## 📌 Learning Goals
+最後一個階段。你正從「我會做 agent」走向「我能在 production 跑起來，多個 agent 協作、有 eval、有 observability、會 deploy」。
 
-- Design multi-agent orchestration patterns (debate, planner-executor, peer review)
-- Set up evaluation harness for agents
-- Add observability (tracing, logging, cost tracking)
-- Use Anthropic SDK / OpenAI SDK for production deployment (advanced features: streaming, prompt caching, batching)
-- Deploy agents to production (Docker, serverless, monitoring)
+## 📌 學習目標
 
-## 📚 Required Reading
+- 設計 multi-agent orchestration 模式（debate、planner-executor、peer review）
+- 為 agent 架一套 evaluation harness
+- 加上 observability（tracing、logging、cost tracking）
+- 用 Anthropic SDK / OpenAI SDK 做 production deploy（進階功能：streaming、prompt caching、batching）
+- 把 agent deploy 到 production（Docker、serverless、monitoring）
 
-1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — re-read with production lens
-2. [**Anthropic — Prompt Caching**](https://www.anthropic.com/news/prompt-caching) — 90% cost reduction technique
-3. [**Anthropic — Message Batches API**](https://docs.anthropic.com/en/docs/build-with-claude/batch-processing) — async batch jobs
-4. **One eval framework's docs** — promptfoo OR LangSmith OR weave
+## 📚 必修閱讀
+
+1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — 用 production 的角度再讀一次
+2. [**Anthropic — Prompt Caching**](https://www.anthropic.com/news/prompt-caching) — 90% 成本下降的技巧
+3. [**Anthropic — Message Batches API**](https://docs.anthropic.com/en/docs/build-with-claude/batch-processing) — 非同步 batch job
+4. **任一 eval framework 的文件** — promptfoo 或 LangSmith 或 weave
 
 ## 🛠 Hello-X
 
-- **Hello Multi-Agent** — 2 agents debating a topic, 3rd agent judging
-- **Hello Eval** — write evals for an agent, measure success rate across N runs
-- **Hello Observability** — connect LangSmith / Helicone / weave to an agent, view trace
-- **Hello SDK Advanced** — use streaming + prompt caching + tool use in one call
-- **Hello Deploy** — package an agent in Docker, deploy to cloud (any platform)
+- **Hello Multi-Agent** — 兩個 agent 辯論一個題目，第三個 agent 當裁判
+- **Hello Eval** — 替 agent 寫 eval，跑 N 次量成功率
+- **Hello Observability** — 把 LangSmith / Helicone / weave 接上 agent，看 trace
+- **Hello SDK Advanced** — 在同一次呼叫裡用 streaming + prompt caching + tool use
+- **Hello Deploy** — 把 agent 包進 Docker，deploy 到雲（任何平台都行）
 
-## 🎯 Curated Projects
+## 🎯 精選 Projects
 
 ### Multi-Agent Orchestration
 
 #### [WenyuChiou/agent-collab-skills](https://github.com/WenyuChiou/agent-collab-skills)
 
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: 5 skills for multi-agent runs (task splitter, output reconciler, debate, shared memory, acceptance gate). Patterns for Claude Code multi-agent workflows.
+**教什麼**：5 個用在 multi-agent run 的 skill（task splitter、output reconciler、debate、shared memory、acceptance gate）。Claude Code multi-agent workflow 的範例。
 
-**Best for**: Multi-agent in Claude Code context.
+**適合誰**：在 Claude Code 環境裡做 multi-agent。
 
 ---
 
 #### [microsoft/autogen](https://github.com/microsoft/autogen)
 
-Already cited in Stage 4. In production context, AutoGen's GroupChat coordination pattern is a strong reference for multi-agent debate / brainstorming.
+Stage 4 已提過。在 production 場景下，AutoGen 的 GroupChat 協作模式是 multi-agent 辯論 / brainstorming 的好參考。
 
 ---
 
 #### [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
 
-Already cited in Stage 4. For role-based multi-agent (e.g., research → writer → reviewer pipelines), CrewAI is the simplest production pattern.
+Stage 4 已提過。要做角色式的 multi-agent（例如 research → writer → reviewer 流水線），CrewAI 是最簡單的 production pattern。
 
 ---
 
 #### [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)
 
-Already cited in Stage 4. For production with audit trails, checkpointing, and human-in-the-loop, LangGraph leads.
+Stage 4 已提過。要 production 加上 audit trail、checkpoint、human-in-the-loop，LangGraph 領先。
 
 ---
 
@@ -67,16 +69,16 @@ Already cited in Stage 4. For production with audit trails, checkpointing, and h
 | Stars | ★ 20k+ |
 |---|---|
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: YAML-based eval harness for prompts and agents. Compare across models, run regression tests in CI.
+**教什麼**：以 YAML 為基礎的 prompt 跟 agent eval harness。可以跨模型比較、在 CI 跑回歸測試。
 
-**Best for**: Standardized eval pipeline. Replaces "I'll just eyeball it."
+**適合誰**：把 eval 流程標準化。取代「我用眼睛看一下就好」。
 
-**Run it**:
+**怎麼跑**：
 ```bash
 npx promptfoo init
-# Edit promptfooconfig.yaml
+# 編輯 promptfooconfig.yaml
 npx promptfoo eval
 ```
 
@@ -87,11 +89,11 @@ npx promptfoo eval
 | Stars | ★ 12k+ |
 |---|---|
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Academic-grade eval framework with hundreds of standardized benchmarks (MMLU, HellaSwag, GSM8K).
+**教什麼**：學術等級的 eval framework，內建幾百個標準 benchmark（MMLU、HellaSwag、GSM8K）。
 
-**Best for**: When you need to claim "we got X% on benchmark Y." Research-flavored.
+**適合誰**：你需要主張「我們在 benchmark Y 上拿到 X%」的時候。比較研究風格。
 
 ---
 
@@ -99,11 +101,11 @@ npx promptfoo eval
 
 | Stars | ★ 18k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: OpenAI's eval framework. Custom evals for specific use cases.
+**教什麼**：OpenAI 的 eval framework。可以針對特定 use case 寫客製 eval。
 
-**Best for**: When you need OpenAI-specific evals or want to contribute back.
+**適合誰**：你需要 OpenAI 專屬 eval、或想回饋上游時。
 
 ---
 
@@ -113,20 +115,20 @@ npx promptfoo eval
 
 | Stars | ★ 26k+ |
 |---|---|
-| License | MIT (open source) + paid cloud |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| License | MIT（開源）+ 付費雲端 |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Open-source LLM observability — traces, sessions, evals, prompt management.
+**教什麼**：開源的 LLM observability——traces、sessions、evals、prompt management。
 
-**Best for**: Self-hosted production observability. Strong open-source alternative to LangSmith.
+**適合誰**：自架的 production observability。LangSmith 的開源替代方案，實力很強。
 
 ---
 
-#### [LangSmith](https://www.langchain.com/langsmith) (proprietary)
+#### [LangSmith](https://www.langchain.com/langsmith)（商業）
 
-**What it teaches**: LangChain's observability platform. Traces, evals, prompt iteration.
+**教什麼**：LangChain 的 observability 平台。Trace、eval、prompt 迭代。
 
-**Best for**: If you're deep in LangChain/LangGraph stack. Hosted-only.
+**適合誰**：整套 stack 都在 LangChain / LangGraph 上面。只有 hosted 版。
 
 ---
 
@@ -134,50 +136,50 @@ npx promptfoo eval
 
 | Stars | ★ 5k+ |
 |---|---|
-| License | Apache 2.0 (open source) + paid cloud |
-| Recommendation | ⭐⭐⭐⭐ |
+| License | Apache 2.0（開源）+ 付費雲端 |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: LLM observability via proxy — drop-in replacement for OpenAI/Anthropic clients, gets you logging + caching.
+**教什麼**：用 proxy 做 LLM observability——當作 OpenAI/Anthropic client 的替身，順便拿到 logging + caching。
 
-**Best for**: Quick instrumentation without rewriting code.
+**適合誰**：不想改程式、想快速上 instrumentation 時。
 
 ---
 
-#### [weave (by Weights & Biases)](https://github.com/wandb/weave)
+#### [weave（Weights & Biases 出品）](https://github.com/wandb/weave)
 
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: Tracing + eval framework from W&B. Integrates with their ML platform.
+**教什麼**：W&B 出的 tracing + eval framework。跟他們的 ML 平台整合。
 
-**Best for**: Teams already on W&B for ML experiment tracking.
+**適合誰**：團隊已經在用 W&B 做 ML 實驗追蹤。
 
 ---
 
-### Anthropic SDK Advanced
+### Anthropic SDK 進階
 
 #### [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python)
 
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: Official Python SDK. Streaming, async, tool use, prompt caching, batches, files API.
+**教什麼**：官方 Python SDK。streaming、async、tool use、prompt caching、batches、files API。
 
-**Best for**: Building production apps directly on Claude API.
+**適合誰**：直接基於 Claude API 做 production 應用。
 
 ---
 
 #### [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript)
 
-**What it teaches**: TS equivalent of Python SDK.
+**教什麼**：Python SDK 的 TS 版本。
 
-**Best for**: TypeScript / Node / web apps.
+**適合誰**：TypeScript / Node / web app。
 
 ---
 
 #### [Anthropic Cookbook — Advanced patterns](https://github.com/anthropics/anthropic-cookbook)
 
-Already cited. Specifically the `prompt_caching.ipynb`, `tool_use/`, and `multimodal/` notebooks teach production-grade SDK usage.
+之前已提過。特別是 `prompt_caching.ipynb`、`tool_use/`、`multimodal/` 三個 notebook,教 production 等級的 SDK 用法。
 
 ---
 
@@ -188,35 +190,35 @@ Already cited. Specifically the `prompt_caching.ipynb`, `tool_use/`, and `multim
 | Stars | ★ 8k+ |
 |---|---|
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Serve any ML/LLM model as a production API. Docker + serving framework.
+**教什麼**：把任何 ML/LLM model 包成 production API。Docker + serving framework。
 
-**Best for**: Wrapping your agent into a deployable service.
+**適合誰**：把 agent 包成可 deploy 的 service。
 
 ---
 
 #### [LangServe](https://github.com/langchain-ai/langserve)
 
-**What it teaches**: Deploy LangChain apps as REST APIs. FastAPI under the hood.
+**教什麼**：把 LangChain app deploy 成 REST API。底層用 FastAPI。
 
-**Best for**: Quick deployment of LangChain-based agents.
+**適合誰**：以 LangChain 為基礎的 agent 想快速 deploy。
 
 ---
 
 #### [datawhalechina/self-llm](https://github.com/datawhalechina/self-llm)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
 | Maintainer | datawhalechina |
-| Language | 中文 (zh-CN) |
+| 語言 | 中文（zh-CN） |
 | Stars | ★ 30k+ |
 | License | Apache-2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: 開源大模型食用指南 — comprehensive Chinese-language guide for fine-tuning and deploying open-source LLMs in Linux environments. Covers Qwen / Llama / GLM / multimodal models, full-parameter + LoRA + deployment.
+**教什麼**：開源大模型食用指南——一份完整的中文指南，講怎麼在 Linux 上 fine-tune 跟 deploy 開源 LLM。涵蓋 Qwen / Llama / GLM / 多模態模型，全參數 + LoRA + deployment 都有。
 
-**Best for**: Chinese-speaking teams self-hosting open-source LLMs. Production-grade Chinese tutorial for the entire training-to-deployment cycle.
+**適合誰**：要自架開源 LLM 的中文團隊。training-to-deployment 整個流程的 production 等級中文教學。
 
 ---
 
@@ -225,42 +227,42 @@ Already cited. Specifically the `prompt_caching.ipynb`, `tool_use/`, and `multim
 | Stars | ★ 79k+ |
 |---|---|
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: High-throughput LLM serving. Run open-source models in production.
+**教什麼**：高吞吐量的 LLM serving。可以在 production 跑開源模型。
 
-**Best for**: Self-hosting open-source LLMs (Llama, Qwen, etc.) instead of paying API.
+**適合誰**：自架開源 LLM（Llama、Qwen 等等）取代付費 API 的場景。
 
 ---
 
-### Production Case Studies
+### Production 案例研究
 
 #### [WenyuChiou/WAGF](https://github.com/WenyuChiou/WAGF)
 
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: Production-grade governance layer for LLM-driven agent-based models. 6-stage validation pipeline catches hallucination, logical drift, unsafe state mutation. Multi-LLM ablation. 3 reference implementations.
+**教什麼**：給 LLM 驅動的 agent-based model 用的 production 等級 governance 層。6 階段驗證流水線抓 hallucination、邏輯漂移、不安全的狀態變更。跨模型 ablation。3 個參考實作。
 
-**Best for**: Studying how production LLM-agent systems handle reliability concerns.
+**適合誰**：研究 production LLM-agent 系統怎麼處理可靠度問題。
 
 ---
 
-## ✅ Self-Check After Stage 7
+## ✅ Stage 7 之後的自我檢查
 
-Can you:
-- [ ] Design a multi-agent system with explicit coordination protocol
-- [ ] Set up automated eval pipeline running in CI
-- [ ] Connect observability (tracing) to a production agent
-- [ ] Use prompt caching to cut costs by 50%+ on a real workload
-- [ ] Deploy an agent to a cloud service (any provider)
+你能不能：
+- [ ] 設計一個 multi-agent 系統，協作協定講得清楚
+- [ ] 在 CI 跑自動 eval pipeline
+- [ ] 把 observability（tracing）接到 production agent
+- [ ] 用 prompt caching 在實際工作量上把成本降 50% 以上
+- [ ] 把 agent deploy 到雲端（任何 provider）
 
-If yes → you've completed the main path. Choose a [specialized branch](../README.md#the-7-stage-learning-map) or contribute to this repo.
+如果都可以 → 你已經跑完主路線。挑一個[特化分支](../README.md#the-7-stage-learning-map)，或回過頭來貢獻這份 repo。
 
-## 💡 What's Next
+## 💡 接下來
 
-You now have foundational competence. The next 6-12 months should be about:
-1. **Pick one production system** to take from prototype → production
-2. **Contribute to upstream** (LangGraph, AutoGen, MCP servers, Anthropic cookbook)
-3. **Read papers** — agent research is moving fast
-4. **Build something visible** — open source a real tool, not another tutorial
+你已經有基礎能力了。接下來 6-12 個月應該專注在：
+1. **挑一個 production 系統** 從 prototype 推到 production
+2. **回饋上游**（LangGraph、AutoGen、MCP servers、Anthropic cookbook）
+3. **讀論文**——agent 研究進展很快
+4. **做出看得到的東西**——開源一個真的工具，不要再寫教學了

@@ -1,65 +1,67 @@
 # Stage 3 — Tool Use & Hello Agent ⭐
 
-⏱ **Time estimate**: 2-3 weeks (~10-20 hours)
+> [English](./03-tool-use-and-hello-agent.en.md) | **繁體中文**
 
-This is the most important stage. **You don't understand agents until you've built one.** No skipping the hello-X demos.
+⏱ **時間估計**：2-3 週（約 10-20 小時）
 
-## 📌 Learning Goals
+這是整個學習路線最關鍵的一站。**你建過一個 agent 才算真懂 agent — Hello-X demo 不能跳。**
 
-After this stage you will be able to:
-- Explain why LLMs need tools (they're not omniscient and can't do anything outside text)
-- Define a tool schema and let an LLM call it
-- Build a single-step ReAct agent from scratch (no framework)
-- Build a multi-step ReAct agent that decides when to stop
-- Recognize when a problem needs tool use vs. plain prompting
+## 📌 學習目標
 
-## 🚪 Entry Conditions
+完成這個 stage 後你會：
+- 講得出為什麼 LLM 需要 tools（它不是萬能的，而且文字以外的事它都做不了）
+- 定義一個 tool schema，並讓 LLM 呼叫它
+- 從零（不靠任何 framework）寫出一個單步 ReAct agent
+- 寫出多步 ReAct agent，並讓它自己判斷何時該停
+- 分得出哪種問題該用 tool use、哪種純 prompt 就夠
 
-You should already:
-- Have working Claude / OpenAI / Gemini API access (Stage 1)
-- Be comfortable with prompt engineering basics (Stage 2)
-- Be able to write a Python function that takes JSON input and returns JSON
+## 🚪 進入條件
 
-## 📚 Required Reading
+你應該已經：
+- 有可以跑的 Claude / OpenAI / Gemini API 權限（Stage 1）
+- 對 prompt engineering 基礎已經上手（Stage 2）
+- 能寫一個吃 JSON 進、吐 JSON 出的 Python 函式
 
-1. [**Anthropic — Tool Use**](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview) — official guide
-2. [**ReAct: Synergizing Reasoning and Acting in Language Models**](https://arxiv.org/abs/2210.03629) — Yao et al. 2022, the foundational paper. Read at least the abstract and Section 3.
-3. [**OpenAI — Function Calling**](https://platform.openai.com/docs/guides/function-calling) — function-calling format reference
-4. [**Build an agent from scratch**](https://shafiqulai.github.io/blogs/blog_3.html) — narrative walkthrough
+## 📚 必修閱讀
 
-## 🛠 Hello-X Projects (5 must-run demos)
+1. [**Anthropic — Tool Use**](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview) — 官方指南
+2. [**ReAct: Synergizing Reasoning and Acting in Language Models**](https://arxiv.org/abs/2210.03629) — Yao et al. 2022，奠基論文。至少讀 abstract 跟 Section 3。
+3. [**OpenAI — Function Calling**](https://platform.openai.com/docs/guides/function-calling) — function calling 格式參考
+4. [**Build an agent from scratch**](https://shafiqulai.github.io/blogs/blog_3.html) — 從零打造 agent 的故事式導覽
 
-### Hello-1: Function Calling (single tool, single call)
-Give Claude one tool (a fake weather API) and one question ("Is it raining in Taipei?"). Watch Claude call the tool, get the result, and answer.
+## 🛠 Hello-X Projects（必跑、不是看就好）
 
-### Hello-2: Multi-Tool Selection
-Give Claude three tools (search, calculator, calendar) and a task. Watch Claude select the right tool. Notice when Claude makes the wrong choice.
+### Hello-1: Function Calling（一個工具、一次呼叫）
+給 Claude 一個工具（假的天氣 API）跟一個問題（「台北現在有下雨嗎？」）。看 Claude 怎麼呼叫工具、拿到結果、再回答你。
 
-### Hello-3: ReAct from Scratch (no framework)
-Implement the Thought → Action → Observation loop in 50-80 lines of Python. No LangChain, no LangGraph. Just `while not done: thought; action; observation; ...`.
+### Hello-2: 多工具選擇
+給 Claude 三個工具（搜尋、計算機、行事曆）跟一個任務。看 Claude 怎麼挑工具，順便注意它什麼時候會挑錯。
 
-### Hello-4: Multi-Step Reasoning Task
-A task that requires 3-5 tool calls in sequence. E.g., "Find the population of Taipei, then divide by the population of New York, and convert the ratio to percent." Each step uses a different tool.
+### Hello-3: 從零實作 ReAct（不用 framework）
+用 50-80 行 Python 把 Thought → Action → Observation 迴圈寫出來。不要 LangChain、不要 LangGraph，就是純 `while not done: thought; action; observation; ...`。
 
-### Hello-5: Error Handling
-Make a tool fail (network error, invalid input). Watch how the agent recovers (or doesn't). Add retry logic.
+### Hello-4: 多步驟推理任務
+一個需要連續呼叫 3-5 次 tool 的任務。例如：「找出台北人口，除以紐約人口，再把比例換成百分比。」每一步用不同的工具。
 
-## 🎯 Curated Projects
+### Hello-5: 錯誤處理
+讓某個工具失敗（網路錯誤、輸入無效）。看看 agent 會怎麼回復（或回不來），加上 retry 機制。
+
+## 🎯 精選 Projects
 
 ### [Anthropic — Tool Use Cookbook](https://github.com/anthropics/anthropic-cookbook/tree/main/tool_use)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Anthropic (official) |
-| Language | Python |
+| 維護者 | Anthropic（官方） |
+| 語言 | Python |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Every tool-use pattern Claude supports — single tool, multi-tool, parallel calls, structured output extraction.
+**教什麼**：Claude 支援的所有 tool use 模式 — 單工具、多工具、平行呼叫、結構化輸出抽取。
 
-**Best for**: Hello-1 and Hello-2. Start here.
+**適合誰**：Hello-1 跟 Hello-2，從這裡開始。
 
-**Run it**:
+**怎麼跑**：
 ```bash
 git clone https://github.com/anthropics/anthropic-cookbook
 cd anthropic-cookbook/tool_use
@@ -70,85 +72,85 @@ jupyter notebook customer_service_agent.ipynb
 
 ### [pguso/ai-agents-from-scratch](https://github.com/pguso/ai-agents-from-scratch)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | pguso |
-| Language | Python |
+| 維護者 | pguso |
+| 語言 | Python |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Build agents with local LLMs and ZERO frameworks. ReAct, function calling, memory — all from scratch. Designed to demystify what frameworks hide.
+**教什麼**：用本地 LLM 從零打造 agent，零 framework。ReAct、function calling、memory，全部自己寫。設計目的就是把 framework 幫你藏起來的東西攤開給你看。
 
-**Best for**: Hello-3 (ReAct from scratch). This is the cleanest "no-framework" reference.
+**適合誰**：Hello-3（從零寫 ReAct）。這是最乾淨的「不靠 framework」參考實作。
 
-**Notes**: Uses local Ollama, so works without API costs. Read the README carefully — the pedagogical structure is excellent.
+**備註**：用本地 Ollama，不用花 API 錢。README 值得仔細讀，章節結構安排得很好。
 
 ---
 
 ### [arunpshankar/react-from-scratch](https://github.com/arunpshankar/react-from-scratch)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Arun Shankar (Google ML) |
-| Language | Python |
+| 維護者 | Arun Shankar（Google ML） |
+| 語言 | Python |
 | License | Apache-2.0 |
-| Last update | ⚠️ May 2025 (slowing) |
-| Recommendation | ⭐⭐⭐⭐ |
+| 最後更新 | ⚠️ 2025 年 5 月（更新放緩） |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: ReAct pattern variations and implementations, optimized for Gemini.
+**教什麼**：ReAct pattern 的多種變體與實作，針對 Gemini 最佳化。
 
-**Best for**: Hello-3 alternative if you prefer Gemini. Covers ReAct + Reflection + Self-consistency variants.
+**適合誰**：Hello-3 的替代方案，如果你偏好 Gemini。涵蓋 ReAct + Reflection + Self-consistency 等變體。
 
 ---
 
 ### [mattambrogi/agent-implementation](https://github.com/mattambrogi/agent-implementation)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Matt Ambrogi |
-| Language | Python |
+| 維護者 | Matt Ambrogi |
+| 語言 | Python |
 | License | MIT |
-| Last update | ⚠️ Stale (Jan 2024) — kept as educational toy reference |
-| Recommendation | ⭐⭐⭐ |
+| 最後更新 | ⚠️ 已停滯（2024 年 1 月）— 留作教學玩具參考 |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: Minimal ReAct agent implementation. Ultra-stripped-down (~150 lines) for learning.
+**教什麼**：最精簡的 ReAct agent 實作。為了學習而砍到只剩約 150 行程式碼。
 
-**Best for**: Reading the source line-by-line. Use as a reference when stuck on Hello-3.
+**適合誰**：逐行讀程式碼。Hello-3 卡住時可以拿來對照。
 
 ---
 
 ### [lsdefine/GenericAgent](https://github.com/lsdefine/GenericAgent)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | lsdefine |
-| Language | 中文 + Python |
+| 維護者 | lsdefine |
+| 語言 | 中文 + Python |
 | Stars | ★ 9k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Minimal self-evolving agent framework — core ~3K lines of code, agent grows skill tree from a seed. Supports Claude / Gemini / Kimi / MiniMax. Active development.
+**教什麼**：最精簡的自我演化 agent framework — 核心約 3K 行程式碼，agent 從 seed 自己長出技能樹。支援 Claude / Gemini / Kimi / MiniMax。仍在持續開發。
 
-**Best for**: Hello-3 / Hello-4 alternative for readers who want a more "minimal but full" framework reference. Good middle ground between mattambrogi's toy and full LangGraph.
+**適合誰**：Hello-3 / Hello-4 的替代方案，給想看「精簡但完整」framework 的讀者。介於 mattambrogi 的玩具版跟完整 LangGraph 之間的中間點。
 
 ---
 
-### [HelloAgents (jjyaoao)](https://github.com/jjyaoao/HelloAgents) — `learn_version` branch
+### [HelloAgents (jjyaoao)](https://github.com/jjyaoao/HelloAgents) — `learn_version` 分支
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | jjyaoao (Chinese community) |
-| Language | 中文 (zh-CN) + Python |
+| 維護者 | jjyaoao（中文社群） |
+| 語言 | 中文（zh-CN）+ Python |
 | License | CC BY-NC-SA 4.0 |
-| Recommendation | ⭐⭐⭐⭐⭐ for zh readers |
+| 推薦 | ⭐⭐⭐⭐⭐（中文讀者） |
 
-**What it teaches**: Production-grade multi-agent framework taught chapter-by-chapter, paired with [Datawhale's Hello-Agents tutorial](https://github.com/datawhalechina/hello-agents). 16 capabilities (tool response, context engineering, session persistence, sub-agents, circuit breaker, observability, etc.).
+**教什麼**：production 等級的多 agent framework，章節式教學，搭配 [Datawhale 的 Hello-Agents 教程](https://github.com/datawhalechina/hello-agents)。涵蓋 16 種能力（tool response、context engineering、session 持久化、sub-agents、circuit breaker、observability 等）。
 
-**Best for**: Chinese-speaking learners. **Switch to the `learn_version` branch** for the tutorial-aligned version.
+**適合誰**：中文讀者。**請切到 `learn_version` 分支**，那才是對齊教材的版本。
 
-**Notes**: License is CC BY-NC-SA — non-commercial. Tutorial content is in zh-CN; technical content transfers to zh-TW readers fine.
+**備註**：License 是 CC BY-NC-SA — 非商用。教材是 zh-CN，但技術內容對 zh-TW 讀者沒障礙。
 
-**Run it**:
+**怎麼跑**：
 ```bash
 pip install hello-agents
 git clone -b learn_version https://github.com/jjyaoao/HelloAgents
@@ -158,90 +160,90 @@ git clone -b learn_version https://github.com/jjyaoao/HelloAgents
 
 ### [datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | datawhalechina |
-| Language | 中文 (zh-CN) |
+| 維護者 | datawhalechina |
+| 語言 | 中文（zh-CN） |
 | License | CC BY-NC-SA |
-| Recommendation | ⭐⭐⭐⭐⭐ for zh readers |
+| 推薦 | ⭐⭐⭐⭐⭐（中文讀者） |
 
-**What it teaches**: The companion tutorial for HelloAgents. Multi-chapter walkthrough from "what is an agent" to production patterns.
+**教什麼**：HelloAgents 的搭配教程。多章節導讀，從「什麼是 agent」一路講到 production 的實務 pattern。
 
-**Best for**: Chinese-speaking learners who want a structured tutorial alongside code.
+**適合誰**：想要結構化教程加程式碼的中文讀者。
 
-**Notes**: Pair this with the `learn_version` branch of the HelloAgents repo above.
+**備註**：請搭配上面 HelloAgents repo 的 `learn_version` 分支一起看。
 
 ---
 
 ### [QuantaLogic/quantalogic](https://github.com/quantalogic/quantalogic)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | QuantaLogic |
-| Language | Python |
+| 維護者 | QuantaLogic |
+| 語言 | Python |
 | License | Apache-2.0 |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: ReAct agent that generates Python code instead of JSON tool calls. Different design choice — agent writes code as actions.
+**教什麼**：產生 Python 程式碼（而不是 JSON tool call）的 ReAct agent。設計選擇不同 — agent 直接寫程式碼當作 action。
 
-**Best for**: After Hello-3. Compare CodeAct (code as action) vs JSON tool calls.
+**適合誰**：跑完 Hello-3 之後。比較 CodeAct（程式碼即 action）與 JSON tool call 的差別。
 
 ---
 
 ### [HuggingFace Smolagents](https://github.com/huggingface/smolagents)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Hugging Face |
-| Language | Python |
+| 維護者 | Hugging Face |
+| 語言 | Python |
 | Stars | ★ 27k+ |
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Smol agents (≤1000 LOC). Code-writing agents that execute Python instead of JSON tool calls.
+**教什麼**：Smol agents（≤1000 LOC）。會寫程式碼的 agent — 執行 Python 而不是 JSON tool call。
 
-**Best for**: Hello-5 alternative. Especially good for local LLM experimentation.
+**適合誰**：Hello-5 的替代方案。特別適合本地 LLM 實驗。
 
-**Notes**: HF's stance: agents should be small. Their code-action approach is intellectually distinct from JSON-tool approach. Worth comparing.
+**備註**：HF 的立場：agent 應該要小。他們的 code-action 路線跟 JSON-tool 路線在思路上很不一樣，值得對照來看。
 
 ---
 
 ### [LangChain — ReAct Agent Template](https://github.com/langchain-ai/react-agent)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | LangChain Inc. |
-| Language | Python |
+| 維護者 | LangChain Inc. |
+| 語言 | Python |
 | License | MIT |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: How a framework abstracts the ReAct pattern. Template for LangGraph Studio.
+**教什麼**：framework 怎麼把 ReAct pattern 抽象化。LangGraph Studio 的範本。
 
-**Best for**: After Hello-3 (build from scratch first). Then compare what frameworks do for you.
+**適合誰**：Hello-3 之後（先自己從零寫過再來）。再來比較 framework 幫你做了哪些事。
 
 ---
 
-### [Anthropic — Building Effective Agents (blog post)](https://www.anthropic.com/engineering/building-effective-agents)
+### [Anthropic — Building Effective Agents（部落格文章）](https://www.anthropic.com/engineering/building-effective-agents)
 
-| Format | Article |
+| 格式 | 文章 |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Anthropic's own guide to when to use agents (vs. workflows), common patterns, and pitfalls. Required reading before Stage 4.
+**教什麼**：Anthropic 自己寫的指南 — 什麼時候該用 agent（vs. workflow）、常見 pattern、容易踩的坑。Stage 4 之前必讀。
 
-**Best for**: Conceptual framing. Read after Hello-3 but before learning frameworks.
+**適合誰**：建立觀念框架。Hello-3 寫完之後、學 framework 之前讀。
 
 ---
 
-## ✅ Self-Check Before Stage 4
+## ✅ 進 Stage 4 前的自我檢查
 
-Can you:
-- [ ] Define a tool schema (name + description + JSON schema input/output)
-- [ ] Implement ReAct loop in <100 lines of Python without any framework
-- [ ] Explain why an agent needs an "I'm done" exit condition
-- [ ] Compare CodeAct (code as action) vs JSON-tool approach
-- [ ] Identify when a problem doesn't need an agent
+你能不能：
+- [ ] 定義一個 tool schema（name + description + JSON schema 輸入/輸出）
+- [ ] 用不到 100 行 Python、不靠任何 framework，把 ReAct 迴圈寫出來
+- [ ] 解釋為什麼 agent 需要一個「我做完了」的退出條件
+- [ ] 比較 CodeAct（程式碼即 action）跟 JSON-tool 兩種路線
+- [ ] 看出哪些問題其實不需要 agent
 
-If yes → proceed to [Stage 4 — Agent Frameworks](04-agent-frameworks.md).
+如果可以 → 進 [Stage 4 — Agent Frameworks](04-agent-frameworks.md)。
 
-If no → run Hello-3 again. Don't skip it. The frameworks in Stage 4 will mystify you if you don't understand what they're abstracting.
+如果不行 → 把 Hello-3 再跑一次，不要跳過。如果你不懂 framework 在幫你抽象什麼，Stage 4 的那些東西看起來會像黑魔法。

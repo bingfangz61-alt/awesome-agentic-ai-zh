@@ -1,60 +1,62 @@
 # Stage 2 — Prompt Engineering
 
-⏱ **Time estimate**: 1-2 weeks (~5-12 hours)
+> [English](./02-prompt-engineering.en.md) | **繁體中文**
 
-## 📌 Learning Goals
+⏱ **時間估算**：1-2 週（約 5-12 小時）
 
-After this stage you will be able to:
-- Write structured prompts (role + task + format + examples)
-- Apply few-shot prompting and know when it helps
-- Use chain-of-thought (CoT) for reasoning tasks
-- Iteratively refine a prompt and measure improvement
-- Recognize when prompting hits its limit (and you need tools / agents)
+## 📌 學習目標
 
-## 🚪 Entry Conditions
+走完這個階段後你會：
+- 寫出結構化 prompt（角色 + 任務 + 格式 + 範例）
+- 應用 few-shot prompting，並知道什麼時候有用
+- 在推理任務上使用 chain-of-thought（CoT）
+- 反覆迭代修改一個 prompt 並衡量改善
+- 看出什麼時候 prompt 已經到極限了（這時你需要 tool / agent）
 
-You should already:
-- Be able to call an LLM API (Stage 1)
-- Be able to parse / iterate over API responses
+## 🚪 進入條件
 
-## 📚 Required Reading
+你應該已經：
+- 會呼叫 LLM API（Stage 1）
+- 會解析 / 走訪 API 回應
 
-1. [**Anthropic Prompt Engineering Guide**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — official, well-organized
-2. [**OpenAI Prompt Engineering**](https://platform.openai.com/docs/guides/prompt-engineering) — OpenAI's perspective
-3. [**dair-ai Prompt Engineering Guide**](https://www.promptingguide.ai/) — academic-flavored, in-depth
-4. [**Anthropic — Prompting Best Practices**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct) — be clear and direct
+## 📚 必修閱讀
+
+1. [**Anthropic Prompt Engineering Guide**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — 官方，整理得不錯
+2. [**OpenAI Prompt Engineering**](https://platform.openai.com/docs/guides/prompt-engineering) — OpenAI 觀點
+3. [**dair-ai Prompt Engineering Guide**](https://www.promptingguide.ai/) — 學術風，深入
+4. [**Anthropic — Prompting Best Practices**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct) — 直接清楚
 
 ## 🛠 Hello-X
 
 ### Hello System Prompt
-Same user message, three different system prompts. Watch the personality / output format change.
+同樣的 user message，三個不同的 system prompt。觀察人格 / 輸出格式怎麼變。
 
 ### Hello Few-Shot
-Pick a classification task. Run it 0-shot, then 3-shot. Measure accuracy difference.
+挑一個分類任務。先用 0-shot 跑，再用 3-shot 跑。量一下準確率差多少。
 
 ### Hello CoT
-Pick a math word problem. Compare:
-- Plain prompt
-- Plain prompt + "Let's think step by step"
-- Plain prompt + worked example showing CoT
+挑一個數學文字題，比較：
+- 純 prompt
+- 純 prompt + 「Let's think step by step」
+- 純 prompt + 一個展示 CoT 的範例
 
 ### Hello Iterative Refinement
-Take a vague prompt, refine it 5 times. Track the iterations. Notice what changes improve quality.
+拿一個模糊的 prompt，refine 5 次。把每一輪記下來。觀察哪些改動會提升品質。
 
-## 🎯 Curated Projects
+## 🎯 精選 Projects
 
 ### [dair-ai/Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | DAIR.AI |
+| 維護者 | DAIR.AI |
 | Stars | ★ 60k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: End-to-end prompt engineering from basics to advanced (CoT, ToT, ReAct, RAG). Academic-flavored but practical.
+**教什麼**：從基礎到進階（CoT、ToT、ReAct、RAG）的端到端 prompt engineering。學術風但實用。
 
-**Best for**: Reference. Skim once, return when you need a specific technique.
+**適合誰**：當參考用。先大致掃過一次，需要某個技巧時再回來查。
 
 ---
 
@@ -63,30 +65,30 @@ Take a vague prompt, refine it 5 times. Track the iterations. Notice what change
 | Stars | ★ 130k+ |
 |---|---|
 | License | CC0 |
-| Recommendation | ⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐ |
 
-**What it teaches**: Hundreds of role-based prompts. "Act as a [role]..." patterns.
+**教什麼**：上百個角色型 prompt。「Act as a [角色]...」的模式。
 
-**Best for**: Inspiration when stuck. Don't copy verbatim — adapt the patterns.
+**適合誰**：卡關時找靈感。不要照抄——把模式拿出來改寫。
 
 ---
 
 ### [PromptingGuide.ai](https://www.promptingguide.ai/)
 
-**What it teaches**: Same content as dair-ai's GitHub but in website format with live examples.
+**教什麼**：跟 dair-ai GitHub 同樣的內容，但做成網站、有可以跑的範例。
 
-**Best for**: Mobile reading.
+**適合誰**：手機閱讀。
 
 ---
 
 ### [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine)
 
-| Recommendation | ⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: TypeScript library for managing prompts at scale (templating, conversation history).
+**教什麼**：管理大量 prompt 的 TypeScript library（樣板、對話歷史）。
 
-**Best for**: When you start managing many prompts in production.
+**適合誰**：開始要在 production 管很多 prompt 時。
 
 ---
 
@@ -94,37 +96,37 @@ Take a vague prompt, refine it 5 times. Track the iterations. Notice what change
 
 | Stars | ★ 10k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐ |
 
-**What it teaches**: Visual prompt design + evaluation tooling.
+**教什麼**：視覺化 prompt 設計 + 評估工具。
 
-**Best for**: Teams building prompt-heavy apps with eval needs.
+**適合誰**：以 prompt 為主、需要 eval 的團隊型應用。
 
 ---
 
 ### [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai)
 
-| Recommendation | ⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐ |
 |---|---|
 
-**What it teaches**: Google Cloud's prompting cookbook (notebooks, PaLM/Gemini focus).
+**教什麼**：Google Cloud 的 prompting cookbook（notebook，PaLM/Gemini 為主）。
 
-**Best for**: Cross-vendor perspective if you use Google's stack.
+**適合誰**：用 Google 技術棧時的跨廠商觀點。
 
 ---
 
 ### [Anthropic Cookbook — Prompt patterns](https://github.com/anthropics/anthropic-cookbook)
 
-Already cited in Stage 1. Specifically the `misc/prompt_caching.ipynb` and `multimodal/` notebooks teach advanced prompting patterns.
+Stage 1 已經提過。這裡特別推 `misc/prompt_caching.ipynb` 跟 `multimodal/` 系列 notebook，會教進階 prompting 模式。
 
 ---
 
-## ✅ Self-Check Before Stage 3
+## ✅ 進 Stage 3 前的自我檢查
 
-Can you:
-- [ ] Write a prompt with system message + user message + 3 example messages (few-shot)
-- [ ] Demonstrate CoT improving accuracy on a reasoning task
-- [ ] Iteratively refine a prompt 5 times tracking each version
-- [ ] Identify when prompting is the wrong tool (and tool use is needed)
+你能不能：
+- [ ] 寫一個有 system message + user message + 3 個範例 message 的 prompt（few-shot）
+- [ ] 示範 CoT 在某個推理任務上提升準確率
+- [ ] 反覆 refine 一個 prompt 5 次，每一版都留下記錄
+- [ ] 看出 prompt 不是對的工具的時候（這時要用 tool use）
 
-If yes → proceed to [Stage 3 — Tool Use & Hello Agent](03-tool-use-and-hello-agent.md). This is the most important stage — don't rush past prompts but also don't get stuck here.
+如果可以 → 進 [Stage 3 — Tool Use & Hello Agent](03-tool-use-and-hello-agent.md)。這是最重要的一個階段——prompt 不要急著跳過去，但也不要卡在這裡。

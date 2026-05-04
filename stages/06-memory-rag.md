@@ -1,41 +1,43 @@
-# Stage 6 — Memory · RAG · Advanced
+# Stage 6 — Memory · RAG · 進階
 
-⏱ **Time estimate**: 2 weeks (~10 hours)
+> [English](./06-memory-rag.en.md) | **繁體中文**
 
-Agents that don't remember past interactions are not useful. RAG (Retrieval-Augmented Generation) is the standard approach. This stage covers both.
+⏱ **時間估計**：2 週（約 10 小時）
 
-## 📌 Learning Goals
+不會記住過去互動的 agent 沒什麼用。RAG（Retrieval-Augmented Generation）是目前的標準做法。這一章兩個都會講到。
 
-- Distinguish short-term, long-term, episodic, semantic memory
-- Understand vector embeddings and similarity search
-- Build a basic RAG pipeline (chunk → embed → store → retrieve → generate)
-- Recognize when RAG is the wrong answer (and when it's the right one)
+## 📌 學習目標
 
-## 📚 Required Reading
+- 區分 short-term、long-term、episodic、semantic memory
+- 理解 vector embedding 與相似度搜尋
+- 建一條基本 RAG 流水線（chunk → embed → store → retrieve → generate）
+- 看出 RAG 不該用在哪些地方（以及該用在哪些地方）
 
-1. [**LlamaIndex — RAG concepts**](https://docs.llamaindex.ai/en/stable/getting_started/concepts/) — clearest intro
-2. [**LangChain — RAG tutorial**](https://python.langchain.com/docs/tutorials/rag/) — hands-on
-3. [**Pinecone — Learning Center**](https://www.pinecone.io/learn/) — vector DB fundamentals
-4. [**Anthropic — Contextual Retrieval**](https://www.anthropic.com/news/contextual-retrieval) — Anthropic's RAG technique with prompt caching
+## 📚 必修閱讀
+
+1. [**LlamaIndex — RAG concepts**](https://docs.llamaindex.ai/en/stable/getting_started/concepts/) — 最清楚的入門
+2. [**LangChain — RAG tutorial**](https://python.langchain.com/docs/tutorials/rag/) — 動手做
+3. [**Pinecone — Learning Center**](https://www.pinecone.io/learn/) — vector DB 基礎
+4. [**Anthropic — Contextual Retrieval**](https://www.anthropic.com/news/contextual-retrieval) — Anthropic 搭配 prompt caching 的 RAG 寫法
 
 ## 🛠 Hello-X
 
-- **Hello Embeddings** — embed 100 sentences, find nearest neighbors of one query
-- **Hello Vector DB** — store embeddings in Chroma, query semantically
-- **Hello RAG** — full pipeline: chunk a PDF → embed → retrieve top-k → generate answer
-- **Hello Memory** — give an agent conversational memory across multiple turns
+- **Hello Embeddings** — 把 100 個句子做 embedding，找出某個 query 的最近鄰
+- **Hello Vector DB** — 把 embedding 存進 Chroma，做語意 query
+- **Hello RAG** — 完整流水線：把 PDF 切塊 → embed → 取 top-k → 生成回答
+- **Hello Memory** — 讓 agent 在多輪對話之間記得事情
 
-## 🎯 Curated Projects
+## 🎯 精選 Projects
 
 ### [LlamaIndex](https://github.com/run-llama/llama_index)
 
 | Stars | ★ 49k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: The RAG-focused framework. Document loaders, chunking strategies, retrieval patterns, query engines.
+**教什麼**：以 RAG 為核心的 framework。document loader、切塊策略、retrieval pattern、query engine。
 
-**Best for**: Document-heavy applications. RAG is its core.
+**適合誰**：以文件為主的應用。RAG 是它的核心。
 
 ---
 
@@ -44,13 +46,13 @@ Agents that don't remember past interactions are not useful. RAG (Retrieval-Augm
 | Stars | ★ 27k+ |
 |---|---|
 | License | Apache-2.0 |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Open-source embedding database. Run locally, no infrastructure setup.
+**教什麼**：開源 embedding 資料庫。本機跑，不用搞基礎設施。
 
-**Best for**: Hello-2 and Hello-3 above. Easiest vector DB to start with.
+**適合誰**：上面的 Hello-2、Hello-3。最容易上手的 vector DB。
 
-**Run it**:
+**怎麼跑**：
 ```python
 import chromadb
 client = chromadb.Client()
@@ -65,11 +67,11 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 | Stars | ★ 31k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Production-grade vector DB written in Rust. Faster than Chroma at scale.
+**教什麼**：production 等級的 vector DB,用 Rust 寫的。規模大時比 Chroma 快。
 
-**Best for**: When Chroma can't keep up. Has cloud + self-hosted modes.
+**適合誰**：當 Chroma 跟不上時。有雲端版跟自架版。
 
 ---
 
@@ -77,11 +79,11 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 | Stars | ★ 16k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Vector DB with built-in modules (text2vec, generative, classification). Schema-driven.
+**教什麼**：有內建模組（text2vec、generative、classification）的 vector DB。schema 驅動。
 
-**Best for**: Production deployments needing schema constraints.
+**適合誰**：production 部署、需要 schema 約束的場景。
 
 ---
 
@@ -89,19 +91,19 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 | Stars | ★ 21k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Vector similarity search inside PostgreSQL. SQL + vector in one DB.
+**教什麼**：在 PostgreSQL 裡做向量相似度搜尋。SQL 跟向量同一個 DB。
 
-**Best for**: Teams already on PostgreSQL who don't want a separate vector store.
+**適合誰**：原本就在用 PostgreSQL、不想多維護一個向量儲存的團隊。
 
 ---
 
 ### [LangChain — Memory](https://python.langchain.com/docs/concepts/memory/)
 
-**What it teaches**: Agent memory patterns (buffer, summary, vectorstore-backed).
+**教什麼**：agent memory 模式（buffer、summary、vectorstore-backed）。
 
-**Best for**: When your agent needs to remember across sessions.
+**適合誰**：agent 需要跨 session 記得事情時。
 
 ---
 
@@ -109,60 +111,60 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 | Stars | ★ 54k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Self-improving memory layer for AI agents. Stores facts about users across sessions.
+**教什麼**：給 AI agent 用的自我精煉 memory 層。跨 session 儲存使用者的事實。
 
-**Best for**: Personal assistant / chatbot apps that need user-level memory.
+**適合誰**：個人助理 / chatbot 應用,需要使用者層級 memory 的場景。
 
 ---
 
-### [Letta (formerly MemGPT)](https://github.com/letta-ai/letta)
+### [Letta（前身 MemGPT）](https://github.com/letta-ai/letta)
 
 | Stars | ★ 22k+ |
 |---|---|
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Long-context agent with hierarchical memory. Inspired by OS memory management.
+**教什麼**：有階層式 memory 的長 context agent。靈感來自 OS 的 memory management。
 
-**Best for**: Agents that need very long-running context (months, not minutes).
+**適合誰**：context 要跑非常久的 agent（用月在算,不是用分鐘算）。
 
 ---
 
 ### [chatchat-space/Langchain-Chatchat](https://github.com/chatchat-space/Langchain-Chatchat)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
 | Maintainer | chatchat-space |
-| Language | 中文 + Python |
+| 語言 | 中文 + Python |
 | Stars | ★ 38k+ |
 | License | Apache-2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: 中文社群最廣泛使用的 RAG + Agent 應用框架。Offline-deployable knowledge base Q&A with Chinese-friendly defaults. Supports ChatGLM / Qwen / Llama / Ollama backends.
+**教什麼**：中文社群最廣泛使用的 RAG + Agent 應用 framework。可離線部署的知識庫問答,中文友善的預設值。支援 ChatGLM / Qwen / Llama / Ollama 後端。
 
-**Best for**: Chinese-speaking learners building knowledge base / RAG apps. The defaults handle Chinese tokenization + embeddings well.
+**適合誰**：要做知識庫 / RAG 應用的中文使用者。預設值對中文斷詞 + embedding 處理得不錯。
 
-**Notes**: Last update Nov 2025 (~6 months — borderline on the active-maintenance criterion).
+**備註**：最後一次更新是 2025 年 11 月（約 6 個月前——active maintenance 標準的邊緣）。
 
 ---
 
 ### [Anthropic — Contextual Retrieval cookbook](https://platform.claude.com/cookbook/capabilities-contextual-embeddings-guide)
 
-**What it teaches**: Anthropic's contextual retrieval technique with prompt caching, end-to-end example.
+**教什麼**：Anthropic 的 contextual retrieval 技巧搭配 prompt caching,有完整端到端範例。
 
-**Best for**: After basic RAG, upgrade to contextual retrieval for better recall on long documents.
+**適合誰**：跑完基本 RAG 之後,升級到 contextual retrieval,在長文件上 recall 更好。
 
-**Notes**: Anthropic renamed `anthropic-cookbook` → `claude-cookbooks` in 2025. The hosted notebook above is the canonical reference; raw GitHub paths may shift.
+**備註**：Anthropic 在 2025 年把 `anthropic-cookbook` 改名為 `claude-cookbooks`。上面的線上 notebook 是現在的標準參考；GitHub 上的原始路徑可能會變動。
 
 ---
 
-## ✅ Self-Check Before Stage 7
+## ✅ 進入 Stage 7 前的自我檢查
 
-Can you:
-- [ ] Build a 50-line RAG pipeline (load → chunk → embed → store → query → answer)
-- [ ] Explain why naive chunking fails on long documents
-- [ ] Pick between Chroma, Qdrant, pgvector for a given scale
-- [ ] Distinguish "give the agent memory" from "use RAG"
+你能不能：
+- [ ] 寫一條 50 行的 RAG 流水線（load → chunk → embed → store → query → answer）
+- [ ] 解釋為什麼天真的切塊在長文件上會失敗
+- [ ] 在某個規模下,在 Chroma、Qdrant、pgvector 之間做選擇
+- [ ] 區分「給 agent memory」跟「用 RAG」這兩件事
 
-If yes → proceed to [Stage 7 — Multi-Agent · Production](07-multi-agent-production.md).
+如果都可以 → 前往 [Stage 7 — Multi-Agent · Production](07-multi-agent-production.md)。

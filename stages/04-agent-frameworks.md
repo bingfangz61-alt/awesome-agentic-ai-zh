@@ -1,66 +1,68 @@
 # Stage 4 — Agent Frameworks
 
-⏱ **Time estimate**: 2-3 weeks (~10-15 hours)
+> [English](./04-agent-frameworks.en.md) | **繁體中文**
 
-You've built a ReAct agent from scratch (Stage 3). Now learn what frameworks do for you. **Pick one to deeply learn**, browse the others to know when to switch.
+⏱ **時間估計**：2-3 週（約 10-15 小時）
 
-## 📌 Learning Goals
+你已經從零打造過一個 ReAct agent（Stage 3）。現在來看 framework 到底幫你做了什麼。**挑一個深入學**，其他的瀏覽過去就好，知道什麼時候該換。
 
-After this stage you will be able to:
-- Compare 5 major agent frameworks (LangGraph, AutoGen, CrewAI, Smolagents, OpenAI Agents SDK)
-- Pick the right framework for a given task
-- Build the same agent in 2 frameworks and feel the difference
-- Recognize when to drop frameworks and write from scratch
+## 📌 學習目標
 
-## 🚪 Entry Conditions
+完成這個 stage 後你會：
+- 比較 5 個主流 agent framework（LangGraph、AutoGen、CrewAI、Smolagents、OpenAI Agents SDK）
+- 替任務挑出對的 framework
+- 用兩個 framework 各做一次同樣的 agent，親身感受差異
+- 看出什麼時候該丟掉 framework、自己寫
 
-You should already:
-- Have completed all 5 hello-X projects in Stage 3
-- Have built ReAct from scratch (Hello-3)
-- Be comfortable with async Python (frameworks lean on async)
+## 🚪 進入條件
 
-⚠️ **Memory primer (peek ahead if needed)**: Some framework features rely on memory concepts — LangGraph uses checkpointing (state persistence), CrewAI passes task results between agents (lightweight memory). [Stage 6 — Memory & RAG](06-memory-rag.md) covers these properly. You don't need to read it first, but if a framework feature feels mysterious, that's where the answer is.
+你應該已經：
+- 跑完 Stage 3 的全部 5 個 hello-X projects
+- 從零寫過 ReAct（Hello-3）
+- 對 async Python 上手（framework 大量依賴 async）
 
-## 📚 Required Reading
+⚠️ **Memory 預備（需要時偷看一下）**：有些 framework 功能會用到 memory 的概念 — LangGraph 用 checkpointing（狀態持久化），CrewAI 在 agent 之間傳遞任務結果（輕量 memory）。這些東西在 [Stage 6 — Memory & RAG](06-memory-rag.md) 會講清楚。你不必先讀完那篇，只是當某個 framework 功能讓你看不懂的時候，去那邊找答案就對了。
 
-1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — when to use frameworks vs raw API
-2. [**LangChain — Conceptual Guide: Agents**](https://python.langchain.com/docs/concepts/agents/) — agent abstractions
-3. [**Best Multi-Agent Frameworks 2026 comparison**](https://gurusup.com/blog/best-multi-agent-frameworks-2026) — current market positioning
-4. **One framework's Quickstart** — pick LangGraph or CrewAI; do their official tutorial end-to-end
+## 📚 必修閱讀
+
+1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — 什麼時候用 framework、什麼時候直接用 raw API
+2. [**LangChain — Conceptual Guide: Agents**](https://python.langchain.com/docs/concepts/agents/) — agent 的抽象概念
+3. [**Best Multi-Agent Frameworks 2026 comparison**](https://gurusup.com/blog/best-multi-agent-frameworks-2026) — 當前市場定位
+4. **挑一個 framework 的 Quickstart** — 選 LangGraph 或 CrewAI，把官方教學從頭跑到尾
 
 ## 🛠 Hello-X Projects
 
-### Hello-1: Same agent, two frameworks
-Build the same simple agent (search + summarize task) in:
+### Hello-1: 同一個 agent、兩個 framework
+用以下兩個 framework 各做一次同樣的簡單 agent（搜尋 + 摘要）：
 - LangGraph
 - CrewAI
-Compare lines of code, debugging experience, and where they hide complexity.
+比較程式碼行數、debug 體驗、以及它們各自把哪些複雜度藏在哪裡。
 
-### Hello-2: Multi-agent role assignment
-Use CrewAI to build 2-3 agents with distinct roles working on the same task. (CrewAI is best for this.)
+### Hello-2: 多 agent 角色分配
+用 CrewAI 做一個 2-3 個 agent、各自有不同角色一起完成同一個任務的 demo。（這種情境 CrewAI 最拿手。）
 
-### Hello-3: Graph-based workflow
-Use LangGraph to build a workflow with branching logic and human-in-the-loop checkpoint. (LangGraph is best for this.)
+### Hello-3: 圖式 workflow
+用 LangGraph 做一個有分支邏輯跟 human-in-the-loop checkpoint 的 workflow。（這種情境 LangGraph 最拿手。）
 
-## 🎯 Curated Projects
+## 🎯 精選 Projects
 
-### [LangGraph](https://github.com/langchain-ai/langgraph) ⭐ Production-grade
+### [LangGraph](https://github.com/langchain-ai/langgraph) ⭐ production 等級
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | LangChain Inc. |
-| Language | Python / TypeScript |
+| 維護者 | LangChain Inc. |
+| 語言 | Python / TypeScript |
 | Stars | ★ 31k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Graph-based agent orchestration. State management, checkpointing, human-in-the-loop, time-travel debugging.
+**教什麼**：基於圖的 agent orchestration。狀態管理、checkpointing、human-in-the-loop、time-travel debugging。
 
-**Best for**: Production multi-agent systems where you need audit trails and rollback. Enterprise-grade.
+**適合誰**：production 級的多 agent 系統，需要稽核軌跡與 rollback 的場景。企業級。
 
-**Notes**: Strong enterprise adoption since 2025 (audit trails, replay-friendly graph model). Steeper learning curve than CrewAI but pays off for production. Pair with LangSmith for observability.
+**備註**：2025 年起企業採用率明顯上升（稽核軌跡、replay-friendly 圖模型）。學習曲線比 CrewAI 陡，但 production 場景值得。建議搭配 LangSmith 做 observability。
 
-**Run it**:
+**怎麼跑**：
 ```bash
 pip install langgraph langchain-anthropic
 # Tutorial: https://langchain-ai.github.io/langgraph/tutorials/introduction/
@@ -68,158 +70,158 @@ pip install langgraph langchain-anthropic
 
 ---
 
-### [CrewAI](https://github.com/crewAIInc/crewAI) ⭐ Lowest learning curve
+### [CrewAI](https://github.com/crewAIInc/crewAI) ⭐ 最容易上手
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | CrewAI Inc. |
-| Language | Python |
+| 維護者 | CrewAI Inc. |
+| 語言 | Python |
 | Stars | ★ 50k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Role-based multi-agent design. "Crews" of agents with distinct roles working toward shared goals.
+**教什麼**：以角色為核心的多 agent 設計。一群（Crew）有不同角色的 agent 朝同一個目標合作。
 
-**Best for**: Quick prototyping multi-agent systems. ~20 lines to a working crew. Great for "research → writer → reviewer" type pipelines.
+**適合誰**：快速雛形多 agent 系統。約 20 行就能跑出一個 crew。「研究員 → 寫手 → 審稿」這類管線特別合用。
 
-**Notes**: Lowest learning curve. But: no built-in checkpointing for long-running workflows, limited control over agent-to-agent comms, coarse error handling. Good for prototypes; LangGraph for production.
+**備註**：學習曲線最低。但是：長時間 workflow 沒有內建 checkpointing、agent 之間的溝通可控性有限、錯誤處理偏粗糙。雛形用 CrewAI、production 用 LangGraph。
 
 ---
 
 ### [Microsoft AutoGen / AG2](https://github.com/microsoft/autogen)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Microsoft Research |
-| Language | Python |
+| 維護者 | Microsoft Research |
+| 語言 | Python |
 | Stars | ★ 57k+ |
-| License | CC-BY-4.0 (note: license is for documentation; code released separately) |
-| Recommendation | ⭐⭐⭐⭐ |
+| License | CC-BY-4.0（注意：這是文件 license，程式碼另外釋出） |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Conversational multi-agent teams. Agents interact through multi-turn conversations. Strong group-chat coordination patterns.
+**教什麼**：對話式多 agent 團隊。agent 透過多輪對話互動。group-chat 協調 pattern 是它的強項。
 
-**Best for**: Multi-agent debate, brainstorming, peer review patterns. Microsoft's research lineage.
+**適合誰**：多 agent 辯論、腦力激盪、peer review 類的 pattern。Microsoft 研究院血統。
 
-**Notes**: AG2 (v0.4 rewrite) introduces async-first execution and event-driven core. The original AutoGen (v0.2) is what most tutorials still use. Be aware of the version split.
+**備註**：AG2（v0.4 重寫版）改成 async-first 執行、event-driven 核心。多數既有教程仍在用原本的 AutoGen（v0.2），請留意版本分支。
 
 ---
 
 ### [Hugging Face Smolagents](https://github.com/huggingface/smolagents)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Hugging Face |
-| Language | Python |
+| 維護者 | Hugging Face |
+| 語言 | Python |
 | Stars | ★ 27k+ |
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Code-writing agents (CodeAct pattern) — agents generate Python code instead of JSON tool calls. ≤1000 LOC philosophy.
+**教什麼**：寫程式碼的 agent（CodeAct pattern）— agent 產生 Python 程式碼，而不是 JSON tool call。≤1000 LOC 的設計哲學。
 
-**Best for**: Local LLM ecosystems and HuggingFace integrations. Different design philosophy worth understanding.
+**適合誰**：本地 LLM 生態、HuggingFace 整合場景。設計理念跟主流不同，值得理解。
 
-**Notes**: HF's bet: agents should be small. Their CodeAct approach is intellectually distinct. Compare to JSON-tool approach to see the trade-offs.
+**備註**：HF 的賭注：agent 應該要小。他們的 CodeAct 路線在思路上很不一樣，跟 JSON-tool 路線對照看，可以看出彼此的取捨。
 
 ---
 
 ### [OpenAI Agents SDK](https://github.com/openai/openai-agents-python)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | OpenAI |
-| Language | Python |
+| 維護者 | OpenAI |
+| 語言 | Python |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐⭐ |
 
-**What it teaches**: OpenAI's official agent SDK. Hand-offs between agents, structured outputs, OpenAI-native ergonomics.
+**教什麼**：OpenAI 官方的 agent SDK。agent 之間 hand-off、結構化輸出、OpenAI 原生的開發體驗。
 
-**Best for**: If you're committed to OpenAI ecosystem. Lightweight, tight integration with GPT-4 series.
+**適合誰**：你已經押注 OpenAI 生態。輕量、跟 GPT-4 系列整合很緊。
 
-**Notes**: Newer entrant (late 2025). Less battle-tested than LangGraph but very clean. Worth watching as it matures.
+**備註**：較新的選手（2025 年下半年才推出）。實戰歷練不如 LangGraph，但 API 很乾淨。值得持續觀察它成熟。
 
 ---
 
 ### [LlamaIndex Agents](https://github.com/run-llama/llama_index)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | LlamaIndex |
-| Language | Python |
+| 維護者 | LlamaIndex |
+| 語言 | Python |
 | Stars | ★ 49k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: Agents tightly integrated with RAG. If your agent needs heavy document/data retrieval, LlamaIndex is the natural choice.
+**教什麼**：跟 RAG 緊密整合的 agent。如果你的 agent 需要大量文件/資料 retrieval，LlamaIndex 是自然選擇。
 
-**Best for**: Document-heavy agent applications. Research assistant, knowledge worker agents.
+**適合誰**：文件密集型的 agent 應用。研究助理、知識工作者類 agent。
 
-**Notes**: Stronger on retrieval than orchestration. Not the right pick for pure orchestration; ideal for retrieval-heavy work.
+**備註**：retrieval 強、orchestration 弱。純 orchestration 場景不該選它；retrieval 為主的工作很適合。
 
 ---
 
 ### [Pydantic AI](https://github.com/pydantic/pydantic-ai)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Pydantic team |
-| Language | Python |
+| 維護者 | Pydantic 團隊 |
+| 語言 | Python |
 | License | MIT |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: Type-safe agent framework using Pydantic for structured outputs. Strong validation guarantees.
+**教什麼**：型別安全的 agent framework，用 Pydantic 處理結構化輸出。驗證保證很強。
 
-**Best for**: Production teams that want runtime type safety + structured outputs by default.
+**適合誰**：production 團隊，預設就要 runtime 型別安全 + 結構化輸出。
 
-**Notes**: Newer than alternatives. Pedigree of the Pydantic team gives confidence in API design.
+**備註**：比競品新。Pydantic 團隊的血統讓人對 API 設計有信心。
 
 ---
 
 ### [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | agentscope (Alibaba origin) |
-| Language | Python |
+| 維護者 | agentscope（阿里出身） |
+| 語言 | Python |
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: Multi-agent platform with strong visualization tools. "Build and run agents you can see, understand, and trust."
+**教什麼**：多 agent 平台，視覺化工具是強項。「打造你看得到、看得懂、信得過的 agent」。
 
-**Best for**: Researchers wanting visual debugging of multi-agent flows.
+**適合誰**：想要視覺化 debug 多 agent 流程的研究者。
 
-**Notes**: Less Western community uptake but technically solid. Strong observability tooling.
+**備註**：在西方社群採用度較低，但技術紮實。observability 工具很不錯。
 
 ---
 
 ### [LangChain](https://github.com/langchain-ai/langchain)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | LangChain Inc. |
-| Language | Python / TypeScript |
+| 維護者 | LangChain Inc. |
+| 語言 | Python / TypeScript |
 | Stars | ★ 135k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐ |
+| 推薦 | ⭐⭐⭐ |
 
-**What it teaches**: The original "everything bag" framework. Chains, agents, memory, retrievers, all combined.
+**教什麼**：最早的「萬用工具袋」framework。chains、agents、memory、retrievers 全部一鍋。
 
-**Best for**: Quick prototypes that need many pieces glued together.
+**適合誰**：需要把很多零件黏在一起的快速雛形。
 
-**Notes**: Many people overuse LangChain. For agent orchestration specifically, prefer LangGraph (its successor). LangChain is best for retrieval + chaining glue, not agent orchestration.
+**備註**：很多人 LangChain 用過頭了。專做 agent orchestration 的話，請改用它的繼任者 LangGraph。LangChain 比較適合 retrieval + chaining 的黏合，不適合 agent orchestration。
 
 ---
 
-## ✅ Self-Check Before Stage 5
+## ✅ 進 Stage 5 前的自我檢查
 
-Can you:
-- [ ] Build the same agent in LangGraph AND CrewAI
-- [ ] Pick the right framework for a given task (production vs prototype)
-- [ ] Explain LangGraph's checkpoint vs CrewAI's task delegation
-- [ ] Identify when CodeAct (Smolagents) is better than JSON-tool
-- [ ] Decide when to drop frameworks and use raw API
+你能不能：
+- [ ] 用 LangGraph 跟 CrewAI 各做一次同一個 agent
+- [ ] 替任務挑出對的 framework（production vs 雛形）
+- [ ] 解釋 LangGraph 的 checkpoint 跟 CrewAI 的 task delegation 差在哪
+- [ ] 看出什麼時候 CodeAct（Smolagents）比 JSON-tool 更好
+- [ ] 判斷什麼時候該丟掉 framework、直接用 raw API
 
-If yes → proceed to [Stage 5 — Claude Code Ecosystem](05-claude-code-ecosystem.md).
+如果可以 → 進 [Stage 5 — Claude Code Ecosystem](05-claude-code-ecosystem.md)。
 
-## 💡 Strategic note
+## 💡 策略提示
 
-Don't try to learn ALL of these. Pick **one production-grade (LangGraph)** and **one quick-prototype (CrewAI)** and go deep. Browse the others' READMEs to know they exist.
+不要想把這些全部學完。挑**一個 production 等級的（LangGraph）**跟**一個快速雛形用的（CrewAI）**深入學。其他的 README 瀏覽過去就好，知道有這些選項存在即可。

@@ -1,35 +1,37 @@
-# Stage 1 — LLM Fundamentals
+# Stage 1 — LLM 基礎
 
-⏱ **Time estimate**: 1 week (~5-8 hours)
+> [English](./01-llm-basics.en.md) | **繁體中文**
 
-## 📌 Learning Goals
+⏱ **時間估算**：1 週（約 5-8 小時）
 
-After this stage you will be able to:
-- Explain what an LLM is, what tokens are, and what context window means
-- Make your first API call to Claude / GPT / Gemini and parse the response
-- Compare the four major LLM families (Claude / GPT / Gemini / Llama) on strengths
-- Estimate cost per task using per-token pricing
+## 📌 學習目標
 
-## 🚪 Entry Conditions
+走完這個階段後你會：
+- 解釋 LLM 是什麼、token 是什麼、context window 是什麼意思
+- 第一次成功呼叫 Claude / GPT / Gemini API 並解析回應
+- 在強項上比較四大 LLM 家族（Claude / GPT / Gemini / Llama）
+- 用 per-token 計價來估算單次任務的成本
 
-You should already:
-- Be able to run a Python script
-- Know what HTTP / REST is conceptually
-- Have an API key from at least one provider (Anthropic / OpenAI / Google)
+## 🚪 進入條件
 
-If not — go back to Stage 0 first.
+你應該已經：
+- 能跑 Python script
+- 概念上知道 HTTP / REST 是什麼
+- 至少有一家供應商的 API key（Anthropic / OpenAI / Google）
 
-## 📚 Required Reading
+如果還沒——先回 Stage 0。
 
-1. [**Anthropic — What is Claude?**](https://www.anthropic.com/news/claude-3-family) — official model overview
-2. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) — first API call walkthrough
-3. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face's intro
-4. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) — read the pricing table, calculate cost for 1k input + 1k output
+## 📚 必修閱讀
 
-## 🛠 Hello-X Projects (must run, not just read)
+1. [**Anthropic — What is Claude?**](https://www.anthropic.com/news/claude-3-family) — 官方模型總覽
+2. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) — 第一次 API call 的步驟
+3. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face 的入門
+4. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) — 把計價表看完，算一下 1k input + 1k output 的成本
+
+## 🛠 Hello-X Projects（必跑，不是看過就好）
 
 ### Hello, LLM API
-Five-line Python script that calls Claude API and prints the response.
+五行 Python 呼叫 Claude API 並印出回應。
 
 ```python
 from anthropic import Anthropic
@@ -43,32 +45,32 @@ print(msg.content[0].text)
 ```
 
 ### Hello, Tokens
-Run the same prompt 100 times and watch token counts vary.
-- Notice: temperature ≠ 0 produces variation
-- Notice: token count for the SAME English vs Chinese sentence
+同一個 prompt 跑 100 次，觀察 token 數的變化。
+- 注意：temperature ≠ 0 會產生變動
+- 注意：同一句話的英文 vs 中文 token 數差異
 
 ### Hello, Pricing
-Calculate the actual dollar cost of running 1000 inferences for your hello-world prompt. Use Anthropic's pricing page + count tokens via the SDK's `usage` field.
+算出你的 hello-world prompt 跑 1000 次的實際美金成本。用 Anthropic 的 pricing page + SDK 的 `usage` 欄位來算 token。
 
-## 🎯 Curated Projects
+## 🎯 精選 Projects
 
 ### [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Anthropic (official) |
-| Language | Python |
+| 維護者 | Anthropic（官方） |
+| 語言 | Python |
 | Stars | ★ 42k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: How to call Claude API for every common pattern — chat, tools, citations, multi-modal, prompt caching.
+**教什麼**：用 Claude API 處理常見場景的方法——chat、tools、citations、multi-modal、prompt caching。
 
-**Best for**: Anyone starting with Claude. The notebooks walk you through every API feature with runnable examples.
+**適合誰**：所有要開始用 Claude 的人。Notebook 會帶你走過每一個 API 功能，每個都有可以跑的範例。
 
-**Notes**: Treat this as your reference manual. Don't try to read it cover-to-cover; use as needed when you hit a specific question.
+**備註**：把它當參考書用，不要從頭讀到尾；遇到具體問題再來查。
 
-**Run it**:
+**怎麼跑**：
 ```bash
 git clone https://github.com/anthropics/anthropic-cookbook
 cd anthropic-cookbook/skills/classification
@@ -80,176 +82,176 @@ jupyter notebook guide.ipynb
 
 ### [OpenAI Cookbook](https://github.com/openai/openai-cookbook)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | OpenAI (official) |
-| Language | Python / Jupyter |
+| 維護者 | OpenAI（官方） |
+| 語言 | Python / Jupyter |
 | Stars | ★ 73k+ |
 | License | MIT |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Same as Anthropic Cookbook but for GPT family. Massive collection of recipes, structured outputs, tool use, embeddings.
+**教什麼**：跟 Anthropic Cookbook 一樣，但是 GPT 家族版。大量 recipe、structured output、tool use、embedding。
 
-**Best for**: Anyone using OpenAI API. The structured outputs and function calling examples are particularly strong.
+**適合誰**：所有用 OpenAI API 的人。structured output 跟 function calling 的範例特別強。
 
-**Notes**: Larger than Anthropic's cookbook. Use the search heavily — don't browse linearly.
+**備註**：比 Anthropic 的 cookbook 大很多，要多用搜尋——不要一頁一頁瀏覽。
 
 ---
 
 ### [LangChain Academy](https://academy.langchain.com/)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | LangChain Inc. |
-| Format | Free online courses |
-| Recommendation | ⭐⭐⭐⭐ |
+| 維護者 | LangChain Inc. |
+| 形式 | 免費線上課程 |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: LLM fundamentals, embeddings, RAG, agents — taught through LangChain. Good even if you don't end up using LangChain.
+**教什麼**：LLM 基礎、embedding、RAG、agent——透過 LangChain 教。就算你最後不用 LangChain 也值得看。
 
-**Best for**: Visual learners who want video walkthroughs.
+**適合誰**：喜歡看影片教學的視覺型學習者。
 
-**Notes**: Some lessons are LangChain-marketing-heavy. Skip those, take the conceptual lessons.
+**備註**：有些課程偏 LangChain 行銷，跳過那些，留下觀念課就好。
 
 ---
 
 ### [datawhalechina/happy-llm](https://github.com/datawhalechina/happy-llm)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | datawhalechina |
-| Language | 中文 (zh-CN) |
+| 維護者 | datawhalechina |
+| 語言 | 中文（zh-CN） |
 | Stars | ★ 29k+ |
 | License | Custom |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Build LLM from scratch — Chinese-language equivalent of Karpathy's "Zero to Hero" course. Chapters 1-4 cover LLM principles bottom-up, then practical applications.
+**教什麼**：從零開始建 LLM——對應 Karpathy 的「Zero to Hero」課程的中文版。第 1-4 章從底層講 LLM 原理，後面接實作應用。
 
-**Best for**: Chinese-speaking learners who want to truly understand how LLMs work, not just call APIs. Direct counterpart to Hugging Face's LLM Course but in Chinese.
+**適合誰**：想真正搞懂 LLM 怎麼運作、不只是會呼叫 API 的中文學習者。等同於 Hugging Face 的 LLM Course，但是中文。
 
 ---
 
 ### [datawhalechina/llm-universe](https://github.com/datawhalechina/llm-universe)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | datawhalechina |
-| Language | 中文 (zh-CN) |
+| 維護者 | datawhalechina |
+| 語言 | 中文（zh-CN） |
 | Stars | ★ 12k+ |
 | License | NOASSERTION |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: 面向小白開發者的大模型應用開發教程 — beginner-friendly LLM application development. Covers API basics, knowledge bases, RAG, advanced techniques.
+**教什麼**：面向小白開發者的大模型應用開發教程。涵蓋 API 基礎、知識庫、RAG、進階技巧。
 
-**Best for**: Chinese-speaking beginners who want to *build something* with LLM (vs. just understand them).
+**適合誰**：想用 LLM *做點東西*（不只是理解）的中文新手。
 
 ---
 
 ### [jingyaogong/minimind](https://github.com/jingyaogong/minimind)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | jingyaogong |
-| Language | 中文 + Python |
+| 維護者 | jingyaogong |
+| 語言 | 中文 + Python |
 | Stars | ★ 48k+ |
 | License | Apache-2.0 |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: 2 小時從零訓練 64M 參數 LLM — the most popular Chinese hands-on "build LLM from scratch" project. Pretrain + SFT + LoRA + DPO + RLHF all in one repo.
+**教什麼**：2 小時從零訓練 64M 參數 LLM——目前最熱門的中文「從零打造 LLM」實作 project。Pretrain + SFT + LoRA + DPO + RLHF 全部在同一個 repo。
 
-**Best for**: After watching Karpathy's video, run this to actually feel each training stage on real data. The pedagogical value is exceptional.
+**適合誰**：看完 Karpathy 影片之後，跑這個來實際感受每個訓練階段在真資料上的樣子。教學價值非常高。
 
 ---
 
 ### [datawhalechina/llm-cookbook](https://github.com/datawhalechina/llm-cookbook)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | datawhalechina (Chinese ML community) |
-| Language | 中文 (zh-CN) |
+| 維護者 | datawhalechina（中文 ML 社群） |
+| 語言 | 中文（zh-CN） |
 | Stars | ★ 23k+ |
-| Last update | ⚠️ Stale (Jun 2025; ~1 year inactive) |
+| 最後更新 | ⚠️ 已停滯（2025 年 6 月；停約 1 年） |
 | License | Custom (CC BY-NC-SA) |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: Andrew Ng's prompt engineering / building systems / fine-tuning courses translated and adapted for Chinese learners. Hands-on notebooks.
+**教什麼**：把 Andrew Ng 的 prompt engineering / building systems / fine-tuning 課程翻譯改編給中文學習者。有可以動手的 notebook。
 
-**Best for**: Chinese-speaking beginners who want a guided LLM curriculum.
+**適合誰**：想要一條完整 LLM 學習路線的中文新手。
 
-**Notes**: zh-CN content (Datawhale uses simplified Chinese) — but technical content transfers fine. Excellent free Chinese-language entry point.
+**備註**：內容是 zh-CN（Datawhale 用簡中），但技術內容看得懂沒問題。免費中文入門資源中相當好的選擇。
 
 ---
 
 ### [Hugging Face — Large Language Model Course](https://huggingface.co/learn/llm-course)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Hugging Face |
-| Format | Free online course + notebooks |
+| 維護者 | Hugging Face |
+| 形式 | 免費線上課程 + notebook |
 | License | Apache 2.0 |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: How LLMs actually work (tokenization, transformers, fine-tuning) with Hugging Face ecosystem.
+**教什麼**：LLM 內部到底怎麼運作（tokenization、transformer、fine-tuning），搭配 Hugging Face 生態系。
 
-**Best for**: Readers who want to understand what's happening inside, not just the API surface.
+**適合誰**：想搞懂內部機制、不只想看 API 表面的讀者。
 
-**Notes**: More academic than cookbooks. Covers training, not just inference.
+**備註**：比 cookbook 學術一點。有講訓練，不只是 inference。
 
 ---
 
 ### [karpathy/LLM101n](https://github.com/karpathy/LLM101n)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Andrej Karpathy |
-| Status | ⚠️ Archived (last update Aug 2024); outline only — never built out |
-| Recommendation | ⭐⭐ |
+| 維護者 | Andrej Karpathy |
+| 狀態 | ⚠️ 已封存（最後更新 2024 年 8 月）；只有大綱，從未真正寫完 |
+| 推薦度 | ⭐⭐ |
 
-**What it teaches**: Originally pitched as a build-from-scratch "Storyteller AI LLM" course in Karpathy's signature pedagogical style.
+**教什麼**：原本要做成 Karpathy 招牌教學風格的「Storyteller AI LLM」從零打造課程。
 
-**Best for**: Watch Karpathy's "Let's build GPT from scratch" YouTube video instead — that one is complete and excellent.
+**適合誰**：直接去看 Karpathy 的「Let's build GPT from scratch」YouTube 影片即可——那部完整又精彩。
 
-**Notes**: The repo is just an outline; the course was never built out. Listed for historical reference only.
+**備註**：這個 repo 只有大綱，課程沒做出來，列在這裡只是當歷史紀錄。
 
 ---
 
 ### [Anthropic — Claude API Quickstart](https://docs.anthropic.com/en/docs/get-started)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Anthropic (official) |
-| Format | Documentation |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 維護者 | Anthropic（官方） |
+| 形式 | 文件 |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Authoritative documentation for the Claude API.
+**教什麼**：Claude API 的權威官方文件。
 
-**Best for**: Direct reference. Bookmark this.
+**適合誰**：直接當參考用，加到書籤。
 
 ---
 
 ### [karpathy — Let's build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | Andrej Karpathy |
-| Format | YouTube video (2 hours) |
-| Recommendation | ⭐⭐⭐⭐⭐ |
+| 維護者 | Andrej Karpathy |
+| 形式 | YouTube 影片（2 小時） |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Build a transformer-based GPT from scratch in PyTorch. Foundational understanding of how LLMs work internally.
+**教什麼**：用 PyTorch 從零開始打造 transformer-based GPT。對 LLM 內部運作有奠基性的理解。
 
-**Best for**: Anyone who wants to understand WHY LLMs behave the way they do, not just HOW to call them.
+**適合誰**：想搞懂 LLM 為什麼會這樣表現（不只是怎麼呼叫）的人。
 
-**Notes**: 2 hours of dense content. Pause and code along — don't passively watch.
+**備註**：2 小時的高密度內容。暫停跟著寫程式碼，不要被動看。
 
 ---
 
-## ✅ Self-Check Before Stage 2
+## ✅ 進 Stage 2 前的自我檢查
 
-Can you:
-- [ ] Make a Claude API call from Python in 5 lines
-- [ ] Explain why "你好" might use 2 tokens but "Hello" uses 1
-- [ ] Quote roughly the per-token price for Claude Sonnet vs Opus
-- [ ] Name one strength of Claude vs GPT vs Gemini vs Llama
+你能不能：
+- [ ] 用 5 行 Python 呼叫 Claude API
+- [ ] 解釋為什麼「你好」可能用 2 個 token，但「Hello」只用 1 個
+- [ ] 大致說出 Claude Sonnet vs Opus 的 per-token 價格
+- [ ] 各說出 Claude / GPT / Gemini / Llama 的一個強項
 
-If yes → proceed to [Stage 2 — Prompt Engineering](02-prompt-engineering.md).
+如果可以 → 進 [Stage 2 — Prompt Engineering](02-prompt-engineering.md)。
 
-If no → re-read the Anthropic Quickstart + run all 3 hello-X projects above.
+如果不行 → 重看 Anthropic Quickstart + 把上面 3 個 hello-X 都跑一次。

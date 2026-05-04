@@ -1,84 +1,86 @@
-# Contributing
+# 貢獻指南
 
-Thanks for considering a contribution. This is a curated learning roadmap, not an exhaustive catalog. Quality > quantity.
+> [English](./CONTRIBUTING.en.md) | **繁體中文**
 
-## What We Accept
+謝謝你考慮貢獻。這是一份精選的學習路線圖，不是百科目錄。品質 > 數量。
 
-### High-value PRs
-- **Adding a project** to a stage with reasoning for why it teaches that stage
-- **Translating** a stage page to 繁中 (Traditional Chinese only — we are NOT zh-CN)
-- **Flagging stale / unmaintained projects** (open an issue first)
-- **Improving curation notes** on existing projects (clearer "what it teaches" explanations)
-- **Reorganizing** within a stage if the current ordering doesn't match learning progression
+## 我們接受什麼
 
-### Lower priority (still welcome)
-- Typo fixes
-- Link fixes (verify with `curl -I` first)
-- Stage description polish
+### 高價值 PR
+- **新增 project** 到某個 stage，並說明為什麼這個 project 對應該階段的學習
+- **翻譯** 某個 stage 頁面成繁中（只要繁中——我們不收 zh-CN）
+- **標記停滯 / 失維護的 project**（請先開 issue）
+- **改善現有 project 的策展備註**（讓「教什麼」說明更清楚）
+- **重新整理** 某個 stage 內部順序，如果現在的順序不符合學習進程
 
-### Not accepted
-- Bulk additions of repos without curation reasoning
-- Self-promotion without educational value
-- Projects with no documentation
-- Projects without clear license
+### 較低優先（仍然歡迎）
+- 錯字修正
+- 連結修正（請先用 `curl -I` 驗證）
+- Stage 介紹文字優化
 
-## How to Add a Project
+### 不接受
+- 沒有策展理由的批量加 repo
+- 沒有教學價值的自我推銷
+- 沒文件的 project
+- 沒明確 license 的 project
 
-Each project in a stage page should follow this format:
+## 怎麼新增一個 project
+
+每一個 project 在 stage 頁面內應該照這個格式：
 
 ```markdown
 ### [Project Name](url)
 
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Maintainer | who runs it |
-| Language | Python / TS / etc. |
+| 維護者 | 誰在維護 |
+| 語言 | Python / TS / etc. |
 | Stars | ★ k |
 | License | MIT / Apache 2 / ... |
-| Recommendation | ⭐⭐⭐⭐ |
+| 推薦度 | ⭐⭐⭐⭐ |
 
-**What it teaches**: 1-sentence summary of the core learning.
+**教什麼**：核心學習一句話總結。
 
-**Best for**: who should study this and why.
+**適合誰**：誰應該讀這個、為什麼。
 
-**Notes**: 1-3 sentence personal evaluation. What's strong, what's weak, what to skip.
+**備註**：1-3 句的個人評價。哪裡好、哪裡弱、哪裡可以跳。
 
-**Run it**:
+**怎麼跑**：
 \`\`\`bash
-# minimal install / first-run command
+# 最小安裝 / 第一次跑的指令
 \`\`\`
 ```
 
-## Curation Criteria
+## 策展標準
 
-A project worth listing must have:
+值得列入的 project 必須：
 
-1. **Active maintenance**: commits within last 6 months OR explicit "stable, no longer maintained" notice
-2. **Documented hello-world**: a reader should be able to run something within 30 minutes
-3. **Clear license**: MIT, Apache 2, BSD, or comparable. Avoid no-license repos.
-4. **Trustworthy maintainer**: well-known org, company, or individual with track record
+1. **有維護**：最近 6 個月內有 commit，或明確標示「stable, no longer maintained」
+2. **有 hello-world 文件**：讀者應該能在 30 分鐘內把東西跑起來
+3. **明確 license**：MIT、Apache 2、BSD 或類似。避免沒 license 的 repo。
+4. **可信賴的維護者**：知名組織、公司，或有口碑的個人
 
-## Bilingual Style
+## 雙語風格
 
-- **English is canonical**. Translation goes EN → 繁中.
-- **繁中 (Traditional Chinese), not 簡中**. If you submit zh-CN we'll ask you to convert.
-- **Natural translation**, not word-for-word. Technical terms can stay in English where natural ("使用 LangGraph 建 multi-agent 系統").
-- Terminology consistency rules will live in `resources/style-guide.md` (Phase 2 work).
+- **英文是正本**。翻譯方向 EN → 繁中。
+- **繁中（Traditional Chinese），不是簡中**。如果你交 zh-CN 的 PR，我們會請你轉成繁中。
+- **自然翻譯**，不要逐字對譯。技術詞如果直接用英文比較自然，就保留英文（「使用 LangGraph 建 multi-agent 系統」）。
+- 用詞一致性規則之後會放在 `resources/style-guide.md`（Phase 2 工作）。
 
-## Process
+## 流程
 
-1. Open an issue first for new projects or bigger restructuring
-2. PR with focused scope (one stage at a time)
-3. Wait for review (typically 7 days)
-4. Reviewer may ask for clarification on "why this teaches that stage"
+1. 新 project 或大幅重組請先開 issue
+2. 一次一個 stage，PR 範圍要聚焦
+3. 等審查（通常 7 天）
+4. Reviewer 可能會問你「為什麼這個 project 教這個 stage」
 
-## Anti-patterns to Avoid
+## 要避免的反模式
 
-- ❌ "leverage", "delve", "comprehensive", "robust" (LLM-tells)
-- ❌ Hype framing ("revolutionary", "game-changing")
-- ❌ Listing a project just because it's popular
-- ❌ Long quotes from the project's own marketing copy
+- ❌ 「leverage」、「delve」、「comprehensive」、「robust」（LLM tell）
+- ❌ 過度行銷（「revolutionary」、「game-changing」）
+- ❌ 只因為熱門就列上來
+- ❌ 大段引用 project 自己的行銷文案
 
 ## License
 
-By contributing, you agree your work is licensed under MIT.
+貢獻即代表你同意你的內容以 MIT 授權。
