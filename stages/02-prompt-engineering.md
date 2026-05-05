@@ -124,6 +124,38 @@ Stage 1 已經提過。這裡特別推 `misc/prompt_caching.ipynb` 跟 `multimod
 
 ---
 
+### [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python |
+| Stars | ★ 34k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：把 prompt 當 code 寫——定義 signature 跟 module、用 compiler / teleprompter 自動最佳化 prompt，不用手刻 f-string。Stanford NLP 出品，是 Stage 2 → Stage 3 的橋。
+
+**適合誰**：跑完 dair-ai 的指南、開始問「我要怎麼把 prompt 規模化（不是再多 hard-code）」的人。
+
+**備註**：是 framework 不是 tutorial，學習門檻比 prompt-engineering-guide 高。建議搭配官方 tutorial 網站 dspy.ai 一起讀。
+
+---
+
+### [NirDiamant/Prompt_Engineering](https://github.com/NirDiamant/Prompt_Engineering)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python / Jupyter |
+| Stars | ★ 7k+ |
+| License | NOASSERTION（自訂條款，研究 / 非商用為主，使用前讀條款） |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：22 種 prompt engineering 技巧的可執行 Jupyter notebook（zero-shot → CoT → ReAct → constitutional），2025 年的更新內容，比 dair-ai 更動手。
+
+**適合誰**：偏好「邊跑邊學」的人。每個技巧都有獨立 notebook，挑感興趣的看。
+
+---
+
 ## ✅ 進 Stage 3 前的自我檢查
 
 你能不能：

@@ -208,6 +208,57 @@ pip install langgraph langchain-anthropic
 
 ---
 
+### [microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | C# / Python / Java |
+| Stars | ★ 27k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：Microsoft 出品的企業級 SDK——kernel + plugin + planner pattern，**同時支援 C# / Python / Java**，是少數三語言都有官方 SDK 的 agent framework。
+
+**適合誰**：在 Microsoft 技術棧上工作的開發者，或要在 .NET / Java 環境做 agent 的人。
+
+**備註**：抽象層比 smolagents 厚，不適合第一週的初學者。要在企業環境跑、需要 .NET / Java 的場景值得考慮。
+
+---
+
+### [agno-agi/agno](https://github.com/agno-agi/agno)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python |
+| Stars | ★ 39k+ |
+| License | Apache-2.0 |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：multi-modal agent runtime + control plane——除了 build agent，還涵蓋 serving、monitoring、governance。2025 年新一代的 agent platform。
+
+**適合誰**：要把 agent 推到「能 serve、能監控」的階段，但又不想全套 LangGraph + LangSmith 的人。也適合 prototype 階段的快速設計。
+
+**備註**：跨 Stage 4-7 的工具——Stage 4 學它的 agent API，Stage 7 用它的 runtime / 監控功能。
+
+---
+
+### [BerriAI/litellm](https://github.com/BerriAI/litellm)（不是 framework，是跨 stage 基礎設施）
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python |
+| Stars | ★ 45k+ |
+| License | MIT（含 `enterprise/` 子目錄的另外授權） |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：provider-agnostic SDK + AI gateway——**用 OpenAI 形狀的 API 呼叫 100+ 個 LLM**，附 cost tracking、fallback、guardrail。
+
+**適合誰**：要做能切換 Claude / GPT / Gemini / 開源模型的 agent，不想為了切換 provider 改一堆程式碼的人。
+
+**備註**：嚴格來說 LiteLLM 不是 agent framework，而是 framework 底下的「provider 抽象層」——放在 Stage 4 是因為這是寫 multi-provider agent 時最常需要的工具。Stage 7 deploy 時也會再用到。Repo 內 `enterprise/` 目錄是另外的授權條款。
+
+---
+
 ## ✅ 進 Stage 5 前的自我檢查
 
 你能不能：

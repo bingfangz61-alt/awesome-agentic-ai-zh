@@ -120,6 +120,38 @@ Already cited in Stage 1. Specifically the `misc/prompt_caching.ipynb` and `mult
 
 ---
 
+### [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)
+
+| Field | Value |
+|---|---|
+| Language | Python |
+| Stars | ★ 34k+ |
+| License | MIT |
+| Recommendation | ⭐⭐⭐⭐⭐ |
+
+**What it teaches**: Prompt-as-code — define signatures + modules, optimize prompts via compilers / teleprompters instead of hand-tuning f-strings. The natural Stage 2 → Stage 3 bridge. From Stanford NLP.
+
+**Best for**: Readers who finished dair-ai's guide and ask "how do I scale prompts beyond hard-coded strings?"
+
+**Notes**: It's a framework, not a tutorial — higher learning bar than prompt-engineering-guide. Pair with the official tutorial site dspy.ai.
+
+---
+
+### [NirDiamant/Prompt_Engineering](https://github.com/NirDiamant/Prompt_Engineering)
+
+| Field | Value |
+|---|---|
+| Language | Python / Jupyter |
+| Stars | ★ 7k+ |
+| License | NOASSERTION (custom terms, research/non-commercial — read before use) |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: 22 prompt-engineering techniques as runnable Jupyter notebooks (zero-shot → CoT → ReAct → constitutional). 2025 vintage, more hands-on than dair-ai.
+
+**Best for**: Learners who prefer "run-and-learn." Each technique is a standalone notebook — pick whatever interests you.
+
+---
+
 ## ✅ Self-Check Before Stage 3
 
 Can you:

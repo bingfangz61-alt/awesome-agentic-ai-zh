@@ -4,20 +4,23 @@
 
 ## Stack at a glance
 
-```
-┌──────────────────────────────────────────────────┐
-│  Plugins / Marketplaces  (5.4 — packaging)       │
-├──────────────────────────────────────────────────┤
-│  Skills                  (5.3 — behavior)        │
-├──────────────────────────────────────────────────┤
-│  MCP                     (5.2 — protocol)        │
-├──────────────────────────────────────────────────┤
-│  Tool Use / Function Calling (Stage 3)           │
-├──────────────────────────────────────────────────┤
-│  Anthropic API + SDK     (Stage 1, Stage 7)      │
-├──────────────────────────────────────────────────┤
-│  LLM (Claude)                                    │
-└──────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    P["📦 Plugins / Marketplaces<br/><i>5.4 — packaging</i>"]
+    S["🛠 Skills<br/><i>5.3 — behavior</i>"]
+    M["🔌 MCP<br/><i>5.2 — protocol</i>"]
+    T["⚡ Tool Use / Function Calling<br/><i>Stage 3</i>"]
+    A["🔧 Anthropic API + SDK<br/><i>Stage 1, Stage 7</i>"]
+    L["🤖 LLM (Claude)"]
+
+    P --> S --> M --> T --> A --> L
+
+    style P fill:#fef3c7,stroke:#b45309
+    style S fill:#dbeafe,stroke:#1e40af
+    style M fill:#dcfce7,stroke:#166534
+    style T fill:#f3e8ff,stroke:#6b21a8
+    style A fill:#fee2e2,stroke:#991b1b
+    style L fill:#e5e7eb,stroke:#374151
 ```
 
 Each layer adds one capability:

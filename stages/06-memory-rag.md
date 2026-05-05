@@ -172,6 +172,55 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 ---
 
+### [infiniflow/ragflow](https://github.com/infiniflow/ragflow)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python |
+| Stars | ★ 79k+ |
+| License | Apache-2.0 |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：production 等級的 RAG engine，含深度文件理解（layout、表格、OCR）+ hybrid retrieval + agent loop。「**從零到 deploy RAG service**」的完整參考。
+
+**適合誰**：要把 RAG 真的 ship 給非開發者用的場景。比 LangChain RAG 完整很多，但複雜度也高。
+
+**備註**：是 open-source RAG engine（可自架，附 Docker / 原始碼部署），不是封閉的 hosted service。雲端 demo 只是體驗用。
+
+---
+
+### [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python |
+| Stars | ★ 34k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：graph + vector hybrid retrieval，加上 summarization-based 的 long-context memory。EMNLP 2025 paper-backed。
+
+**適合誰**：在「**長文件 / 長 context 怎麼記憶**」這個問題上想看研究級方法的人。跟 mem0、Letta 互補（它們偏 conversational memory）。
+
+**備註**：研究風格的 codebase，比 ragflow 沒那麼 polish；學概念好用。
+
+---
+
+### [patchy631/ai-engineering-hub](https://github.com/patchy631/ai-engineering-hub)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python / Jupyter |
+| Stars | ★ 34k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：以主題為單位的 LLM / RAG / agent tutorial 集——每個主題一個 notebook，從 basic RAG 到 agent 應用都有。
+
+**適合誰**：想看「同一個概念在不同情境下怎麼實作」的對照組學習者。是 cross-stage 的補充，但放在 Stage 6 因為 RAG 主題佔多數。
+
+---
+
 ## ✅ 進入 Stage 7 前的自我檢查
 
 你能不能：

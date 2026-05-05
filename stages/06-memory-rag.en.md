@@ -170,6 +170,55 @@ results = collection.query(query_texts=["query"], n_results=1)
 
 ---
 
+### [infiniflow/ragflow](https://github.com/infiniflow/ragflow)
+
+| Field | Value |
+|---|---|
+| Language | Python |
+| Stars | ★ 79k+ |
+| License | Apache-2.0 |
+| Recommendation | ⭐⭐⭐⭐⭐ |
+
+**What it teaches**: Production-grade RAG engine — deep document understanding (layout, tables, OCR) + hybrid retrieval + agent loop. The "**from zero to deployed RAG service**" reference.
+
+**Best for**: Shipping RAG to non-developers. Much more complete than LangChain RAG, but also more complex.
+
+**Notes**: It's an open-source RAG engine (self-hostable via Docker or source). The cloud demo is for evaluation only — the project itself ships as deployable software.
+
+---
+
+### [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG)
+
+| Field | Value |
+|---|---|
+| Language | Python |
+| Stars | ★ 34k+ |
+| License | MIT |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: Graph + vector hybrid retrieval with summarization-based long-context memory. EMNLP 2025 paper-backed.
+
+**Best for**: Anyone studying "**how do you remember long documents / long context**" with research-grade methods. Complementary to mem0 / Letta (which lean conversational memory).
+
+**Notes**: Research-flavoured codebase, less polished than ragflow. Good for learning the concepts.
+
+---
+
+### [patchy631/ai-engineering-hub](https://github.com/patchy631/ai-engineering-hub)
+
+| Field | Value |
+|---|---|
+| Language | Python / Jupyter |
+| Stars | ★ 34k+ |
+| License | MIT |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: Topic-by-topic LLM / RAG / agent tutorial collection — one notebook per topic, from basic RAG to agent applications.
+
+**Best for**: Learners who want "the same concept, implemented in different ways" for comparison. Cross-stage in nature, but lives here because RAG topics dominate.
+
+---
+
 ## ✅ Self-Check Before Stage 7
 
 Can you:

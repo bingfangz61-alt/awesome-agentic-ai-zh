@@ -260,6 +260,23 @@ jupyter notebook guide.ipynb
 
 ---
 
+### [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)
+
+| 欄位 | 內容 |
+|---|---|
+| 語言 | Python / Jupyter |
+| Stars | ★ 91k+ |
+| License | Apache-2.0 |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：用 PyTorch 從零打造一個 GPT-style LLM——tokenizer → attention → pretraining → finetuning，配套 Sebastian Raschka 的書。完整的 notebook + code，章節對應書本。
+
+**適合誰**：想真正搞懂 token、attention、weights 是什麼的人。跟 Karpathy 影片互補——影片是 2 小時 fly-by，這個是慢慢讀完整本書的版本。
+
+**備註**：是書籍的配套程式碼（Apache-2.0），可自由 fork 跟改。
+
+---
+
 ## ✅ 進 Stage 2 前的自我檢查
 
 你能不能：

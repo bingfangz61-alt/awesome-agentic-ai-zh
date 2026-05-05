@@ -1,7 +1,7 @@
 # awesome-agentic-ai-zh
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Status](https://img.shields.io/badge/status-WIP%20%C2%B7%20Phase%201-orange)](#phase-1-current-state)
+[![Status](https://img.shields.io/badge/status-Phase%204%20complete%20%C2%B7%20134%20projects-success)](#phase-1-current-state)
 [![Lang](https://img.shields.io/badge/lang-English-blue)](README.en.md) [![繁中](https://img.shields.io/badge/語言-繁體中文-red)](README.md)
 
 > **English companion to the [繁體中文 canonical README](README.md).**
@@ -30,20 +30,58 @@ If you're a learner trying to break into agentic AI without getting lost in the 
 
 ## The 7-Stage Learning Map
 
+```mermaid
+flowchart LR
+    S0["Stage 0<br/>Foundations"] --> S1["Stage 1<br/>LLM Basics"]
+    S1 --> S2["Stage 2<br/>Prompt"]
+    S2 --> S3["Stage 3 ⭐<br/>Tool Use<br/>Hello Agent"]
+    S3 --> S4["Stage 4<br/>Frameworks"]
+    S4 --> S5["Stage 5 ⭐⭐<br/>Claude Code"]
+    S5 --> S6["Stage 6<br/>Memory · RAG"]
+    S6 --> S7["Stage 7<br/>Multi-Agent · Advanced"]
+    S7 --> R["🔬 Researcher"]
+    S7 --> D["💻 Developer"]
+    S7 --> T["🎓 Teacher"]
+    S7 --> K["📊 Knowledge Worker"]
+
+    style S0 fill:#f3f4f6,stroke:#6b7280
+    style S3 fill:#fef3c7,stroke:#b45309
+    style S5 fill:#fde68a,stroke:#92400e
+    style R fill:#dbeafe,stroke:#1e40af
+    style D fill:#dcfce7,stroke:#166534
+    style T fill:#fce7f3,stroke:#9d174d
+    style K fill:#f3e8ff,stroke:#6b21a8
 ```
-Stage 0  Foundations           (Python · CLI · git · API · JSON)         1-2 週
-Stage 1  LLM Fundamentals      (tokens · API · model comparison)         1 週
-Stage 2  Prompt Engineering    (system prompts · few-shot · CoT)         1-2 週
-Stage 3  Tool Use & Hello Agent ⭐ (function calling · ReAct · 5 hello-X) 2-3 週
-Stage 4  Agent Frameworks      (LangGraph · AutoGen · CrewAI · ...)      2-3 週
-Stage 5  Claude Code Ecosystem ⭐⭐ (MCP · Skills · Plugins)              3-4 週
-Stage 6  Memory · RAG · Advanced (vector DBs · long-term memory)         2 週
-Stage 7  Multi-Agent · Production (orchestration · eval · deploy · SDK)  2-4 週
+
+```
+Stage 0  Foundations           (Python · CLI · git · API · JSON)         1-2 wks
+Stage 1  LLM Fundamentals      (tokens · API · model comparison)         1 wk
+Stage 2  Prompt Engineering    (system prompts · few-shot · CoT)         1-2 wks
+Stage 3  Tool Use & Hello Agent ⭐ (function calling · ReAct · 5 hello-X) 2-3 wks
+Stage 4  Agent Frameworks      (LangGraph · AutoGen · CrewAI · ...)      2-3 wks
+Stage 5  Claude Code Ecosystem ⭐⭐ (MCP · Skills · Plugins)              3-4 wks
+Stage 6  Memory · RAG · Advanced (vector DBs · long-term memory)         2 wks
+Stage 7  Multi-Agent · Advanced (orchestration · eval · SDK)             2-4 wks
 ```
 
 **Total main path: 14-19 weeks minimum, ~5-6 months realistic** at 5-8 hr/week part-time. The lower bound assumes you skip Stage 0 and don't get stuck on framework installs.
 
-After main path, choose a specialized branch:
+After main path, choose a specialized branch (**not sure which?**):
+
+```mermaid
+flowchart TD
+    Q1{What's your main work?}
+    Q1 -->|Papers / lit / experiments| R["🔬 Researcher<br/>for-researcher"]
+    Q1 -->|Code / system maintenance| D["💻 Developer<br/>for-developer"]
+    Q1 -->|Teaching / curriculum| T["🎓 Teacher<br/>for-teacher"]
+    Q1 -->|Reports / meetings / analysis| K["📊 Knowledge Worker<br/>for-knowledge-worker"]
+
+    style R fill:#dbeafe,stroke:#1e40af
+    style D fill:#dcfce7,stroke:#166534
+    style T fill:#fce7f3,stroke:#9d174d
+    style K fill:#f3e8ff,stroke:#6b21a8
+```
+
 - 🔬 [For Researchers](branches/for-researcher.md)
 - 💻 [For Developers](branches/for-developer.md)
 - 🎓 [For Teachers](branches/for-teacher.md) — *currently the smallest section; community contributions especially welcome*
@@ -68,7 +106,7 @@ About a sixth of the curated projects (~12 entries) are repos maintained by this
 | 4 | Agent Frameworks | Which framework should I learn? | [stages/04-agent-frameworks.md](stages/04-agent-frameworks.md) |
 | 5 | Claude Code Ecosystem ⭐⭐ | How do I extend Claude Code? | [stages/05-claude-code-ecosystem.md](stages/05-claude-code-ecosystem.md) |
 | 6 | Memory · RAG · Advanced | How do agents remember? | [stages/06-memory-rag.md](stages/06-memory-rag.md) |
-| 7 | Multi-Agent · Production | How do I ship to production? | [stages/07-multi-agent-production.md](stages/07-multi-agent-production.md) |
+| 7 | Multi-Agent · Advanced | How do I run multi-agent systems with eval + observability? | [stages/07-multi-agent-production.en.md](stages/07-multi-agent-production.en.md) |
 
 ---
 

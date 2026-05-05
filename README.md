@@ -11,7 +11,7 @@
 <p><em>結構化 7 階段學習路徑，不是平鋪 awesome list；每階段都有必跑 demo、必修閱讀、精選 project</em></p>
 
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat)](LICENSE)
-[![Status](https://img.shields.io/badge/status-WIP%20%C2%B7%20Phase%201-orange?style=flat)](#phase-1-現況)
+[![Status](https://img.shields.io/badge/status-Phase%204%20complete%20%C2%B7%20134%20projects-success?style=flat)](#-現況phase-4-完成)
 ![GitHub stars](https://img.shields.io/github/stars/WenyuChiou/awesome-agentic-ai-zh?style=flat&logo=github)
 ![GitHub forks](https://img.shields.io/github/forks/WenyuChiou/awesome-agentic-ai-zh?style=flat&logo=github)
 [![Lang](https://img.shields.io/badge/語言-繁體中文-red?style=flat)](README.md)
@@ -66,7 +66,7 @@ cd awesome-agentic-ai-zh
 - 📖 **完全免費** — MIT 授權，所有內容開放共學
 - 🗺️ **結構化路徑** — 7 階段、明確「我目前在哪、下一步學什麼」
 - 🛠️ **必跑 Hello-X demos** — 每階段都有 1-5 個必跑 mini project，光看不練不算學會
-- 🎯 **精選 110+ 個 projects** — 每個都附星等推薦、適合誰、教什麼、怎麼跑
+- 🎯 **精選 134 個 projects** — 每個都附星等推薦、適合誰、教什麼、怎麼跑
 - 🌏 **中文 / 英文雙語** — 繁中為主、英文版完整對照
 - 🎓 **不只「框架」、還有「Claude Code 生態」** — MCP / Skills / Plugins / SDK 完整堆疊
 - 🔬 **4 條進階分支** — 走完主幹後可選研究員 / 開發者 / 老師 / 知識工作者 path
@@ -75,6 +75,29 @@ cd awesome-agentic-ai-zh
 ---
 
 ## 🗺️ 7 階段學習地圖
+
+```mermaid
+flowchart LR
+    S0["Stage 0<br/>基礎準備"] --> S1["Stage 1<br/>LLM 入門"]
+    S1 --> S2["Stage 2<br/>Prompt 設計"]
+    S2 --> S3["Stage 3 ⭐<br/>Tool Use<br/>Hello Agent"]
+    S3 --> S4["Stage 4<br/>Agent 框架"]
+    S4 --> S5["Stage 5 ⭐⭐<br/>Claude Code 生態"]
+    S5 --> S6["Stage 6<br/>Memory · RAG"]
+    S6 --> S7["Stage 7<br/>進階 Multi-Agent"]
+    S7 --> R["🔬 研究人員"]
+    S7 --> D["💻 開發者"]
+    S7 --> T["🎓 教師"]
+    S7 --> K["📊 知識工作者"]
+
+    style S0 fill:#f3f4f6,stroke:#6b7280
+    style S3 fill:#fef3c7,stroke:#b45309
+    style S5 fill:#fde68a,stroke:#92400e
+    style R fill:#dbeafe,stroke:#1e40af
+    style D fill:#dcfce7,stroke:#166534
+    style T fill:#fce7f3,stroke:#9d174d
+    style K fill:#f3e8ff,stroke:#6b21a8
+```
 
 | Stage | 主題 | 關鍵內容 | 時程 |
 |---|---|---|---|
@@ -91,7 +114,21 @@ cd awesome-agentic-ai-zh
 
 > 💡 **想看跨 stage 完整範例？** [7 步打造你的第一個 AI Agent](walkthroughs/build-first-agent-in-7-steps.md) — 同一個 Paper Summary Bot 從 Stage 1 一路寫到 Stage 7，~350 行真實程式碼
 
-走完主幹後從 4 條 specialized branch 選一條繼續：
+走完主幹後從 4 條 specialized branch 選一條繼續。**不確定走哪條？**
+
+```mermaid
+flowchart TD
+    Q1{你的主要工作是？}
+    Q1 -->|寫 paper / 文獻 / 跑實驗| R["🔬 研究人員<br/>for-researcher"]
+    Q1 -->|寫 code / 維護 system| D["💻 開發者<br/>for-developer"]
+    Q1 -->|備課 / 教學 / 評量| T["🎓 教師<br/>for-teacher"]
+    Q1 -->|寫 report / 開會 / 分析| K["📊 知識工作者<br/>for-knowledge-worker"]
+
+    style R fill:#dbeafe,stroke:#1e40af
+    style D fill:#dcfce7,stroke:#166534
+    style T fill:#fce7f3,stroke:#9d174d
+    style K fill:#f3e8ff,stroke:#6b21a8
+```
 
 | Branch | 適合誰 | 主題 |
 |---|---|---|
@@ -146,28 +183,18 @@ cd awesome-agentic-ai-zh
 
 ---
 
-## 📍 現況：Phase 3 完成
+## 📍 現況：Phase 4 完成
 
-**Phase 1（已完成）** — 7 階段骨架 + anchor curation（115+ 個 project）
+**Phase 1（已完成）** — 7 階段骨架 + anchor curation
 
-**Phase 2（已完成）** — Polish & Fill：
-- [x] `resources/style-guide.md`（[zh](resources/style-guide.md) / [en](resources/style-guide.en.md)）
-- [x] `.github/` 模板（issue + PR template）
-- [x] Hello-X 格式統一（Stages 6-7）+ 擴充（Stage 1 +2、Stage 4 +2）
-- [x] Branches back-nav（8 個檔案）+ 教師 branch 加 prompt 素材庫
+**Phase 2（已完成）** — Polish & Fill（[`resources/style-guide.md`](resources/style-guide.md)、`.github/` 模板、Hello-X 格式統一 + 擴充、branches back-nav）
 
-**Phase 3（已完成）** — Curation depth：
-- [x] Stage 0 reference 擴充（CLI / Shell section、Hello-API auth）
-- [x] Stage 5.4 加 `anthropics/life-sciences` 領域特化範例
-- [x] for-researcher Multi-Agent for Research（+open_deep_research、AI-Scientist-v2）
-- [x] **跨 stage [walkthrough](walkthroughs/build-first-agent-in-7-steps.md)：7 步打造 Paper Summary Bot**
-- [x] 維護腳本：[`scripts/check-links.py`](scripts/check-links.py) + [`refresh-stars.py`](scripts/refresh-stars.py)
-- [ ] 補到 130-160 entries（目前 120+）— Phase 4 同步進行
+**Phase 3（已完成）** — Curation depth（Stage 0 擴充、Stage 5.4 marketplace、Multi-Agent for Research、跨 stage [walkthrough](walkthroughs/build-first-agent-in-7-steps.md)、維護腳本 [`scripts/`](scripts/)）
 
-**Phase 4（規劃中）** — Visual polish：
-- Stage 5 stack diagram SVG（取代 ASCII）
-- README hero diagram + branch decision tree
-- 邊累積到 130-160 entries
+**Phase 4（已完成）** — Visual polish + 補齊 curation：
+- [x] Stage 5 stack diagram → Mermaid（zh + en）
+- [x] README hero diagram（7-stage flow + 4 branches）+ branch decision tree
+- [x] 補到 **134 個 project**（落在 130-160 target）
 
 **Phase 5（規劃中）** — Distribution：PDF / GitBook 版本
 

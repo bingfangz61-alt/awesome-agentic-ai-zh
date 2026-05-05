@@ -34,6 +34,12 @@
 #### [OpenHands (前身為 OpenDevin)](https://github.com/All-Hands-AI/OpenHands) ⭐⭐⭐⭐
 Open source 的自主軟體開發 agent。
 
+#### [block/goose](https://github.com/block/goose) ⭐⭐⭐⭐
+★ 43k+ · Apache-2.0 — 開源、可擴充的 AI agent，超出純 code suggestion——能 install / execute / edit / test，搭配任何 LLM。**provider-agnostic + MCP-native**，提供 desktop app、CLI、API 三種介面。（repo 現指向 `aaif-goose/goose`。）
+
+#### [RooCodeInc/Roo-Code](https://github.com/RooCodeInc/Roo-Code) ⭐⭐⭐⭐
+★ 23k+ · Apache-2.0 — VS Code 的 coding agent，採用「**多種專業 mode**」的設計，跟 Cline 的單一 agent flow 不同。VS Code 用戶想要 multi-mode 替代方案的選擇。
+
 ### Code Review
 
 #### [obra/superpowers](https://github.com/obra/superpowers) ⭐⭐⭐⭐

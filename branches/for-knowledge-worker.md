@@ -53,6 +53,34 @@
 
 ---
 
+#### [lobehub/lobe-chat](https://github.com/lobehub/lobe-chat) ⭐⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 76k+ |
+| License | LobeHub Community License（基於 Apache-2.0 + 商用附加條款） |
+
+**教什麼**：可部署的多 agent 聊天平台——含 plugin marketplace、知識庫、團隊協作。可自架的 AI workspace 代表選項之一。
+
+**適合誰**：要找可自架的協作 chat workspace。
+
+**備註**：商用使用需確認 LobeHub Community License 的附加條款。
+
+---
+
+#### [langflow-ai/langflow](https://github.com/langflow-ai/langflow) ⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 147k+ |
+| License | MIT |
+
+**教什麼**：視覺化 AI agent 開發平台——拖拉節點設計 agent flow，內建 API + MCP server 部署。比 n8n 更專注在 agent 設計（n8n 是泛用工作流）。
+
+**適合誰**：寧可拉節點不寫 Python 的知識工作者，或要設計 agent 跟團隊溝通流程的人。
+
+---
+
 #### [Mintplex-Labs/anything-llm](https://github.com/Mintplex-Labs/anything-llm) ⭐⭐⭐⭐⭐
 
 | 欄位 | 內容 |

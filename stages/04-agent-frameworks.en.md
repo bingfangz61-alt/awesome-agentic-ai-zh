@@ -206,6 +206,57 @@ pip install langgraph langchain-anthropic
 
 ---
 
+### [microsoft/semantic-kernel](https://github.com/microsoft/semantic-kernel)
+
+| Field | Value |
+|---|---|
+| Language | C# / Python / Java |
+| Stars | ★ 27k+ |
+| License | MIT |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: Microsoft's enterprise SDK pattern (kernels + plugins + planners) — **supports C# / Python / Java with official SDKs**, one of the few agent frameworks with all three.
+
+**Best for**: Developers in Microsoft-stack jobs, or anyone needing agents in .NET / Java environments.
+
+**Notes**: Heavier abstractions than smolagents — not for first-week beginners. Worth considering for enterprise environments needing .NET / Java coverage.
+
+---
+
+### [agno-agi/agno](https://github.com/agno-agi/agno)
+
+| Field | Value |
+|---|---|
+| Language | Python |
+| Stars | ★ 39k+ |
+| License | Apache-2.0 |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: Multi-modal agent runtime + control plane — beyond just *building* agents, it covers serving, monitoring, and governance. A 2025-native agent platform.
+
+**Best for**: Pushing agents toward "serveable + observable" without the full LangGraph + LangSmith stack. Also fine for prototype-phase quick design.
+
+**Notes**: Cross-stage tool — Stage 4 for the agent API, Stage 7 for the runtime / monitoring side.
+
+---
+
+### [BerriAI/litellm](https://github.com/BerriAI/litellm) (not a framework — cross-stage infra)
+
+| Field | Value |
+|---|---|
+| Language | Python |
+| Stars | ★ 45k+ |
+| License | MIT (with separate license for `enterprise/` directory) |
+| Recommendation | ⭐⭐⭐⭐ |
+
+**What it teaches**: Provider-agnostic SDK + AI gateway — **call 100+ LLMs via OpenAI-shaped API**, with cost tracking, fallbacks, guardrails.
+
+**Best for**: Agents that switch between Claude / GPT / Gemini / open-source models without rewriting code.
+
+**Notes**: Strictly speaking not an agent framework — it's the provider-abstraction layer that frameworks sit on. Listed in Stage 4 because most multi-provider agent work needs it; Stage 7 deploy also touches it. The `enterprise/` directory is separately licensed.
+
+---
+
 ## ✅ Self-Check Before Stage 5
 
 Can you:

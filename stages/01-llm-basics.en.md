@@ -258,6 +258,23 @@ jupyter notebook guide.ipynb
 
 ---
 
+### [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)
+
+| Field | Value |
+|---|---|
+| Language | Python / Jupyter |
+| Stars | ★ 91k+ |
+| License | Apache-2.0 |
+| Recommendation | ⭐⭐⭐⭐⭐ |
+
+**What it teaches**: Build a GPT-style LLM end-to-end in PyTorch — tokenizer → attention → pretraining → finetuning, paired with Sebastian Raschka's book. Complete notebooks + code, chapter-aligned with the book.
+
+**Best for**: Anyone who wants to truly understand what tokens, attention, and weights are. Complementary to Karpathy's video — that's a 2-hour fly-by, this is the slow read-the-book version.
+
+**Notes**: Companion code to the book (Apache-2.0); free to fork and modify.
+
+---
+
 ## ✅ Self-Check Before Stage 2
 
 Can you:

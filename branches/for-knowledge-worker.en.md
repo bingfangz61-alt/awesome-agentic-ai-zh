@@ -51,6 +51,34 @@ Brainstorming, planning, and decision-making skills.
 
 ---
 
+#### [lobehub/lobe-chat](https://github.com/lobehub/lobe-chat) ⭐⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 76k+ |
+| License | LobeHub Community License (Apache-2.0 base + commercial conditions) |
+
+**What it teaches**: Deployable multi-agent chat platform — plugin marketplace, knowledge bases, team collaboration. One representative option for self-hosted AI workspaces.
+
+**Best for**: Self-hosting a collaborative chat workspace.
+
+**Notes**: Commercial use needs to verify the LobeHub Community License's added conditions.
+
+---
+
+#### [langflow-ai/langflow](https://github.com/langflow-ai/langflow) ⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 147k+ |
+| License | MIT |
+
+**What it teaches**: Visual AI-agent development platform — drag-and-drop node design for agent flows, with built-in API + MCP server deployment. More agent-focused than n8n (n8n is generic workflow).
+
+**Best for**: Knowledge workers who'd rather wire nodes than write Python; or anyone designing agent flows for team handoff.
+
+---
+
 #### [Mintplex-Labs/anything-llm](https://github.com/Mintplex-Labs/anything-llm) ⭐⭐⭐⭐⭐
 
 | Field | Value |
