@@ -237,6 +237,7 @@ PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [resource
 
 - [**Datawhale Hello-Agents**](https://github.com/datawhalechina/hello-agents) — 系统性 agent 教学的模板，本 repo 的“章节 + 进度”结构就是受这份启发
 - [**Datawhale 社群**](https://github.com/datawhalechina) — 中文 ML 共学社群的标杆，本 repo 多个 anchor project 来自这里
+- [**liyupi/ai-guide**](https://github.com/liyupi/ai-guide) — 中文圈最大"AI 资源大全" + Vibe Coding 教学（涵盖 Agent Skills / RAG / MCP / A2A / Harness Engineering）。本 repo 是"结构化路线"、ai-guide 是"广度资源库"，互为补充
 
 ### 其他相关项目
 

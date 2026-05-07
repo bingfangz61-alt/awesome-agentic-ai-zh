@@ -344,6 +344,18 @@
 **Audience**: maintainers running OSS / community Discord servers.
 **Notes**: requires Discord bot token; watch rate limits.
 
+### [safishamsi/graphify](https://github.com/safishamsi/graphify) ⭐⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 44k+ |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐⭐ |
+
+**What it does**: AI coding skill that turns codebases / SQL schemas / R scripts / shell scripts / docs / papers / images / videos into a queryable knowledge graph. Works across Claude Code, Codex, OpenCode, Cursor, Gemini CLI.
+**Audience**: engineers / researchers analyzing large codebases, tracking cross-file references, or asking questions across "app code + DB schema + infra" together.
+**Notes**: cross-cutting tool — fits both dev collaboration (understanding existing codebases) and research workflow (turning any artifact into a graph). When stuck on a big codebase, use graphify to extract structure, then feed it back to Claude for reasoning.
+
 ---
 
 ## 6. Databases
@@ -524,6 +536,18 @@
 **Audience**: people who need real-time canvas sync and programmatic operation.
 **Notes**: complementary to the official; community-maintained.
 
+### [pbakaus/impeccable](https://github.com/pbakaus/impeccable) ⭐⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 25k+ |
+| License | Apache-2.0 |
+| Rating | ⭐⭐⭐⭐⭐ |
+
+**What it does**: "**The design language that makes your AI harness better at design.**" A vocabulary / pattern set that helps AI agents produce UI / visual output that escapes the generic "AI-generated" feel.
+**Audience**: developers using AI to generate UI / mockups / visual designs but getting generic results; front-end + AI workflows.
+**Notes**: not an MCP server or Skill bundle — it's a **design language** reference. Feed AI the higher-quality design vocabulary and it produces better output.
+
 ---
 
 ## 9. Monitoring / Observability
@@ -619,6 +643,18 @@
 **What it does**: bidirectional Feishu (Lark) docs / sheet / bitable ↔ Markdown, with OAuth 2.0, CLI, TUI, Claude Skills.
 **Audience**: Chinese-language users on Feishu / Lark wanting to bridge Lark content with Claude Code.
 **Notes**: currently one of the few MCP / Skill options in the Chinese ecosystem; WeChat / DingTalk don't have standalone MCPs yet (they live inside chatbot frameworks).
+
+### [netease-youdao/LobsterAI](https://github.com/netease-youdao/LobsterAI) ⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 5k+ |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐ |
+
+**What it does**: NetEase Youdao's "24/7 all-scenario AI agent" — workflow automation, cross-app coordination, file processing. Chinese-native.
+**Audience**: Chinese-language users wanting an alternative to Claude Code / OpenAI Operator-class all-in-one agents; scenarios needing tight integration with mainland Chinese services (NetEase, DingTalk, etc.).
+**Notes**: product-style agent (not a Skill / MCP); substitutes for Claude Code / Codex rather than complementing them.
 
 > Looking for WeChat / DingTalk integrations? Today the mainstream is chatbot frameworks (e.g., zhayujie/CowAgent), not pure MCP servers. Will add when proper MCPs emerge.
 

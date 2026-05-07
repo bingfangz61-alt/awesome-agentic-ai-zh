@@ -158,6 +158,20 @@ Stage 1 已經提過。這裡特別推 `misc/prompt_caching.ipynb` 跟 `multimod
 
 ---
 
+## 🔭 進階：context engineering（不是 prompt engineering 了）
+
+當你發現「**單一 prompt 已經 cover 不了**」——要動態組 system prompt + 拉 memory + 塞 retrieved chunks + 接多個 tool definitions——這已經不叫 prompt engineering，叫 **context engineering**。是 prompt engineering 的下一層。
+
+**這個 stage 不用學完它**，只是給個方向性提示：
+
+- 在 [Stage 6（Memory · RAG）](06-memory-rag.md) 會碰到（什麼資料塞進 prompt）
+- 在 [Stage 7（Multi-Agent · Production）](07-multi-agent-production.md) 完整面對（context window 預算、memory 階層、observability）
+
+延伸閱讀（不必修、未來想深挖時看）：
+
+- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)（★ 3k+）——從 prompt engineering 一路推到 production agent 的 survey
+- [`Windy3f3f3f3f/how-claude-code-works`](https://github.com/Windy3f3f3f3f/how-claude-code-works)（★ 2k+）——Claude Code 內部解析，含 context engineering 章節
+
 ## ✅ 進 Stage 3 前的自我檢查
 
 你能不能：

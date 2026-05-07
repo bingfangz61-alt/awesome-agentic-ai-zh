@@ -238,6 +238,20 @@ The LLM "confidently asserts something false" — invents APIs, fabricates numbe
 
 The current top tier (GPT-5, Claude Sonnet 4.5, Gemini 2.5 Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
 
+### Context Engineering
+
+When designing one prompt sentence stops being enough, and you need to dynamically assemble **system prompt + tool definitions + memory + retrieved chunks + multi-turn history** — that is the design discipline for the whole stack. **The next layer above prompt engineering.**
+
+📍 Detail: [Stage 2 closing](../stages/02-prompt-engineering.en.md) / [Stage 6](../stages/06-memory-rag.en.md) / [Stage 7](../stages/07-multi-agent-production.en.md)
+📍 Further: [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)
+
+### Harness Engineering
+
+The toolchain design for wrapping an agent into a production system — permissions, tool registry, memory layer, eval, observability, retry / circuit breaker. Claude Code, Cursor, OpenCode, etc. are all "harnesses". **A framework wraps an LLM into an agent; a harness wraps an agent into a product.**
+
+📍 Detail: [Stage 7](../stages/07-multi-agent-production.en.md) required reading
+📍 Further: [`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering), [`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
+
 ---
 
 ## Term not here?

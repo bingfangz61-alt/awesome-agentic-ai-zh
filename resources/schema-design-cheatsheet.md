@@ -46,7 +46,7 @@ LLM 對 `type: string` 自由度高、容易亂傳。能用窄型別就用：
 - LLM 看到 required 多會「**自己編參數**」，所以 required 越少越好
 
 ```python
-# 壞：把 timezone 列 required，LLM 會亂編「Asia/Taipei」即便用戶沒提到
+# 壞：把 timezone 列 required，LLM 會亂編「Asia/Taipei」即便使用者沒提到
 "required": ["city", "timezone"]
 
 # 好

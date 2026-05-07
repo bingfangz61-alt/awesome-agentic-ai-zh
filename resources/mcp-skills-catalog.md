@@ -344,6 +344,18 @@
 **適合誰**：用 Discord 跑社群 / 開源專案的 maintainer。
 **備註**：要 Discord bot token；要小心 rate limit。
 
+### [safishamsi/graphify](https://github.com/safishamsi/graphify) ⭐⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 44k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：把 codebase / SQL schemas / R scripts / shell scripts / docs / papers / images / videos 變成 queryable knowledge graph 的 AI coding skill。Claude Code、Codex、OpenCode、Cursor、Gemini CLI 都能接。
+**適合誰**：要對大型 codebase 做架構分析、跨檔追 reference、把「app code + DB schema + infra」放一起問的工程師 / 研究者。
+**備註**：跨界——既是 dev collab tool（理解既有 codebase）也算 research workflow（把任意素材轉成 graph）。撞牆時用 graphify 抽結構、再丟回 Claude 推論。
+
 ---
 
 ## 6. 資料庫
@@ -524,6 +536,18 @@
 **適合誰**：需要 real-time canvas sync 跟程式化操作的人。
 **備註**：跟官方版互補，社群維護。
 
+### [pbakaus/impeccable](https://github.com/pbakaus/impeccable) ⭐⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 25k+ |
+| License | Apache-2.0 |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：「**讓你 AI harness 在 design 上更強的 design language**」——一套設計 vocabulary / pattern，幫 AI 在生成 UI / 視覺成品時跳出常見的「AI 感」生硬風格。
+**適合誰**：用 AI 生 UI / mockup / visual design 但結果都很 generic 的開發者；前端 + AI workflow。
+**備註**：不是 MCP server 也不是 Skill 包——是一份「**design language**」reference。讓 AI 看到比較高品質的設計詞彙才生得出比較好的東西。
+
 ---
 
 ## 9. 監控 / Observability
@@ -619,6 +643,18 @@
 **教什麼**：飛書（Lark）docs / sheet / bitable ↔ Markdown 雙向轉換，含 OAuth 2.0、CLI、TUI、Claude Skills。
 **適合誰**：用飛書 / Lark 寫文件的中文使用者，要把 Lark 內容跟 Claude Code 串起來。
 **備註**：目前中文圈 MCP / Skill 主要選擇之一；微信 / 釘釘暫時沒有獨立 MCP（多半混在 chat bot framework 裡）。
+
+### [netease-youdao/LobsterAI](https://github.com/netease-youdao/LobsterAI) ⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 5k+ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：網易有道出品的「24/7 全場景 AI agent」——支援工作流自動化、跨應用協作、檔案處理。中文 native。
+**適合誰**：中文圈使用者要找一個替代 Claude Code / OpenAI Operator 等級的 all-in-one agent；對中國大陸服務（網易、釘釘等）整合需求高的場景。
+**備註**：產品式 agent（不是 Skill / MCP）；跟 Claude Code / Codex 互為替代，不是搭配。
 
 > 想找微信 / 釘釘整合？目前主流是用 chat bot framework（如 zhayujie/CowAgent）而不是純 MCP server。等正規 MCP 出現再加進來。
 

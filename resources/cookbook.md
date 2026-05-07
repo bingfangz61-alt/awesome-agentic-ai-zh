@@ -306,7 +306,7 @@ Claude 會根據 user query 自動載入合適的 skill。
 
 **改 docx**：
 ```
-讀 ./doc/draft.docx，把所有「使用者」改成「用戶」（zh-CN 翻譯），
+讀 ./doc/draft.docx，把繁中詞彙轉成簡中（譬如「軟體」→「软件」），
 存成 ./doc/draft.zh-CN.docx，保留原本的 track changes。
 ```
 

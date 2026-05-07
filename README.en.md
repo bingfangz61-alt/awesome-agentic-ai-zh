@@ -196,6 +196,7 @@ PR process and style rules: [CONTRIBUTING.md](CONTRIBUTING.md) + [resources/styl
 
 - [**Datawhale Hello-Agents**](https://github.com/datawhalechina/hello-agents) — model for systematic agent tutorial structure; inspired our chapter + progress design
 - [**Datawhale community**](https://github.com/datawhalechina) — landmark Chinese ML learning community; multiple anchor projects come from them
+- [**liyupi/ai-guide**](https://github.com/liyupi/ai-guide) — largest Chinese-language "AI mega-guide" + Vibe Coding tutorial (covers Agent Skills / RAG / MCP / A2A / Harness Engineering). This repo is a "structured roadmap"; ai-guide is a "breadth resource hub" — complementary
 
 ### Related projects
 

@@ -157,6 +157,20 @@ Already cited in Stage 1. Specifically the `misc/prompt_caching.ipynb` and `mult
 
 ---
 
+## 🔭 Beyond prompts: context engineering
+
+When you find that **a single prompt can no longer cover the problem** — and you need to dynamically assemble system prompt + retrieved chunks + memory + tool definitions + multi-turn history — you've graduated from prompt engineering to **context engineering**. It's the next layer up.
+
+**Don't try to learn it now**, just know the direction:
+
+- You'll first hit it in [Stage 6 (Memory · RAG)](06-memory-rag.en.md) (what data goes into the prompt)
+- You'll fully face it in [Stage 7 (Multi-Agent · Production)](07-multi-agent-production.en.md) (context window budget, memory layering, observability)
+
+Further reading (optional, for when you want to dig deeper):
+
+- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering) (★ 3k+) — comprehensive survey from prompt engineering to production agents
+- [`Windy3f3f3f3f/how-claude-code-works`](https://github.com/Windy3f3f3f3f/how-claude-code-works) (★ 2k+) — Claude Code internals, includes a context-engineering chapter
+
 ## ✅ Self-Check Before Stage 3
 
 Can you:
