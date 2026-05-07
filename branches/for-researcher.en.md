@@ -103,6 +103,32 @@ Claude Code infrastructure for PhD researchers — skills, agents, hooks, rules 
 
 ---
 
+### Research Workflow Skills (by the repo maintainer)
+
+> Skills / workspaces the repo maintainer [@WenyuChiou](https://github.com/WenyuChiou) (Lehigh CEE PhD candidate) uses daily for research. Listed here so other researchers can pick them up directly. Full entries in [`resources/mcp-skills-catalog.en.md` §13-§14](../resources/mcp-skills-catalog.en.md#13-research-workflow-skills-academic--paper--lit).
+
+#### [WenyuChiou/ai-research-skills](https://github.com/WenyuChiou/ai-research-skills) ⭐⭐⭐⭐⭐
+
+★ 47 · MIT — 14 Claude Code skills covering the full research pipeline (lit triage, research design, project context, manuscript writing, multi-AI delegation), packaged as a 5-plugin marketplace. One command installs everything.
+
+#### [WenyuChiou/research-hub](https://github.com/WenyuChiou/research-hub) ⭐⭐⭐⭐
+
+★ 14 · MIT — Zotero + Obsidian + NotebookLM triple-workspace integration with CLI / MCP / REST / dashboard interfaces. A must-see for researchers using all three.
+
+#### [WenyuChiou/zotero-skills](https://github.com/WenyuChiou/zotero-skills) ⭐⭐⭐⭐
+
+★ 16 — Zotero CLI skill: search / add / classify / annotate. Complementary to zotero-gpt (chat inside Zotero); this one lets Claude Code operate Zotero from outside.
+
+#### [WenyuChiou/academic-writing-skills](https://github.com/WenyuChiou/academic-writing-skills) ⭐⭐⭐
+
+★ 2 · MIT — rigorous academic paper writing / revision / submission skill. Automates banned-word audit, figure-text coupling, submission checklist. Per-paper journal_format / style_overrides for customization.
+
+#### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐⭐ + [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+
+★ 57 + ★ 34 · MIT — Multi-LLM delegation skill pair. Research scenario: Claude as planner + Codex executes implementation (code / figures / tables) + Gemini drafts long form (Chinese reports, English paper sections). Practical implementation of the Stage 7 multi-agent concept.
+
+---
+
 ### Multi-Agent for Research
 
 #### [langchain-ai/open_deep_research](https://github.com/langchain-ai/open_deep_research) ⭐⭐⭐⭐⭐

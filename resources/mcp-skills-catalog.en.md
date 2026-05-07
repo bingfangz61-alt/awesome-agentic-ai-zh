@@ -2,7 +2,7 @@
 
 > [繁體中文](./mcp-skills-catalog.md) | **English**
 
-> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 41 MCP servers / Claude Skills / integrations grouped by use case.
+> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 48 MCP servers / Claude Skills / integrations grouped by use case (incl. research-workflow + multi-LLM-delegation dedicated sections).
 
 ---
 
@@ -33,6 +33,8 @@
 10. [Media / Streaming (YouTube / Spotify)](#10-media--streaming-youtube--spotify) (3)
 11. [Chinese-language Ecosystem](#11-chinese-language-ecosystem) (1)
 12. [Other Common (Cloudflare / Stripe…)](#12-other-common-cloudflare--stripe) (2)
+13. [Research Workflow Skills](#13-research-workflow-skills-academic--paper--lit) (4)
+14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills) (3)
 
 ---
 
@@ -647,6 +649,102 @@
 **What it does**: Stripe's official AI agent toolkit, includes an MCP server — handle payments, subscriptions, refunds, customers.
 **Audience**: developers wiring payment / billing into agent flows.
 **Notes**: ⚠️ this is real money. Test thoroughly in sandbox before going to production.
+
+---
+
+## 13. Research Workflow Skills (academic / paper / lit)
+
+> Claude Code Skills for grad students, postdocs, PIs. The repo maintainer [@WenyuChiou](https://github.com/WenyuChiou) (Lehigh CEE PhD candidate) built these for his own daily use and open-sourced them for other researchers.
+
+### [WenyuChiou/ai-research-skills](https://github.com/WenyuChiou/ai-research-skills) ⭐⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 47 |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐⭐ (full research workflow) |
+
+**What it does**: 14 Claude Code skills covering common research tasks — literature triage, research design, project context, manuscript writing, multi-AI delegation. Packaged as a 5-plugin marketplace, install with one command.
+**Audience**: grad students / postdocs wanting a complete "research workflow" skill set in one drop.
+**Notes**: marketplace format, aligns with the plugin/marketplace concept taught in Stage 5.4.
+
+### [WenyuChiou/academic-writing-skills](https://github.com/WenyuChiou/academic-writing-skills) ⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 2 |
+| License | MIT |
+| Rating | ⭐⭐⭐ (narrow but deep) |
+
+**What it does**: rigorous academic paper writing / revision / submission skill for Claude Code. Field-agnostic, customizable per-paper via journal_format.md and style_overrides.md.
+**Audience**: researchers actively writing / revising papers who want to automate banned-word audit, figure-text coupling, submission checklists.
+**Notes**: one of the 5 plugins inside ai-research-skills; can also be installed standalone.
+
+### [WenyuChiou/zotero-skills](https://github.com/WenyuChiou/zotero-skills) ⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 16 |
+| License | NOASSERTION |
+| Rating | ⭐⭐⭐⭐ |
+
+**What it does**: Zotero CLI skill — programmatically search, add, classify, annotate references.
+**Audience**: Zotero users wanting Claude Code to organize their library directly.
+**Notes**: complementary to [`MuiseDestiny/zotero-gpt`](https://github.com/MuiseDestiny/zotero-gpt) — that one is a Zotero plugin (chat inside Zotero), this one is a CLI / Skill (operate Zotero from Claude Code).
+
+### [WenyuChiou/research-hub](https://github.com/WenyuChiou/research-hub) ⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 14 |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐ |
+
+**What it does**: AI-operable research workspace bridging Zotero + Obsidian + NotebookLM, with CLI / MCP / REST / dashboard interfaces.
+**Audience**: researchers using Zotero / Obsidian / NotebookLM together, wanting to bind them into one workspace for LLMs to operate.
+**Notes**: complementary to single-tool MCPs (mcp-obsidian, notion-mcp, etc.) — this is a hub that integrates multiple tools.
+
+---
+
+## 14. Multi-LLM Delegation Skills
+
+> Skill set for using Claude as planner / reviewer while delegating token-heavy work to Codex / Gemini. Maintained workflows extracted from the repo author's daily use.
+
+### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 57 |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐⭐ |
+
+**What it does**: Claude Code skill for using Codex CLI as an execution specialist — multi-file refactors, boilerplate generation, implementation-heavy tasks. Claude plans + reviews; Codex executes.
+**Audience**: developers who want to delegate implementation work from Claude Code to Codex automatically.
+**Notes**: pairs with `gemini-delegate-skill` (one for code-heavy, one for long-form / CJK). A practical implementation of the Stage 7 multi-agent concept.
+
+### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 34 |
+| License | MIT |
+| Rating | ⭐⭐⭐⭐ |
+
+**What it does**: Claude Code skill for using Gemini CLI for large-context synthesis, English / zh-TW / CJK long-form drafting, and second-opinion review.
+**Audience**: people writing long form, doing cross-language drafts, or needing a second-opinion review — researchers writing papers / Chinese reports especially.
+**Notes**: complements codex-delegate — "Codex for code, Gemini for prose" division of labor.
+
+### [WenyuChiou/agent-collab-skills](https://github.com/WenyuChiou/agent-collab-skills) ⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 0+ (recently published) |
+| License | MIT |
+| Rating | ⭐⭐⭐ (multi-agent collab marketplace) |
+
+**What it does**: Claude Code marketplace for multi-agent collaboration — task splitter, output reconciler, adversarial debate, shared memory, acceptance gate. Composes with codex-delegate / gemini-delegate.
+**Audience**: developers running 2+ delegate agents per round (Codex + Gemini in parallel / multiple Codex instances on independent subtasks).
+**Notes**: recently published; treat as reference implementation for now.
 
 ---
 

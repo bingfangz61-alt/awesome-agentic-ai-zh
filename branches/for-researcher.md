@@ -102,6 +102,32 @@
 
 ---
 
+### 研究工作流 Skills（本 repo 維護者出品）
+
+> 這幾個是本 repo 維護者 [@WenyuChiou](https://github.com/WenyuChiou)（Lehigh CEE PhD candidate）日常在用的研究 skill / workspace。一併放到這裡讓其他研究者直接用。完整 entry 內容在 [`resources/mcp-skills-catalog.md` §13-§14](../resources/mcp-skills-catalog.md#13-研究工作流-skills學術--paper--文獻)。
+
+#### [WenyuChiou/ai-research-skills](https://github.com/WenyuChiou/ai-research-skills) ⭐⭐⭐⭐⭐
+
+★ 47 · MIT — 14 個 Claude Code skills 涵蓋研究全流程（文獻分流、研究設計、project context、論文撰寫、multi-AI delegation），打包成 5-plugin marketplace。一個指令裝整套。
+
+#### [WenyuChiou/research-hub](https://github.com/WenyuChiou/research-hub) ⭐⭐⭐⭐
+
+★ 14 · MIT — Zotero + Obsidian + NotebookLM 三工具整合 workspace，提供 CLI / MCP / REST / dashboard 四種介面。同時用三個工具的研究者必看。
+
+#### [WenyuChiou/zotero-skills](https://github.com/WenyuChiou/zotero-skills) ⭐⭐⭐⭐
+
+★ 16 — Zotero CLI skill：搜 / 加 / 分類 / 標記。跟 zotero-gpt（在 Zotero 裡 chat）互補，這份是讓 Claude Code 從外部操作 Zotero。
+
+#### [WenyuChiou/academic-writing-skills](https://github.com/WenyuChiou/academic-writing-skills) ⭐⭐⭐
+
+★ 2 · MIT — 嚴謹學術論文撰寫 / 修改 / 投稿 skill。banned-word audit、figure-text coupling、submission checklist 自動化。Per-paper 的 journal_format / style_overrides 可客製。
+
+#### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐⭐ + [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+
+★ 57 + ★ 34 · MIT — Multi-LLM delegation skill 對。研究場景：Claude planner + Codex 跑實作（程式 / 圖 / 表）+ Gemini 跑長文 draft（中文報告、英文 paper section）。是 Stage 7 multi-agent 的實戰版。
+
+---
+
 ### Multi-Agent for Research
 
 #### [langchain-ai/open_deep_research](https://github.com/langchain-ai/open_deep_research) ⭐⭐⭐⭐⭐

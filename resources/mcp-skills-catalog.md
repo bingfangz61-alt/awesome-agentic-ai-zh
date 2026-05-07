@@ -2,7 +2,7 @@
 
 > **繁體中文** | [English](./mcp-skills-catalog.en.md)
 
-> 把 Claude Code（或其他 CLI agent）接到你已經在用的工具，不用反覆切換視窗。本頁是 41 個分類整理過的 MCP server / Claude Skill / 整合範例。
+> 把 Claude Code（或其他 CLI agent）接到你已經在用的工具，不用反覆切換視窗。本頁是 48 個分類整理過的 MCP server / Claude Skill / 整合範例（含研究工作流 + multi-LLM delegation 兩個專屬區）。
 
 ---
 
@@ -33,6 +33,8 @@
 10. [媒體 / 串流（YouTube / Spotify）](#10-媒體--串流youtube--spotify)（3）
 11. [中文圈專用](#11-中文圈專用)（1）
 12. [其他常用（Cloudflare / Stripe…）](#12-其他常用cloudflare--stripe)（2）
+13. [研究工作流 Skills（學術 / paper / 文獻）](#13-研究工作流-skills學術--paper--文獻)（4）
+14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills)（3）
 
 ---
 
@@ -647,6 +649,102 @@
 **教什麼**：Stripe 官方 AI agent toolkit，含 MCP server，操作付款、訂閱、退款、客戶。
 **適合誰**：要在 agent 內處理付款 / billing 的開發者。
 **備註**：⚠️ 涉及金流，務必用 sandbox 測試夠了再接 production。
+
+---
+
+## 13. 研究工作流 Skills（學術 / paper / 文獻）
+
+> 給研究生、博後、PI 用的 Claude Code Skills 集合。本 repo 維護者 [@WenyuChiou](https://github.com/WenyuChiou)（Lehigh CEE PhD candidate）順手做出來、自己每天在用的——順便公開讓其他研究者用。
+
+### [WenyuChiou/ai-research-skills](https://github.com/WenyuChiou/ai-research-skills) ⭐⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 47 |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐⭐（研究流程一整套） |
+
+**教什麼**：14 個 Claude Code skills 涵蓋常見研究任務——文獻分流、研究設計、project context、論文撰寫、multi-AI delegation。打包成 5-plugin marketplace，一個指令安裝。
+**適合誰**：研究生 / 博後想一次取得「研究全流程」skill set。
+**備註**：marketplace 形式，跟 Stage 5.4 教的 plugin/marketplace 概念對位。
+
+### [WenyuChiou/academic-writing-skills](https://github.com/WenyuChiou/academic-writing-skills) ⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 2 |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐（窄但深） |
+
+**教什麼**：嚴謹學術論文寫作 / 修改 / 投稿的 Claude Code skill。Field-agnostic，可用 per-paper journal_format.md 跟 style_overrides.md 客製規則。
+**適合誰**：在寫 / 改 paper 的研究者，想把 banned-word audit、figure-text coupling、submission checklist 自動化。
+**備註**：是 ai-research-skills 5 plugin 中的一個，也可獨立安裝。
+
+### [WenyuChiou/zotero-skills](https://github.com/WenyuChiou/zotero-skills) ⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 16 |
+| License | NOASSERTION |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：Zotero CLI skill——程式化搜尋 / 加 / 分類 / 標記文獻。
+**適合誰**：用 Zotero 管文獻、想讓 Claude Code 直接整理 library 的研究者。
+**備註**：跟 [`MuiseDestiny/zotero-gpt`](https://github.com/MuiseDestiny/zotero-gpt) 的差別——後者是 Zotero plugin（在 Zotero 裡 chat），這份是 CLI / Skill（從 Claude Code 操作 Zotero）。
+
+### [WenyuChiou/research-hub](https://github.com/WenyuChiou/research-hub) ⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 14 |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：AI-operable research workspace，整合 Zotero + Obsidian + NotebookLM 三個工具，提供 CLI / MCP / REST / dashboard 四種介面。
+**適合誰**：同時用 Zotero / Obsidian / NotebookLM 的研究者，想把它們綁成一個 workspace 給 LLM 操作。
+**備註**：跟單一工具的 MCP（mcp-obsidian、notion-mcp 等）互補——這份是 hub，可整合多個工具。
+
+---
+
+## 14. Multi-LLM Delegation Skills
+
+> 用 Claude 當 planner / reviewer，把 token-heavy 工作 delegate 給 Codex / Gemini 的 skill set。本 repo 維護者把日常 workflow 抽出來公開。
+
+### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 57 |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐⭐ |
+
+**教什麼**：Claude Code skill 把 Codex CLI 當作 execution specialist——適合大量檔案 refactor、boilerplate 生成、實作密集任務。Claude 規劃 + review，Codex 執行。
+**適合誰**：要在 Claude Code 內把實作工作自動 delegate 給 Codex 的開發者。
+**備註**：搭配 `gemini-delegate-skill` 用（一個跑 code-heavy、一個跑 long-form / CJK）。Stage 7 multi-agent 概念實戰版。
+
+### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 34 |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐⭐ |
+
+**教什麼**：Claude Code skill 把 Gemini CLI 當作 large-context synthesis、英文 / zh-TW / CJK long-form drafting、second-opinion review 的執行者。
+**適合誰**：寫長文、跨語言 draft、需要第二意見 review 的人——研究者寫 paper / 中文報告場景特別合適。
+**備註**：跟 codex-delegate 互補——「Codex 寫 code、Gemini 寫 prose」分工。
+
+### [WenyuChiou/agent-collab-skills](https://github.com/WenyuChiou/agent-collab-skills) ⭐⭐⭐
+
+| 欄位 | 內容 |
+|---|---|
+| Stars | ★ 0+（剛 push）|
+| License | MIT |
+| 推薦度 | ⭐⭐⭐（多 agent 協作 marketplace） |
+
+**教什麼**：Claude Code marketplace for multi-agent collaboration——task splitter、output reconciler、adversarial debate、shared memory、acceptance gate。跟 codex-delegate / gemini-delegate 組合用。
+**適合誰**：一個 round 要跑 2+ delegate agent（Codex + Gemini 平行 / 多個 Codex 跑獨立子任務）的開發者。
+**備註**：剛 push，stars 還沒累積；當 reference implementation 用就好。
 
 ---
 
