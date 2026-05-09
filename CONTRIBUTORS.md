@@ -54,7 +54,9 @@
 
 > 每次 merged PR 都會在這裡留名。第一次 PR 不分大小都會列入。
 
-（待第一個外部 PR）
+| Contributor | 貢獻 / Contribution | First PR |
+|---|---|---|
+| [@scott0127](https://github.com/scott0127) | **Stage 6 RAG 教材** — chunking strategies guide ([#2](https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/2))、unit guide overview ([#5](https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/5)) · **for-teacher 框架** — 3-tier 教師 AI 應用情境 + 學術引用 (Chen 2020 / Mittal 2024) ([#6](https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/6)) | 2026-05-08 |
 
 ---
 
