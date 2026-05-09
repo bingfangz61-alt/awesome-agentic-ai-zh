@@ -33,7 +33,7 @@ If not — go back to Stage 0 first.
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
-### 練習：LLM API
+### Exercise: LLM API
 Five-line Python script that calls Claude API and prints the response.
 
 ```python
@@ -47,25 +47,25 @@ msg = client.messages.create(
 print(msg.content[0].text)
 ```
 
-### 練習：Tokens
+### Exercise: Tokens
 Run the same prompt 100 times and watch token counts vary.
 - Notice: temperature ≠ 0 produces variation
 - Notice: token count for the SAME English vs Chinese sentence
 
-### 練習：Pricing
+### Exercise: Pricing
 Calculate the actual dollar cost of running 1000 inferences for your hello-world prompt. Use Anthropic's pricing page + count tokens via the SDK's `usage` field.
 
-### 練習：Cross-Provider Comparison
+### Exercise: Cross-Provider Comparison
 Send the same prompt to Claude, GPT, and Gemini simultaneously, compare their responses. Notice "why does the same input produce different answers" — answer style, length, and judgment all differ. Use the OpenAI, Anthropic, and Google SDKs side-by-side.
 
-### 練習：Error Handling
+### Exercise: Error Handling
 Trigger error conditions deliberately and write retry logic:
 - Wrong API key → see how it raises
 - Over-long prompt → what happens when the context window is full
 - Network drop → write a retry wrapper with exponential backoff
 This is foundational for Stage 3-7's production agent code.
 
-### 練習：Local LLM
+### Exercise: Local LLM
 **No API fees, runs on your machine**: use Ollama to pull a small model (recommend `llama3.2:3b` or `qwen2.5:3b`), call it via OpenAI-compatible API.
 ```bash
 # Install Ollama: https://ollama.com
@@ -184,7 +184,7 @@ jupyter notebook guide.ipynb
 | License | NOASSERTION |
 | Recommendation | ⭐⭐⭐⭐ |
 
-**What it teaches**: 面向小白開發者的大模型應用開發教程 — beginner-friendly LLM application development. Covers API basics, knowledge bases, RAG, advanced techniques.
+**What it teaches**: A beginner-friendly LLM application development tutorial in Chinese. Covers API basics, knowledge bases, RAG, advanced techniques.
 
 **Best for**: Chinese-speaking beginners who want to *build something* with LLM (vs. just understand them).
 
@@ -199,7 +199,7 @@ jupyter notebook guide.ipynb
 | License | Apache-2.0 |
 | Recommendation | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: 2 小時從零訓練 64M 參數 LLM — the most popular Chinese hands-on "build LLM from scratch" project. Pretrain + SFT + LoRA + DPO + RLHF all in one repo.
+**What it teaches**: Train a 64M-parameter LLM from scratch in 2 hours — the most popular Chinese hands-on "build LLM from scratch" project. Pretrain + SFT + LoRA + DPO + RLHF all in one repo.
 
 **Best for**: After watching Karpathy's video, run this to actually feel each training stage on real data. The pedagogical value is exceptional.
 
@@ -239,7 +239,7 @@ jupyter notebook guide.ipynb
 
 ### 🖥️ Running LLMs Locally (no API fees)
 
-The four entries below are tools to **run LLMs on your own machine** — useful after 練習：Local LLM, and the answer for privacy-sensitive work, cost-sensitive experiments, or offline scenarios.
+The four entries below are tools to **run LLMs on your own machine** — useful after Exercise: Local LLM, and the answer for privacy-sensitive work, cost-sensitive experiments, or offline scenarios.
 
 ---
 

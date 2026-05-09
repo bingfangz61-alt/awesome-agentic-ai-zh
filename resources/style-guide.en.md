@@ -121,7 +121,7 @@ Technical writing has terms that **read more naturally in English** than transla
 - `streaming`, `async`, `batch`, `webhook`
 - `marketplace`, `plugin`, `skill`, `hook`
 - `production` (when meaning "production environment") — but the catalog deliberately avoids it in many places (see Chinese §3)
-- `動手練習`, `hello-world` — keep
+- `hello-world`, `hands-on exercise` — keep (zh-TW canonical uses `動手練習`; en mirror translates as `hands-on exercise(s)`)
 
 **Test**: Would a technical reader pause at the translated form? If yes, keep English.
 
@@ -181,10 +181,10 @@ You should have:
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
-### 練習 N：標題
+### Exercise N: Title
 Description.
 
-[3-5 動手練習 items]
+[3-5 hands-on exercise items]
 
 ## 🎯 Curated Projects
 
@@ -288,7 +288,7 @@ Branch entries can be more concise than stage entries (full schema table optiona
 This style guide covers "how to write an entry." For **design rationale** — why these 5 branches, why 7 stages — see:
 
 - [`branches/DESIGN.md`](../branches/DESIGN.md) — Branch design notes (why these audiences, where entries belong) (zh)
-- [`stages/DESIGN.md`](../stages/DESIGN.md) — Stage design notes (why this structure, how 動手練習 is chosen) (zh)
+- [`stages/DESIGN.md`](../stages/DESIGN.md) — Stage design notes (why this structure, how exercises are chosen) (zh)
 - [`cli-agents-guide.en.md`](cli-agents-guide.en.md) — Cross-cutting CLI agent comparison
 
 ## Modifying this guide

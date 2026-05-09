@@ -18,7 +18,7 @@ After Stages 0-2, you want to use existing CLI agents to get real work done — 
 ## 🚪 Entry Conditions
 
 You should already:
-- Have completed Stage 0's 練習：CLI (basic command-line literacy)
+- Have completed Stage 0's Exercise: CLI (basic command-line literacy)
 - Have a Claude / OpenAI / Google account (paid not required)
 - Be comfortable with prompt design (Stage 2)
 
@@ -30,10 +30,10 @@ You should already:
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
-### 動手練習 CLI-1：Install + first run
+### Exercise CLI-1: Install + first run
 Follow your chosen CLI's quickstart. **Don't write "hello world"** — give it a real task you were going to do today, e.g. "organize my Downloads folder, move all PDFs to ~/Documents/PDFs". Watch how it decomposes the task and what confirmations it asks for.
 
-### 動手練習 CLI-2：CLI's built-in system prompt file
+### Exercise CLI-2: CLI's built-in system prompt file
 - Claude Code → write a `CLAUDE.md` at the repo root
 - Codex → write `AGENTS.md`
 - Gemini CLI → write `GEMINI.md`
@@ -41,10 +41,10 @@ Follow your chosen CLI's quickstart. **Don't write "hello world"** — give it a
 
 Put 3 things in it: "your persona / preferred code style / things you can't do". Then run a task and observe behavioral differences.
 
-### 動手練習 CLI-3：Run a second CLI alongside
+### Exercise CLI-3: Run a second CLI alongside
 Install a second CLI (suggest Codex or OpenCode as backup). Run the same prompt and compare output style, speed, cost. **Not to pick a winner — to learn that "different CLIs solve the same problem from different angles".**
 
-### 動手練習 CLI-4：Auth corner cases
+### Exercise CLI-4: Auth corner cases
 Deliberately break your API key (one wrong character) and see how the CLI errors out. Then "correct key but wrong model name". Production usage will hit auth issues — step on these now.
 
 ## 🎯 Curated Projects
@@ -91,7 +91,7 @@ Can you:
 
 If yes → proceed to [A2 — CLI Workflow Patterns](A2-cli-workflow.en.md).
 
-If no → don't skip. Sloppy CLI usage isn't productive CLI usage; do 動手練習 CLI-1/2 at least 3 more times.
+If no → don't skip. Sloppy CLI usage isn't productive CLI usage; do Exercises CLI-1/2 at least 3 more times.
 
 ## 💡 Reminder for Track A learners
 

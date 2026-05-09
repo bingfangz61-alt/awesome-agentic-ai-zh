@@ -239,7 +239,7 @@ results = collection.query(query_texts=["query"], n_results=1)
 | License | Apache-2.0 |
 | Recommendation | ⭐⭐⭐⭐ |
 
-**What it teaches**: 中文社群最廣泛使用的 RAG + Agent 應用框架。Offline-deployable knowledge base Q&A with Chinese-friendly defaults. Supports ChatGLM / Qwen / Llama / Ollama backends.
+**What it teaches**: The most widely used RAG + Agent application framework in the Chinese community. Offline-deployable knowledge base Q&A with Chinese-friendly defaults. Supports ChatGLM / Qwen / Llama / Ollama backends.
 
 **Best for**: Chinese-speaking learners building knowledge base / RAG apps. The defaults handle Chinese tokenization + embeddings well.
 

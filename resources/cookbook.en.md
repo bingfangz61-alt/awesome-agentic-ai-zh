@@ -135,9 +135,9 @@ You can then use tools like promptfoo for batch testing.
 
 ### Further Reading
 
-- See [Stage 5.3](../stages/05-claude-code-ecosystem.md#53--skillsclaude-code-的行為層) for a detailed explanation of Skill anatomy.
+- See [Stage 5.3](../stages/05-claude-code-ecosystem.en.md#53--skills-claude-code-behavior-layer) for a detailed explanation of Skill anatomy.
 - Refer to the official skill templates in [`anthropics/skills`](https://github.com/anthropics/skills) (for docx / xlsx / pptx, etc.) for examples.
-- Package multiple skills into a plugin → [Stage 5.4](../stages/05-claude-code-ecosystem.md#54--plugins-與-marketplaces)
+- Package multiple skills into a plugin → [Stage 5.4](../stages/05-claude-code-ecosystem.en.md#54--plugins--marketplaces)
 
 ---
 
@@ -327,7 +327,7 @@ and write each into separate markdown sections in ./notes/research-summary.md.
 
 ### Further Reading
 
-- Catalog §2 [`mcp-skills-catalog.md` §2 Office Documents](mcp-skills-catalog.md#2-辦公文件word--excel--powerpoint--pdf): Enhanced office skills / dedicated MCP for Excel / PPT.
+- Catalog §2 [`mcp-skills-catalog.en.md` §2 Office Documents](mcp-skills-catalog.en.md#2-office-documents-word--excel--powerpoint--pdf): Enhanced office skills / dedicated MCP for Excel / PPT.
 - Office workflow in Chinese: [`leemysw/feishu-docx`](https://github.com/leemysw/feishu-docx) for Feishu / Lark docs ↔ Markdown.
 
 ---
@@ -412,7 +412,7 @@ print(answer.citations)
 
 ### Further Reading
 
-- Catalog §1 [`mcp-skills-catalog.md` §1 Notes / Knowledge Bases](mcp-skills-catalog.md#1-筆記--知識庫)
+- Catalog §1 [`mcp-skills-catalog.en.md` §1 Notes / Knowledge Bases](mcp-skills-catalog.en.md#1-notes--knowledge-bases)
 - Complete research workspace: Integrate NotebookLM + Zotero + Obsidian using [`WenyuChiou/research-hub`](https://github.com/WenyuChiou/research-hub).
 
 ---

@@ -8,7 +8,7 @@
 > 💡 This stage revolves around four terms (**MCP / Skills / Plugins / Marketplace**) → unfamiliar? See [`resources/glossary.en.md` §5](../resources/glossary.en.md#5-claude-code-ecosystem).
 
 > 📌 **This stage is used by both tracks**:
-> - **Track A (CLI Power User)**: A2 uses [5.1 (Claude Code basics)](#51--claude-code-basics); A3 uses [5.2 (MCP)](#52--mcp-model-context-protocol-foundation) + selectively [5.3 (Skills)](#53--skills-claude-code-behavior-layer) and [5.4 (Plugins)](#54--plugins--marketplaces) (A3's 動手練習 CLI-12 teaches packaging CLAUDE.md / commands into a plugin). Reading angle: "**how to use Claude Code well**"
+> - **Track A (CLI Power User)**: A2 uses [5.1 (Claude Code basics)](#51--claude-code-basics); A3 uses [5.2 (MCP)](#52--mcp-model-context-protocol-foundation) + selectively [5.3 (Skills)](#53--skills-claude-code-behavior-layer) and [5.4 (Plugins)](#54--plugins--marketplaces) (A3's Exercise CLI-12 teaches packaging CLAUDE.md / commands into a plugin). Reading angle: "**how to use Claude Code well**"
 > - **Track B (Agent Builder)**: works through the full stage 5.1 → 5.4 as "**how Claude Code works internally**" deep dive
 
 ## Stack at a glance
@@ -50,9 +50,9 @@ After this stage you will be able to extend Claude Code, write your own MCP serv
 2. [**Anthropic — CLAUDE.md best practices**](https://docs.anthropic.com/en/docs/claude-code/memory) — how to write project memory
 3. [**KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh**](https://github.com/KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh) — zh-CN beginner guide
 
-### 動手練習
-- **練習：Claude Code** — install, run first session, ask Claude to read a file and summarize
-- **練習：CLAUDE.md** — write a project CLAUDE.md, observe behavior change
+### Hands-on Exercises
+- **Exercise: Claude Code** — install, run first session, ask Claude to read a file and summarize
+- **Exercise: CLAUDE.md** — write a project CLAUDE.md, observe behavior change
 
 ### Curated Projects
 - [**anthropics/claude-code**](https://github.com/anthropics/claude-code) — official repo (issues, releases)
@@ -74,10 +74,10 @@ After this stage you will be able to extend Claude Code, write your own MCP serv
 2. [**MCP Specification**](https://modelcontextprotocol.io/specification) — the actual protocol spec
 3. [**Complete Guide to MCP in 2026**](https://dev.to/x4nent/complete-guide-to-mcp-model-context-protocol-in-2026-architecture-implementation-and-4a11) — implementation walkthrough
 
-### 動手練習
-- **練習：MCP client** — install `modelcontextprotocol/servers/filesystem` and connect via Claude Desktop. Watch Claude read your files.
-- **練習：MCP server** — write a Python MCP server that exposes one tool (e.g., "convert temperature"). Connect from Claude Code.
-- **練習：MCP in production** — connect 2-3 MCP servers in one Claude session and watch them coordinate.
+### Hands-on Exercises
+- **Exercise: MCP client** — install `modelcontextprotocol/servers/filesystem` and connect via Claude Desktop. Watch Claude read your files.
+- **Exercise: MCP server** — write a Python MCP server that exposes one tool (e.g., "convert temperature"). Connect from Claude Code.
+- **Exercise: MCP in production** — connect 2-3 MCP servers in one Claude session and watch them coordinate.
 
 ### Curated Projects
 
@@ -95,7 +95,7 @@ After this stage you will be able to extend Claude Code, write your own MCP serv
 
 **What it teaches**: 20+ reference MCP servers (filesystem, git, github, sqlite, time, fetch, memory, sequential thinking). The canonical examples for writing your own.
 
-**Best for**: 練習 1 and as reference. Read the source of `everything` server and `filesystem` server to understand the protocol.
+**Best for**: Exercise 1 and as reference. Read the source of `everything` server and `filesystem` server to understand the protocol.
 
 **Run it**:
 ```bash
@@ -114,7 +114,7 @@ pip install mcp-server-fetch
 | License | MIT |
 | Recommendation | ⭐⭐⭐⭐⭐ |
 
-**What it teaches**: Official Python SDK for writing MCP servers. Use this for 練習 2.
+**What it teaches**: Official Python SDK for writing MCP servers. Use this for Exercise 2.
 
 **Run it**:
 ```bash
@@ -182,7 +182,7 @@ pip install mcp
 
 **What it teaches**: A non-trivial MCP server that creates UI components. Shows how MCP can extend beyond simple data fetching.
 
-**Best for**: Inspiration after 練習 2 — what creative MCP servers can do.
+**Best for**: Inspiration after Exercise 2 — what creative MCP servers can do.
 
 ---
 
@@ -198,10 +198,10 @@ pip install mcp
 1. [**Anthropic — Claude Skills documentation**](https://docs.anthropic.com/en/docs/claude-code/skills)
 2. **A few example SKILL.md files** from `anthropics/claude-code` or community marketplaces
 
-### 動手練習
-- **練習：SKILL.md** — write a 200-word skill solving one of your daily tasks
-- **練習：SKILL with references** — add a `references/` markdown the skill can pull from
-- **練習：SKILL eval** — add `evals/evals.json` with 3-5 self-tests
+### Hands-on Exercises
+- **Exercise: SKILL.md** — write a 200-word skill solving one of your daily tasks
+- **Exercise: SKILL with references** — add a `references/` markdown the skill can pull from
+- **Exercise: SKILL eval** — add `evals/evals.json` with 3-5 self-tests
 
 ### Curated Projects
 
@@ -323,10 +323,10 @@ pip install mcp
 1. [**Anthropic — Plugins documentation**](https://docs.anthropic.com/en/docs/claude-code/plugins)
 2. **Read the `plugin.json` and `marketplace.json` of 2-3 marketplaces below**
 
-### 動手練習
-- **練習：plugin install** — install one of the marketplaces below, see it load
-- **練習：plugin.json** — package the SKILL.md you wrote in 5.3 into a plugin
-- **練習：marketplace publish** — push to GitHub, install via `claude plugin marketplace add`
+### Hands-on Exercises
+- **Exercise: plugin install** — install one of the marketplaces below, see it load
+- **Exercise: plugin.json** — package the SKILL.md you wrote in 5.3 into a plugin
+- **Exercise: marketplace publish** — push to GitHub, install via `claude plugin marketplace add`
 
 ### Curated Projects
 
@@ -405,7 +405,7 @@ pip install mcp
 
 **What it teaches**: One of the largest community catalogs of Claude Code agents, skills, hooks, and templates. Wide breadth across many use cases.
 
-**Best for**: After 練習 3, browse to see what's out there.
+**Best for**: After Exercise 3, browse to see what's out there.
 
 ---
 

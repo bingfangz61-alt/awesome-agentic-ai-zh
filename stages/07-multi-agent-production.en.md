@@ -28,19 +28,19 @@ The final stage. You're moving from "I can build agents" to "I can run them in p
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
-### 練習 1：Multi-Agent debate
+### Exercise 1: Multi-Agent debate
 Two agents debate a topic (e.g. "Python vs Rust for backend"), a third agent judges. Watch for convergence vs divergence patterns.
 
-### 練習 2：Eval
+### Exercise 2: Eval
 Write an eval for one of your earlier agents, run it N times, measure success rate. Replace "I'll just eyeball it."
 
-### 練習 3：Observability
+### Exercise 3: Observability
 Connect LangSmith / Helicone / weave to an agent, view the full trace. Understand: "agent debugging without observability = black box."
 
-### 練習 4：SDK advanced
+### Exercise 4: SDK advanced
 Use streaming + prompt caching + tool use in one call. Watch how cost drops.
 
-### 練習 5：Deploy
+### Exercise 5: Deploy
 Package an agent in Docker, deploy to cloud (any provider). Learn to ship a prototype as something others can run.
 
 ## 🎯 Curated Projects
@@ -254,7 +254,7 @@ Already cited. Specifically the `prompt_caching.ipynb`, `tool_use/`, and `multim
 | License | Apache-2.0 |
 | Recommendation | ⭐⭐⭐⭐ |
 
-**What it teaches**: 開源大模型食用指南 — comprehensive Chinese-language guide for fine-tuning and deploying open-source LLMs in Linux environments. Covers Qwen / Llama / GLM / multimodal models, full-parameter + LoRA + deployment.
+**What it teaches**: A comprehensive Chinese-language guide for fine-tuning and deploying open-source LLMs in Linux environments. Covers Qwen / Llama / GLM / multimodal models, full-parameter + LoRA + deployment.
 
 **Best for**: Chinese-speaking teams self-hosting open-source LLMs. Comprehensive Chinese-language tutorial covering training, fine-tuning, and deployment.
 
