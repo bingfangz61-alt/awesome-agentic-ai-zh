@@ -7,17 +7,54 @@
 > 預估時程：30-45 分鐘。你會申請第一個 API key、裝好 Python / uv，並跑出第一個 LLM hello world。
 > 這份文件寫給「想學 AI agent，但還沒寫過 code」的人。已經熟 Python / git / CLI 的開發者，可以直接跳 [Stage 1](../stages/01-llm-basics.md)。
 
-## 先決定兩件事
+## 先選你的入門方式
 
-1. **你想自己寫 code 嗎？**
-   - 想：走完 §A-C，然後接 [Stage 1](../stages/01-llm-basics.md) 或 [for-developer](../branches/for-developer.md)。
-   - 還不確定：先走完 §A-B，再依身分看 [日常使用者](../branches/for-everyday-users.md)、[教師](../branches/for-teacher.md)、[知識工作者](../branches/for-knowledge-worker.md)、[研究者](../branches/for-researcher.md)。
-2. **你想先用哪一家 LLM？**
-   - 最省心：Anthropic Claude，介面清楚，英文和中文都好用。
-   - 已經常用 ChatGPT：OpenAI，需要另外到 API 平台申請 key。
-   - 想先不付雲端費用：Ollama 本機模型，步驟多一點，但不需要 API key。
+依「想花多少時間 setup」由淺到深排序。**完全沒接觸過 LLM 直接從 1️⃣ 開始就好**。
 
-API key 可以先理解成「讓程式呼叫模型的密碼」。請把它當成信用卡資料保管。
+### 1️⃣ 網頁版（最簡單，免費可試，零 setup）
+
+打開瀏覽器就能用，**第一次接觸 LLM 最推薦這條**。免費 tier 通常夠你試一個禮拜。
+
+| 服務 | 網址 | 備註 |
+|---|---|---|
+| **Claude** | https://claude.ai | Anthropic 官方。免費 tier 每天額度有限，付費版 $20/月 |
+| **ChatGPT** | https://chatgpt.com | OpenAI 官方。免費可用 GPT-5（基本款），付費 $20/月升 Plus |
+| **Gemini** | https://gemini.google.com | Google 官方。免費 tier 寬鬆，整合 Google 服務 |
+| **Le Chat** | https://chat.mistral.ai | Mistral（歐洲開源 LLM）。免費、隱私導向 |
+
+### 2️⃣ 桌面 App（免費，跨應用整合更好）
+
+跑在你電腦上的原生 app——比網頁多了系統 shortcut、跟剪貼簿 / 截圖整合、可以拖拉檔案。
+
+| App | 下載 | 平台 |
+|---|---|---|
+| **Claude Desktop** | https://claude.ai/download | macOS / Windows |
+| **ChatGPT Desktop** | https://openai.com/chatgpt/download | macOS / Windows |
+| **Gemini** | 暫無原生 desktop app | （用網頁版即可） |
+| **LM Studio** | https://lmstudio.ai | macOS / Windows / Linux — 跑本機 LLM 的桌面 app，零成本但要 GPU/RAM |
+
+### 3️⃣ CLI Agent（terminal，能讀寫檔案、跑指令、操作 git）
+
+裝在 terminal 的 agent——可以讀寫你電腦上的檔案、執行 shell 指令、改 git。**比網頁/桌面 app 強大，但 setup 稍複雜**（需要先有 Node.js 或 Python，看下面 §B / §D）。
+
+| CLI Agent | 安裝 / 文件 | 主要 LLM |
+|---|---|---|
+| **Claude Code** | https://docs.anthropic.com/en/docs/claude-code/quickstart | Claude |
+| **Codex CLI** | https://github.com/openai/codex | GPT 系列 |
+| **Gemini CLI** | https://github.com/google-gemini/gemini-cli | Gemini |
+| **OpenCode** | https://github.com/sst/opencode | 任意（多 provider） |
+| **goose** | https://block.github.io/goose | 任意 |
+| **Aider** | https://aider.chat | 任意（git-native） |
+| **Hermes Agent** | https://github.com/NousResearch/hermes-agent | 200+（model-neutral） |
+
+→ 想看 7 個 CLI 完整比較 → [`cli-agents-guide.md`](cli-agents-guide.md)
+→ Claude Code 第一次裝的詳細步驟 → 本指南 [§D](#d--第一次裝-claude-code約-10-分鐘stage-5--for-developer-會用到)
+
+### 4️⃣ API + 自己寫 code（最進階，能 batch、整合任何工具）
+
+想自己寫 Python script、跑 batch job、把 LLM 接到自己的 app／automation？接下來的 §A-C 就是給你的。
+
+> 💡 **API key 是什麼**：簡單講就是「讓程式呼叫模型的密碼」。請把它當成信用卡資料一樣保管。
 
 ---
 

@@ -7,17 +7,54 @@
 > Expected time: 30-45 minutes. You will get your first API key, install Python / uv, and run your first LLM hello world.
 > This guide is for people who want to learn AI agents but have not written code before. If you already know Python, git, and the CLI, you can skip to [Stage 1](../stages/01-llm-basics.en.md).
 
-## Decide Two Things First
+## Pick Your On-Ramp First
 
-1. **Do you want to write code yourself?**
-   - Yes: finish §A-C, then continue with [Stage 1](../stages/01-llm-basics.en.md) or the [developer branch](../branches/for-developer.en.md).
-   - Not sure yet: finish §A-B, then pick the [everyday user](../branches/for-everyday-users.en.md), [teacher](../branches/for-teacher.en.md), [knowledge worker](../branches/for-knowledge-worker.en.md), or [researcher](../branches/for-researcher.en.md) branch.
-2. **Which LLM do you want to start with?**
-   - Lowest friction: Anthropic Claude. The interface is clear and works well in English and Chinese.
-   - Already use ChatGPT often: OpenAI. You still need to create an API key on the API platform.
-   - Prefer no cloud API cost at first: local models with Ollama. More steps, but no API key.
+Ordered shallow → deep by setup effort. **Never touched an LLM? Just start with 1️⃣**.
 
-An API key is basically a password that lets a program call a model. Treat it like payment information.
+### 1️⃣ Web (easiest, free tier, zero setup)
+
+Open a browser, type the URL — done. **Best place to start if it's your first time**. Free tier usually covers a week of experimentation.
+
+| Service | URL | Notes |
+|---|---|---|
+| **Claude** | https://claude.ai | Anthropic. Free tier has daily limits; Pro is $20/mo |
+| **ChatGPT** | https://chatgpt.com | OpenAI. Free GPT-5 (basic); Plus $20/mo |
+| **Gemini** | https://gemini.google.com | Google. Generous free tier, integrates Google apps |
+| **Le Chat** | https://chat.mistral.ai | Mistral (EU open-source LLM lab). Free, privacy-focused |
+
+### 2️⃣ Desktop app (free, better cross-app integration)
+
+Native apps for macOS / Windows — adds system shortcut, clipboard / screenshot integration, drag-and-drop files.
+
+| App | Download | Platform |
+|---|---|---|
+| **Claude Desktop** | https://claude.ai/download | macOS / Windows |
+| **ChatGPT Desktop** | https://openai.com/chatgpt/download | macOS / Windows |
+| **Gemini** | No native desktop app yet | (use web) |
+| **LM Studio** | https://lmstudio.ai | macOS / Windows / Linux — runs local LLMs as a desktop app; $0 but needs GPU/RAM |
+
+### 3️⃣ CLI agent (terminal, can read/write files, run shell, manage git)
+
+Agents that live in your terminal — can read/write files on your computer, run shell commands, and edit git. **More powerful than web/desktop, but setup is heavier** (requires Node.js or Python; see §B / §D below).
+
+| CLI Agent | Install / Docs | Primary LLM |
+|---|---|---|
+| **Claude Code** | https://docs.anthropic.com/en/docs/claude-code/quickstart | Claude |
+| **Codex CLI** | https://github.com/openai/codex | GPT family |
+| **Gemini CLI** | https://github.com/google-gemini/gemini-cli | Gemini |
+| **OpenCode** | https://github.com/sst/opencode | Any (multi-provider) |
+| **goose** | https://block.github.io/goose | Any |
+| **Aider** | https://aider.chat | Any (git-native) |
+| **Hermes Agent** | https://github.com/NousResearch/hermes-agent | 200+ (model-neutral) |
+
+→ Full 7-CLI comparison → [`cli-agents-guide.en.md`](cli-agents-guide.en.md)
+→ Detailed Claude Code first install → [§D](#d--install-claude-code-for-the-first-time-about-10-minutes-needed-for-stage-5--for-developer) below
+
+### 4️⃣ API + write your own code (most advanced)
+
+Want to script with Python, run batch jobs, integrate LLMs into your own app/automation? §A-C below are for you.
+
+> 💡 **What's an API key?** A password that lets a program call a model. Treat it like payment information.
 
 ---
 
