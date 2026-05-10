@@ -54,7 +54,7 @@ Some HF community members may find it useful as a "**before you train your
 first model**" structured path, especially folks asking where to start with
 agents. Trilingual support is genuinely tested (not machine-translated).
 
-Stats: ★525 / 50 forks / 3000+ unique visitors / 408 unique cloners in week 1.
+Stats (week 1): ★525 / 50 forks / 3,185 unique visitors / 408 unique cloners.
 MIT, contributors welcome.
 
 Happy to take feedback if any HF maintainer thinks specific stages should
@@ -72,7 +72,7 @@ Hi <name>,
 I built awesome-agentic-ai-zh, a trilingual (zh-TW / zh-CN / en) 7-stage
 learning roadmap for agentic AI — covers foundations through multi-agent
 production with 145+ curated projects, cost/time estimates per stage. ★525
-in week 1.
++ 3,185 unique visitors in week 1.
 
 Stage 1 (LLM basics) and Stage 4 (frameworks) reference HF transformers
 and HF Hub fairly heavily. Wondering if there's a HF-side touchpoint that

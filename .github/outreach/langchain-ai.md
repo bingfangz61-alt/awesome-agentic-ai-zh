@@ -68,8 +68,9 @@ to the "Tutorials" or "Learning Resources" section of awesome-langchain.
 - Not LangChain-only — covers Stage 0 foundations, MCP, multi-agent, and
   production
 
-**Stats**: ★525 / 50 forks / 3000+ unique visitors in week 1, MIT licensed,
-3 community contributors. CI runs banned-word + link-rot lint on every PR.
+**Stats (week 1)**: ★525 / 50 forks / 3,185 unique visitors / 1,099 clones /
+408 unique cloners / 3 community contributors. MIT licensed. CI runs banned-
+word + link-rot lint on every PR.
 
 If this isn't the right section or shape, please redirect. Thanks for
 maintaining awesome-langchain.
@@ -83,7 +84,7 @@ maintaining awesome-langchain.
 Hi LangChain team,
 
 I built awesome-agentic-ai-zh — a trilingual (zh-TW / zh-CN / en) 7-stage
-learning roadmap for agentic AI. ★525 in week 1, 3000+ unique visitors,
+learning roadmap for agentic AI. ★525 in week 1, 3,185 unique visitors,
 heavy zh-language community traction (top referrer is Threads at 42%).
 
 Stage 4 specifically walks new developers through LangChain → LangGraph

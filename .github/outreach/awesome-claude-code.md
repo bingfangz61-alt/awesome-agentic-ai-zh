@@ -60,9 +60,9 @@ If you have a "Learning Resources" or "Tutorials" section, this would fit
 there. If not, no worries — just wanted to surface it given the existing
 cross-cite.
 
-Stats for credibility: 6,800 views / 3,200 unique visitors / 408 unique
-cloners / 3 community contributors in week 1. CI runs banned-word audit +
-link-rot check on every PR.
+Stats for credibility (week 1): 6,869 views / 3,185 unique visitors / 1,099
+clones / 408 unique cloners / 50 forks / 3 community contributors. CI runs
+banned-word audit + link-rot check on every PR.
 
 — Wenyu (PhD candidate, individual maintainer)
 ```

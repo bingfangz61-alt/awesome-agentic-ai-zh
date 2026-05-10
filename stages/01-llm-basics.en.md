@@ -5,7 +5,7 @@
 
 ⏱ **Time estimate**: 1 week (~5-8 hours)
 
-> 👋 **Coming from [Stage 0](00-foundations.en.md)?** Nice — your toolchain is set. The next 5-8 hours give you your first working LLM API call and how to estimate cost in tokens. **Jumped straight here?** Make sure you can run a Python script and have an API key from one provider — if not, head back to [Stage 0](00-foundations.en.md).
+> 👋 **Coming from [Stage 0](00-foundations.en.md)?** Nice — your toolchain is set. The next 5-8 hours: your first working call to Claude / GPT / Gemini, how token / context window / temperature shape the output, and per-token cost estimation. **Jumped straight here?** Make sure you can run a Python script and have an API key from one provider — if not, head back to [Stage 0](00-foundations.en.md).
 
 > 💡 **Don't recognize a term?** (LLM / token / context window / temperature / RAG / agent / …) → check [`resources/glossary.en.md`](../resources/glossary.en.md) for 30-second definitions.
 

@@ -65,8 +65,8 @@ your list is server-only by policy, totally understand — just close the PR.
 Reciprocal cross-link is the goal: your readers get a learning order; ours
 get the canonical server catalog.
 
-Stats: 6,800 views / 3,200 unique / 408 unique cloners in week 1. CI runs
-banned-word audit + link rot check on every PR.
+Stats (week 1): 6,869 views / 3,185 unique / 1,099 clones / 408 unique cloners
+/ 50 forks. CI runs banned-word audit + link-rot check on every PR.
 
 — Wenyu (PhD candidate, individual maintainer)
 ```

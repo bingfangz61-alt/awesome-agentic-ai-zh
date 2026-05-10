@@ -31,7 +31,7 @@ Hi Datawhale 團隊！
 
 我在維護 [awesome-agentic-ai-zh](https://github.com/WenyuChiou/awesome-agentic-ai-zh)
 ——一份中文 agentic AI 的 7 階段三語學習地圖（zh-TW canonical / zh-CN / en，145+
-curated projects，MIT），最近一週累積到 ★525、3000+ unique visitor。
+curated projects，MIT），第一週累積 ★525、3,185 unique visitors、1,099 clones。
 
 我們的 Stage 5 cookbook 已經把 Hello-Agents 的 Extra05（記憶 + RAG 概覽）跟 Extra08
 （多代理）放進 reading list（[cookbook.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/resources/cookbook.md)），
