@@ -67,7 +67,7 @@ Every exercise ships with all three paths:
 ### Path A (**default, recommended**) — local Ollama
 - Default `starter.py` / first inline `<details>` block uses a local model
 - Requires [Ollama](https://ollama.com); pull a model based on the stage:
-  - **Stage 1 + 2** (plain chat / prompt eng): `ollama pull gemma3n:e4b` (~7.5 GB; multimodal (text + image + audio); CPU-friendly)
+  - **Stage 1 + 2** (plain chat / prompt eng): `ollama pull gemma4:e4b` (~7.5 GB; multimodal (text + image + audio); CPU-friendly)
   - **Stage 3+** (tool use / agent): `ollama pull qwen2.5:3b` (1.9 GB; reliable tool-use support)
 - $0, offline, fine for privacy-sensitive data
 - SDK uses the `openai` package (OpenAI-compatible API) with `base_url="http://localhost:11434/v1"`
@@ -106,12 +106,12 @@ Every exercise ships with all three paths:
 
 | Model | Download | Recommended RAM | Stage | Tool-use | Speed (CPU/GPU) | Primary use |
 |---|---|---|---|---|---|---|
-| **`gemma3n:e4b`** ⭐ | 7.5 GB | 8 GB | 1+2 | basic | slow / med | Stage 1-2 plain chat / prompt eng (default) |
+| **`gemma4:e4b`** ⭐ | 7.5 GB | 8 GB | 1+2 | basic | slow / med | Stage 1-2 plain chat / prompt eng (default) |
 | **`qwen2.5:3b`** ⭐ | 1.9 GB | 4 GB | 3+ | **reliable** | med / fast | Stage 3+ tool use / agent (default) |
 | `llama3.2:3b` | 2.0 GB | 4 GB | 3+ | reliable | med / fast | qwen2.5:3b alternative |
 | `mistral-nemo:12b` | 7.1 GB | 16 GB | 3+ | strong | slow / med | When you want closer-to-cloud quality |
 | `qwen2.5:14b` | 9.0 GB | 16 GB | advanced | strong | slow / med | Larger-model comparison (GPU preferred) |
-| `gemma3n:e2b` | 4.0 GB | 4 GB | 1+2 | basic | med / fast | 4 GB-RAM-machine alternative |
+| `gemma4:e2b` | 4.0 GB | 4 GB | 1+2 | basic | med / fast | 4 GB-RAM-machine alternative |
 
 Install: `ollama pull <model>` + `ollama serve`. Hardware tuning details: [resources/cli-agents-guide.en.md](../resources/cli-agents-guide.en.md).
 

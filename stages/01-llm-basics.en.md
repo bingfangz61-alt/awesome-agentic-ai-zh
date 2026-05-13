@@ -35,21 +35,21 @@ If not — go back to Stage 0 first.
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
-> 🦙 **This stage defaults to Ollama** (cost-driven; `gemma3n:e4b` runs locally for $0/run). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — use it when you want to see cloud-quality answers). Full three-path trade-off in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
+> 🦙 **This stage defaults to Ollama** (cost-driven; `gemma4:e4b` runs locally for $0/run). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — use it when you want to see cloud-quality answers). Full three-path trade-off in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
 >
 > 💰 **Stage 1 budget estimate** (all 6 exercises, 3-5 runs each): **all local = $0**, **all haiku ≈ $0.30**, **all sonnet ≈ $0.90**. Full model list + Stage 1-7 total budget: [`examples/README.en.md#recommended-llm-list`](../examples/README.en.md#recommended-llm-list-local--cloud-user-perspective).
 >
-> 💡 **No Ollama yet?** Each exercise also ships a Path B Anthropic version — pick one. To enable Path A in one step: [`pip install openai && ollama pull gemma3n:e4b`](https://ollama.com).
+> 💡 **No Ollama yet?** Each exercise also ships a Path B Anthropic version — pick one. To enable Path A in one step: [`pip install openai && ollama pull gemma4:e4b`](https://ollama.com).
 
 ### Exercise 1: LLM API (hello world)
 Five-line Python script that calls an LLM and prints the response. **Defaults to local Ollama (free, offline)**; switch to Path B Anthropic when you want cloud-quality answers. Details in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_1.py</code> and run <code>python practice_1.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_1.py</code> and run <code>python practice_1.py</code>)</summary>
 
 ```python
 # Requires: pip install openai      (OpenAI-compatible SDK talks to Ollama)
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -62,7 +62,7 @@ client = OpenAI(
 )
 
 r = client.chat.completions.create(
-    model="gemma3n:e4b",   # swap to qwen2.5:3b / llama3.2:3b if preferred
+    model="gemma4:e4b",   # swap to qwen2.5:3b / llama3.2:3b if preferred
     max_tokens=100,
     messages=[{"role": "user", "content": "Introduce yourself in one sentence."}],
 )
@@ -75,7 +75,7 @@ print("usage:", r.usage)
 assert r.choices[0].finish_reason in ("stop", "length"), f"unexpected finish_reason: {r.choices[0].finish_reason}"
 assert len(text) > 0, "response should not be empty"
 assert r.usage.completion_tokens > 0, "output token count should be > 0"
-print("✅ Exercise 1 passed — local Ollama gemma3n:e4b answered for $0")
+print("✅ Exercise 1 passed — local Ollama gemma4:e4b answered for $0")
 ```
 
 **How slow?** Gemma 4B on CPU: ~5-30 s/answer; on GPU (RTX 3060+): <2 s. For speed use `gemma3:1b`; for quality use `qwen2.5:14b` / `llama3.3:8b` (needs 8 GB+ VRAM).
@@ -122,11 +122,11 @@ Run the same prompt 100 times and watch token counts vary.
 - Notice: token count for the SAME English vs Chinese sentence
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_2.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_2.py</code>)</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys, statistics
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -145,7 +145,7 @@ for label, prompt in PROMPTS.items():
     output_tokens = []
     for _ in range(N):
         r = client.chat.completions.create(
-            model="gemma3n:e4b",
+            model="gemma4:e4b",
             max_tokens=80,
             temperature=1.0,  # high temp to amplify variance
             messages=[{"role": "user", "content": prompt}],
@@ -193,11 +193,11 @@ for label, prompt in PROMPTS.items():
 **Cost-sensitive work required**: compute how long and how much it takes to run 1000 hello-world inferences. Local Ollama is $0 but has latency cost; cloud LLMs cost money but are faster. **Knowing this trade-off is how you pick the right model**.
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, measure latency)</b> (copy to <code>practice_3.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, measure latency)</b> (copy to <code>practice_3.py</code>)</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys, time
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -210,7 +210,7 @@ latencies = []
 for _ in range(5):
     t0 = time.time()
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[{"role": "user", "content": "Hi! Please introduce yourself."}],
     )
@@ -220,7 +220,7 @@ avg_latency = sum(latencies) / len(latencies)
 out_tok_avg = r.usage.completion_tokens
 tps = out_tok_avg / avg_latency if avg_latency > 0 else 0
 
-print(f"model: gemma3n:e4b (local)")
+print(f"model: gemma4:e4b (local)")
 print(f"5 latencies (sec): min={min(latencies):.2f} max={max(latencies):.2f} mean={avg_latency:.2f}")
 print(f"avg output: {out_tok_avg} tokens, ~{tps:.1f} tokens/sec")
 print(f"\n1000-run cost: $0 (local); projected duration: {avg_latency * 1000 / 60:.1f} minutes")

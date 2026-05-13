@@ -92,7 +92,7 @@ client = OpenAI(
 
 ```python
 def call_ollama(prompt: str) -> Reply | None:
-    """本機 Ollama (gemma3n:e4b 或 qwen2.5:3b)。沒裝就 return None、不 crash。"""
+    """本機 Ollama (gemma4:e4b 或 qwen2.5:3b)。沒裝就 return None、不 crash。"""
     import requests
     try:
         requests.get("http://localhost:11434/api/tags", timeout=2)
@@ -102,13 +102,13 @@ def call_ollama(prompt: str) -> Reply | None:
     client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
     t0 = time.time()
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[{"role": "user", "content": prompt}],
     )
     return Reply(
         provider="Ollama-local",
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         text=r.choices[0].message.content or "",
         in_tokens=r.usage.prompt_tokens,
         out_tokens=r.usage.completion_tokens,
@@ -116,7 +116,7 @@ def call_ollama(prompt: str) -> Reply | None:
     )
 ```
 
-把 `call_ollama` 加進 `compare()` 的 caller list、就能看 4 家對照（包括本機 free $0 model）。實測你會發現 gemma3n:e4b 在 CPU 上的 latency 通常比 cloud 慢 5-10 倍、但 cost = 0。
+把 `call_ollama` 加進 `compare()` 的 caller list、就能看 4 家對照（包括本機 free $0 model）。實測你會發現 gemma4:e4b 在 CPU 上的 latency 通常比 cloud 慢 5-10 倍、但 cost = 0。
 
 ## 延伸
 

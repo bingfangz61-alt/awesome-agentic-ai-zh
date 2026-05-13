@@ -33,7 +33,7 @@ You should already:
 
 ## 🛠 Hands-on Exercises
 
-> 🦙 **This stage defaults to Ollama gemma3n:e4b** (cost-driven; $0/run). Prompt engineering is especially instructive on small models — they are sensitive to prompt quality, so you can clearly see how much each technique (system prompts, few-shot, CoT, refinement) improves output. Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional).
+> 🦙 **This stage defaults to Ollama gemma4:e4b** (cost-driven; $0/run). Prompt engineering is especially instructive on small models — they are sensitive to prompt quality, so you can clearly see how much each technique (system prompts, few-shot, CoT, refinement) improves output. Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional).
 >
 > 💰 **Stage 2 budget estimate** (4 exercises, 3-5 runs each): **all local = $0**, **all haiku ≈ $0.20**, **all sonnet ≈ $0.60**. The few-shot classifier alone is 12 calls × 5 reps ≈ $0.30 haiku / $0.90 sonnet. Full budget: [`examples/README.en.md#recommended-llm-list`](../examples/README.en.md#recommended-llm-list-local--cloud-user-perspective).
 >
@@ -43,11 +43,11 @@ You should already:
 Same user message, three different system prompts. Watch the personality / output format change.
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_1.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_1.py</code>)</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -68,7 +68,7 @@ outputs = {}
 for label, system in SYSTEM_PROMPTS.items():
     # Ollama (OpenAI-compatible) puts system in the messages array (Anthropic uses system=)
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[
             {"role": "system", "content": system},
@@ -128,7 +128,7 @@ assert "{" in json_output and "}" in json_output
 print(f"\n✅ Exercise 1 passed (Anthropic)")
 ```
 
-**Key difference**: Anthropic uses `system=` parameter; OpenAI/Ollama puts system in messages array. Claude follows system prompts more strictly than gemma3n:e4b — the "Strict lawyer" persona will actually cite statute numbers. **Cost**: ~$0.003 / 3 personas.
+**Key difference**: Anthropic uses `system=` parameter; OpenAI/Ollama puts system in messages array. Claude follows system prompts more strictly than gemma4:e4b — the "Strict lawyer" persona will actually cite statute numbers. **Cost**: ~$0.003 / 3 personas.
 
 </details>
 
@@ -136,11 +136,11 @@ print(f"\n✅ Exercise 1 passed (Anthropic)")
 Pick a classification task. Run it 0-shot, then 3-shot. Measure accuracy difference.
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_2.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_2.py</code>)</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -175,7 +175,7 @@ def classify(text: str, *, use_few_shot: bool) -> str:
     prefix = FEW_SHOT_EXAMPLES + "\n" if use_few_shot else ""
     prompt = f"{prefix}input: {text}\noutput:"
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=10,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -232,7 +232,7 @@ def classify(text: str, *, use_few_shot: bool) -> str:
 # Rest of TEST_SET / FEW_SHOT_EXAMPLES / evaluate() stays identical to Path A
 ```
 
-**Cost**: 12 calls ≈ $0.005. Claude is usually accurate at 0-shot already, so the few-shot lift is smaller than on gemma3n:e4b — that contrast is the actual teaching point.
+**Cost**: 12 calls ≈ $0.005. Claude is usually accurate at 0-shot already, so the few-shot lift is smaller than on gemma4:e4b — that contrast is the actual teaching point.
 
 </details>
 
@@ -243,11 +243,11 @@ Pick a math word problem. Compare:
 - Plain prompt + worked example showing CoT
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_3.py</code>)</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_3.py</code>)</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys, re
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -267,7 +267,7 @@ A: Let me work through this step by step. 3 chickens × 2 legs = 6 legs. 1 perso
 
 def ask(prompt: str) -> str:
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=300,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -318,7 +318,7 @@ def ask(prompt: str) -> str:
 # Rest (QUESTION, ANSWER, COT_EXAMPLE, extract_number, 3 calls, assert) stays identical
 ```
 
-**Claude typically gets 3/3 right** including the plain-prompt baseline — that contrast with gemma3n:e4b (where CoT is essential) is the actual teaching point. **Cost**: 3 calls ≈ $0.002.
+**Claude typically gets 3/3 right** including the plain-prompt baseline — that contrast with gemma4:e4b (where CoT is essential) is the actual teaching point. **Cost**: 3 calls ≈ $0.002.
 
 </details>
 
@@ -326,11 +326,11 @@ def ask(prompt: str) -> str:
 Take a vague prompt, refine it 5 times. Track the iterations. Notice what changes improve quality.
 
 <details open>
-<summary>📋 <b>Starter code — Path A (local Ollama gemma3n:e4b, default)</b> (copy to <code>practice_4.py</code>) — this exercise has no "right answer"; the point is observing the process</summary>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_4.py</code>) — this exercise has no "right answer"; the point is observing the process</summary>
 
 ```python
 # Requires: pip install openai
-# Pre-req: ollama pull gemma3n:e4b && ollama serve
+# Pre-req: ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -351,7 +351,7 @@ PROMPTS = {
 outputs = {}
 for label, prompt in PROMPTS.items():
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -391,7 +391,7 @@ for label, prompt in PROMPTS.items():
 # Rest (length compare, banned-word assert) stays identical
 ```
 
-**Cost**: 5 calls ≈ $0.002. **Claude's v1 is already coherent** so the v5 lift is smaller; gemma3n:e4b makes the lift more dramatic.
+**Cost**: 5 calls ≈ $0.002. **Claude's v1 is already coherent** so the v5 lift is smaller; gemma4:e4b makes the lift more dramatic.
 
 </details>
 

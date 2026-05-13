@@ -32,7 +32,7 @@
 
 ## 🛠 動手練習
 
-> 🦙 **本 stage 默認用 Ollama gemma3n:e4b**（成本考量、$0/run）。Prompt engineering 對小 model 更有教學價值——小 model 對 prompt 質量敏感、能讓你看清楚 system prompt / few-shot / CoT / refinement 各自帶來多少改善。每個練習都有 Path A（Ollama、默認）+ Path B（Anthropic、選擇性）。
+> 🦙 **本 stage 默認用 Ollama gemma4:e4b**（成本考量、$0/run）。Prompt engineering 對小 model 更有教學價值——小 model 對 prompt 質量敏感、能讓你看清楚 system prompt / few-shot / CoT / refinement 各自帶來多少改善。每個練習都有 Path A（Ollama、默認）+ Path B（Anthropic、選擇性）。
 >
 > 💰 **Stage 2 預算估算**（全 4 練習各跑 3-5 次）：**全本機 = $0**、**全 haiku ≈ $0.20**、**全 sonnet ≈ $0.60**。Few-shot 分類任務的 12 calls × 5 reps ≈ $0.30 haiku / $0.90 sonnet。完整預算見 [`examples/README.md#推薦-llm-清單`](../examples/README.md#推薦-llm-清單本機--clouduser-視角)。
 >
@@ -42,11 +42,11 @@
 同樣的 user message，三個不同的 system prompt。觀察人格 / 輸出格式怎麼變。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma3n:e4b、默認）</b>（複製到 <code>practice_1.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_1.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys, json
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -68,7 +68,7 @@ outputs = {}
 for label, system in SYSTEM_PROMPTS.items():
     # Note: Ollama 把 system 放 messages 第一筆（不像 Anthropic 用 system= 參數）
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[
             {"role": "system", "content": system},
@@ -91,7 +91,7 @@ print(f"\n✅ 練習 1 通過 — 同一個問題、3 種人格 / 格式 / 語�
 print("💡 觀察：律師長、老師短、JSON 機器一定是 {...}")
 ```
 
-**預期輸出**（樣本、gemma3n:e4b 對 system prompt 遵循度 OK 但不如 Claude 嚴謹）：
+**預期輸出**（樣本、gemma4:e4b 對 system prompt 遵循度 OK 但不如 Claude 嚴謹）：
 ```
 --- [嚴肅律師] ---
 依民法第 421 條...
@@ -150,11 +150,11 @@ print(f"\n✅ 練習 1 通過（Anthropic）")
 挑一個分類任務。先用 0-shot 跑，再用 3-shot 跑。量一下準確率差多少。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma3n:e4b、默認）</b>（複製到 <code>practice_2.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_2.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -189,7 +189,7 @@ def classify(text: str, *, use_few_shot: bool) -> str:
     prefix = FEW_SHOT_EXAMPLES + "\n" if use_few_shot else ""
     prompt = f"{prefix}input: {text}\noutput:"
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=10,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -219,7 +219,7 @@ print(f"正確 {c3}/{n} = {c3/n:.0%}")
 assert c3 >= c0, f"預期 3-shot 不比 0-shot 差、實際 {c3} < {c0}（小 model 樣本小、跑幾次比較）"
 print(f"\n✅ 練習 2 通過 — 0-shot {c0}/{n}、3-shot {c3}/{n}（本機 $0）")
 print("💡 觀察：'中立' 在 0-shot 容易被誤判成正面或負面、3-shot 後改善明顯")
-print("💡 小 model（gemma3n:e4b）通常 0-shot 表現比 Claude 差更多、所以 few-shot 改善幅度更大")
+print("💡 小 model（gemma4:e4b）通常 0-shot 表現比 Claude 差更多、所以 few-shot 改善幅度更大")
 ```
 
 </details>
@@ -255,11 +255,11 @@ def classify(text: str, *, use_few_shot: bool) -> str:
 - 純 prompt + 一個展示 CoT 的範例
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma3n:e4b、默認）</b>（複製到 <code>practice_3.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_3.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys, re
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -279,7 +279,7 @@ A: 讓我一步一步算。3 隻雞 × 2 隻腳 = 6 隻腳。1 個人有 2 隻�
 
 def ask(prompt: str) -> str:
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=300,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -330,7 +330,7 @@ def ask(prompt: str) -> str:
     return msg.content[0].text
 ```
 
-**Claude 通常 3/3 全對**（包括 A 純 prompt）—— 對照 gemma3n:e4b 可能只 1-2/3 對，能看到 CoT 對小 model 的價值。
+**Claude 通常 3/3 全對**（包括 A 純 prompt）—— 對照 gemma4:e4b 可能只 1-2/3 對，能看到 CoT 對小 model 的價值。
 
 </details>
 
@@ -338,11 +338,11 @@ def ask(prompt: str) -> str:
 拿一個模糊的 prompt，refine 5 次。把每一輪記下來。觀察哪些改動會提升品質。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma3n:e4b、默認）</b>（複製到 <code>practice_4.py</code>）— 這題沒有「對錯」、重點是觀察過程</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_4.py</code>）— 這題沒有「對錯」、重點是觀察過程</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -363,7 +363,7 @@ PROMPTS = {
 outputs = {}
 for label, prompt in PROMPTS.items():
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -380,7 +380,7 @@ assert v5_len > 0, "v5 必須有輸出"
 assert not v5_has_banned, f"v5 應該避免禁忌詞、實際含: {[w for w in banned_words if w in outputs['v5 加禁忌']]}"
 print(f"\n✅ 練習 4 通過 — v5 長度 {v5_len}、無禁忌詞（本機 $0）")
 print(f"💡 觀察：v1 ({v1_len} chars) 通常比 v5 ({v5_len} chars) 「鬆」、加約束會逼 prompt 收斂")
-print("💡 用 gemma3n:e4b 跑這題特別有感——小 model 對 prompt 質量極敏感、5 輪 refine 的差距會比 Claude 更明顯")
+print("💡 用 gemma4:e4b 跑這題特別有感——小 model 對 prompt 質量極敏感、5 輪 refine 的差距會比 Claude 更明顯")
 ```
 
 </details>
@@ -402,7 +402,7 @@ text = msg.content[0].text
 
 其餘 PROMPTS / outputs / assert 邏輯完全相同。**成本**：5 次 ≈ $0.002。
 
-**Claude vs gemma3n 對 prompt 細緻度的差別**：Claude haiku 通常 v1 已能寫出 OK 段落、v5 加上約束後優化幅度較小；小 model v1 常空泛無用、v5 加禁忌後才開始能讀。
+**Claude vs gemma4 對 prompt 細緻度的差別**：Claude haiku 通常 v1 已能寫出 OK 段落、v5 加上約束後優化幅度較小；小 model v1 常空泛無用、v5 加禁忌後才開始能讀。
 
 </details>
 

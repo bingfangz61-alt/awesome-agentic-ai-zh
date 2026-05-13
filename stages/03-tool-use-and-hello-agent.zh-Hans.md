@@ -34,7 +34,7 @@
 
 ## 🛠 动手练习（不是看过就好）
 
-> 🦙 **本 stage 默认用 Ollama qwen2.5:3b**（成本考量、tool-use 支持稳定）。Stage 3 进到 tool calling / ReAct loop、`gemma3n:e4b` 不够、改用 `qwen2.5:3b`（1.9 GB、`ollama pull qwen2.5:3b` 即装）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高品质 tool-use 时用）。
+> 🦙 **本 stage 默认用 Ollama qwen2.5:3b**（成本考量、tool-use 支持稳定）。Stage 3 进到 tool calling / ReAct loop、`gemma4:e4b` 不够、改用 `qwen2.5:3b`（1.9 GB、`ollama pull qwen2.5:3b` 即装）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高品质 tool-use 时用）。
 >
 > 💰 **Stage 3 预算估算**（全 6 练习、tool use 较重）：**全本机 = $0**、**全 haiku ≈ $0.50**、**全 sonnet ≈ $1.50**。ReAct loop 练习单次 4-6 tool calls × 5 练习 × 5 reps ≈ $0.80 haiku。完整预算见 [`examples/README.zh-Hans.md#推荐-llm-清单`](../examples/README.zh-Hans.md#推荐-llm-清单本机--clouduser-视角)。
 >
@@ -49,7 +49,7 @@
 ```python
 # 需要：pip install openai
 # 前置：ollama pull qwen2.5:3b && ollama serve
-# Note: Stage 3+ 用 qwen2.5:3b（tool-use 稳定）、不是 gemma3n:e4b
+# Note: Stage 3+ 用 qwen2.5:3b（tool-use 稳定）、不是 gemma4:e4b
 import sys, json
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")

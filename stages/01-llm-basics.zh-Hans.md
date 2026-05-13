@@ -34,21 +34,21 @@
 
 ## “动手”小练习（在本地运行这些代码）
 
-> 🦙 **本 stage 默认用 Ollama**（成本考量、本机 `gemma3n:e4b` 跑得动、$0/run）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高品质时用）。完整 3 路 trade-off 见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
+> 🦙 **本 stage 默认用 Ollama**（成本考量、本机 `gemma4:e4b` 跑得动、$0/run）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高品质时用）。完整 3 路 trade-off 见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
 >
 > 💰 **Stage 1 预算估算**（全 6 练习各跑 3-5 次）：**全本机 = $0**、**全 haiku ≈ $0.30**、**全 sonnet ≈ $0.90**。完整 model 清单 + Stage 1-7 全程预算估算见 [`examples/README.zh-Hans.md#推荐-llm-清单`](../examples/README.zh-Hans.md#推荐-llm-清单本机--clouduser-视角)。
 >
-> 💡 **不装 Ollama 也能读** — 每个练习的 Path B 区块就是 Anthropic 版、选一个跑就行。先 [`pip install openai && ollama pull gemma3n:e4b`](https://ollama.com) 就装好 Path A 环境。
+> 💡 **不装 Ollama 也能读** — 每个练习的 Path B 区块就是 Anthropic 版、选一个跑就行。先 [`pip install openai && ollama pull gemma4:e4b`](https://ollama.com) 就装好 Path A 环境。
 
 ### 练习 1：LLM API（hello world）
 五行 Python 调用 LLM 并印出回应。**默认用 Ollama 本机跑（免费、offline）**；想看 cloud 答案品质改 Path B Anthropic。详见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
 
 <details open>
-<summary>📋 <b>起手码 — Path A（本机 Ollama gemma3n:e4b、默认）</b>（复制到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
+<summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
 
 ```python
 # 需要：pip install openai      (用 OpenAI 兼容 SDK 跟 Ollama 沟通)
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -61,7 +61,7 @@ client = OpenAI(
 )
 
 r = client.chat.completions.create(
-    model="gemma3n:e4b",   # 换成 qwen2.5:3b / llama3.2:3b 也可
+    model="gemma4:e4b",   # 换成 qwen2.5:3b / llama3.2:3b 也可
     max_tokens=100,
     messages=[{"role": "user", "content": "用一句话自我介绍。"}],
 )
@@ -74,7 +74,7 @@ print("usage:", r.usage)
 assert r.choices[0].finish_reason in ("stop", "length"), f"非预期 finish_reason: {r.choices[0].finish_reason}"
 assert len(text) > 0, "回应不应为空"
 assert r.usage.completion_tokens > 0, "output token 应 > 0"
-print("✅ 练习 1 通过 — Ollama gemma3n:e4b 已能本机回应、$0/次")
+print("✅ 练习 1 通过 — Ollama gemma4:e4b 已能本机回应、$0/次")
 ```
 
 **慢吗？** Gemma 4B 在 CPU 上约 5-30s/答案、有 GPU（RTX 3060+）<2s。要更快用 `gemma3:1b`、要更聪明改 `qwen2.5:14b` / `llama3.3:8b`（需 8GB+ VRAM）。
@@ -121,11 +121,11 @@ print("✅ 练习 1 通过 — 你已成功打通 Anthropic API")
 - 注意：同一句话的英文 vs 中文 token 数差异
 
 <details open>
-<summary>📋 <b>起手码 — Path A（本机 Ollama gemma3n:e4b、默认）</b>（复制到 <code>practice_2.py</code>）</summary>
+<summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_2.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys, statistics
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -144,7 +144,7 @@ for label, prompt in PROMPTS.items():
     output_tokens = []
     for _ in range(N):
         r = client.chat.completions.create(
-            model="gemma3n:e4b",
+            model="gemma4:e4b",
             max_tokens=80,
             temperature=1.0,
             messages=[{"role": "user", "content": prompt}],
@@ -192,11 +192,11 @@ for label, prompt in PROMPTS.items():
 **Cost-sensitive 工作**必修：算出你的 hello-world prompt 跑 1000 次在不同 model 上的成本。Ollama 本机是 $0 但有 latency 成本；Cloud LLM 有 $ 成本但快。**会算这两个 trade-off 才能挑对 model**。
 
 <details open>
-<summary>📋 <b>起手码 — Path A（本机 Ollama gemma3n:e4b、量 latency）</b>（复制到 <code>practice_3.py</code>）</summary>
+<summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、量 latency）</b>（复制到 <code>practice_3.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
-# 前置：ollama pull gemma3n:e4b && ollama serve
+# 前置：ollama pull gemma4:e4b && ollama serve
 import sys, time
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -209,7 +209,7 @@ latencies = []
 for _ in range(5):
     t0 = time.time()
     r = client.chat.completions.create(
-        model="gemma3n:e4b",
+        model="gemma4:e4b",
         max_tokens=200,
         messages=[{"role": "user", "content": "你好！自我介绍一下。"}],
     )
@@ -219,7 +219,7 @@ avg_latency = sum(latencies) / len(latencies)
 out_tok_avg = r.usage.completion_tokens
 tps = out_tok_avg / avg_latency if avg_latency > 0 else 0
 
-print(f"model: gemma3n:e4b (本机)")
+print(f"model: gemma4:e4b (本机)")
 print(f"5 次 latency (sec): min={min(latencies):.2f} max={max(latencies):.2f} mean={avg_latency:.2f}")
 print(f"avg output: {out_tok_avg} tokens、约 {tps:.1f} tokens/sec")
 print(f"\n1000 次成本: $0 (本机)、预计时长: {avg_latency * 1000 / 60:.1f} 分钟")

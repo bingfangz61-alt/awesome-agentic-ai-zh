@@ -35,7 +35,7 @@ You should already:
 
 ## 🛠 Hands-on Exercises (5 to do)
 
-> 🦙 **This stage defaults to Ollama qwen2.5:3b** (cost-driven; reliable tool-use support). Once you enter Stage 3 — tool calling and the ReAct loop — `gemma3n:e4b` no longer suffices; switch to `qwen2.5:3b` (1.9 GB; install with `ollama pull qwen2.5:3b`). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — when you want to see cloud-quality tool use).
+> 🦙 **This stage defaults to Ollama qwen2.5:3b** (cost-driven; reliable tool-use support). Once you enter Stage 3 — tool calling and the ReAct loop — `gemma4:e4b` no longer suffices; switch to `qwen2.5:3b` (1.9 GB; install with `ollama pull qwen2.5:3b`). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — when you want to see cloud-quality tool use).
 >
 > 💰 **Stage 3 budget estimate** (6 exercises, tool-use heavy): **all local = $0**, **all haiku ≈ $0.50**, **all sonnet ≈ $1.50**. A typical ReAct loop is 4-6 tool calls × 5 exercises × 5 reps ≈ $0.80 haiku. Full budget: [`examples/README.en.md#recommended-llm-list`](../examples/README.en.md#recommended-llm-list-local--cloud-user-perspective).
 >
@@ -50,7 +50,7 @@ Give Claude one tool (a fake weather API) and one question ("Is it raining in Ta
 ```python
 # Requires: pip install openai
 # Pre-req: ollama pull qwen2.5:3b && ollama serve
-# Note: Stage 3+ uses qwen2.5:3b (stable tool-use support), not gemma3n:e4b
+# Note: Stage 3+ uses qwen2.5:3b (stable tool-use support), not gemma4:e4b
 import sys, json
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")

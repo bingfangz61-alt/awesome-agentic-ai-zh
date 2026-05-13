@@ -67,7 +67,7 @@ if hasattr(sys.stdout, "reconfigure"):
 ### Path A（**默認、推薦**）— Ollama 本機
 - 預設 `starter.py` / 第一個 inline `<details>` 用本機 LLM
 - 需 [Ollama](https://ollama.com)、按 stage pull 對應 model：
-  - **Stage 1 + 2**（純 chat / prompt eng）：`ollama pull gemma3n:e4b`（~7.5 GB、多模態、CPU 跑得動）
+  - **Stage 1 + 2**（純 chat / prompt eng）：`ollama pull gemma4:e4b`（~7.5 GB、多模態、CPU 跑得動）
   - **Stage 3+**（tool use / agent）：`ollama pull qwen2.5:3b`（1.9 GB、tool-use 支援穩定）
 - 全程 $0、offline、隱私敏感資料 OK
 - SDK 用 `openai` package（OpenAI-compatible API）、`base_url="http://localhost:11434/v1"`
@@ -106,12 +106,12 @@ if hasattr(sys.stdout, "reconfigure"):
 
 | Model | 下載大小 | 建議 RAM | 對應 Stage | Tool-use | 速度（CPU/GPU） | 主用途 |
 |---|---|---|---|---|---|---|
-| **`gemma3n:e4b`** ⭐ | 7.5 GB | 8 GB | 1+2 | 基本 | 慢 / 中 | Stage 1-2 純 chat / prompt eng（默認）|
+| **`gemma4:e4b`** ⭐ | 7.5 GB | 8 GB | 1+2 | 基本 | 慢 / 中 | Stage 1-2 純 chat / prompt eng（默認）|
 | **`qwen2.5:3b`** ⭐ | 1.9 GB | 4 GB | 3+ | **穩定** | 中 / 快 | Stage 3+ tool use / agent（默認）|
 | `llama3.2:3b` | 2.0 GB | 4 GB | 3+ | 穩定 | 中 / 快 | qwen2.5:3b 的替代 |
 | `mistral-nemo:12b` | 7.1 GB | 16 GB | 3+ | 強 | 慢 / 中 | 想看更接近 cloud 品質 |
 | `qwen2.5:14b` | 9.0 GB | 16 GB | 進階 | 強 | 慢 / 中 | 大 model 對照（需 GPU 偏好）|
-| `gemma3n:e2b` | 4.0 GB | 4 GB | 1+2 | 基本 | 中 / 快 | 4GB RAM 機器替代 |
+| `gemma4:e2b` | 4.0 GB | 4 GB | 1+2 | 基本 | 中 / 快 | 4GB RAM 機器替代 |
 
 安裝：`ollama pull <model>` + `ollama serve`。詳細硬體配置看 [resources/cli-agents-guide.md](../resources/cli-agents-guide.md)。
 
@@ -145,7 +145,7 @@ if hasattr(sys.stdout, "reconfigure"):
 # 從這個（Path A 默認）：
 from openai import OpenAI
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-r = client.chat.completions.create(model="gemma3n:e4b", ...)
+r = client.chat.completions.create(model="gemma4:e4b", ...)
 
 # 換成這個（Path B、若有 ANTHROPIC_API_KEY）：
 import anthropic
