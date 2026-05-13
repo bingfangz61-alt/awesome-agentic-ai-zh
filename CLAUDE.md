@@ -77,7 +77,8 @@ If unsure, ask the user to run `ollama list` and verify.
 | Stage 1 folder `05-error-handling` | ✅ Phase 3 done (2026-05-12) — openai SDK exceptions + same retry wrapper, trilingual READMEs |
 | Stage 3 doc inline simplified examples (練習 2-6) | ✅ Done (2026-05-12) — 5 new `<details>` blocks added inline (Path A 8-15 line cores), trilingual mirror, zh-Hans Trad-char drift fixed at lines 44/47/77/110/152 |
 | `examples/stage-5/tool-calling-tutor/` skill | ✅ Done (2026-05-12) — installable Claude Code skill (frontmatter + 5-step body), 3 references (debug-flowchart / schema-evolution / sdk-diff), evals.json with 5 cases, trilingual READMEs + translations. Dual purpose: learner-aid + Stage 5 §5.3 meta-example. Cross-referenced from stages/03 + stages/05 |
-| Stage 4/5/6/7 + Track A (38 exercises) | ⚪ Pending T3+ — full new write, Ollama-default by design |
+| Stage 4 + 6 + 7 (15 Python exercises) | 🟡 Written but unverified — committed on branch `t3-stage-4-6-7-unverified`, NOT on main. Frameworks (LangGraph / CrewAI / Smolagents / Pydantic AI / chromadb / sentence-transformers / fastapi) not pip-installed yet; API drift risk especially for Pydantic AI (`output_type` rename), Smolagents model classes, Chroma EphemeralClient. Verification roadmap in [`docs/TESTING_PLAN.md`](docs/TESTING_PLAN.md). Estimated 2-3h to verify all 15. |
+| Stage 5 (11 sub-exercises) + Track A1-A3 (12 CLI exercises) | ⚪ Pending — different shape (bash / MCP / markdown / CLAUDE.md authoring, not OpenAI SDK Python). Framing decisions deferred — see [`docs/TESTING_PLAN.md`](docs/TESTING_PLAN.md) §"Stage 5 + Track A status" |
 | `examples/README` LLM list + budget table | ✅ Done (3 langs) |
 | Per-stage budget callouts | ✅ Done for Stage 1+2+3 (3 langs each) |
 

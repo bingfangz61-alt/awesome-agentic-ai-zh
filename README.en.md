@@ -155,6 +155,8 @@ The main path has 4 parts:
 - **Part 3 (Stage 5): Claude Code Ecosystem** — MCP / Skills / Plugins, the heart of the path
 - **Part 4 (Stages 6-7): Advanced Integration** — memory / RAG / multi-agent collaboration
 
+> 🔭 **Three layers of concept evolution**: **prompt engineering** (Stage 2 — how to write a single prompt) → **context engineering** (Stage 3 onward — how to dynamically assemble system prompt + memory + retrieved chunks + tool schema) → **harness engineering** (Stage 7 — agent loop / eval / observability / deploy as a complete production system). Three terms, three phases; you don't need to look elsewhere. See [`stages/02-prompt-engineering.en.md`](stages/02-prompt-engineering.en.md) §"Beyond prompts: context engineering" and [`stages/07-multi-agent-production.en.md`](stages/07-multi-agent-production.en.md) Required Reading §5+6.
+
 After the main path (14-19 weeks), pick a branch.
 
 The most important advice: **don't skip the hands-on exercises**. Each stage's exercises are "you can't learn this without doing it" — skim past them and you'll get stuck later.
@@ -170,6 +172,7 @@ The full related-resources block (term definitions + daily-tool MCP/Skill highli
 Common quick links:
 
 - 🚀 **Never written code, or first time with AI agents?** → [`resources/setup-guide.en.md`](resources/setup-guide.en.md) (30-45 minutes from zero)
+- 🆘 **Stuck on tool calling?** (LLM won't call, schema is broken, ReAct loop won't stop) → [`examples/stage-5/tool-calling-tutor/`](examples/stage-5/tool-calling-tutor/) — an installable Claude Code skill: 4-symptom diagnostic + 5-step schema fix. Dual purpose: learner aid + Stage 5 §5.3 SKILL.md authoring exemplar
 - 📖 **Don't know a term?** (LLM, agent, RAG, token, MCP, Skill, vector DB, …) → [`resources/glossary.en.md`](resources/glossary.en.md) — 30+ common terms, 30–80-word definition each + which stage covers it
 - 🗺️ **Why does one agent live in a terminal, another in Telegram, another on a Jetson board?** → [`resources/agent-paradigms.en.md`](resources/agent-paradigms.en.md) — 5 agent paradigms as a mental model (concrete examples for Hermes Agent + OpenClaw)
 - 🔑 **What MCP / Skills / Plugins mean** → [RESOURCES.en.md §three core terms](RESOURCES.en.md#three-core-terms-mcp--skills--plugins)

@@ -134,10 +134,12 @@ cd awesome-agentic-ai-zh
 
 主干分 4 部分：
 
-- **Part 1（Stage 0-2）：基础与 LLM 入门** — Python / git / API、什么 LLLM、怎么设计 prompt
+- **Part 1（Stage 0-2）：基础与 LLM 入门** — Python / git / API、什么是 LLM、怎么设计 prompt
 - **Part 2（Stage 3-4）：构建你的 Agent** — 从 tool use 进化到 agent，学主流 framework
 - **Part 3（Stage 5）：Claude Code 生态** — MCP / Skills / Plugins，这是整条路线的核心
 - **Part 4（Stage 6-7）：进阶集成** — memory / RAG / multi-agent 协作
+
+> 🔭 **三层概念进化**：**prompt engineering**（Stage 2、单一 prompt 怎么写）→ **context engineering**（Stage 3 之后、怎么动态组 system prompt + memory + retrieved chunks + tool schema）→ **harness engineering**（Stage 7、agent loop / eval / observability / deploy 整套包成 production system）。3 个术语对应 3 个 phase、不必另外找资源。详见 [`stages/02-prompt-engineering.zh-Hans.md`](stages/02-prompt-engineering.zh-Hans.md) §进阶：context engineering 跟 [`stages/07-multi-agent-production.zh-Hans.md`](stages/07-multi-agent-production.zh-Hans.md) 必修阅读 §5+6。
 
 走完主干（14-19 周）后，依你的身份挑一条延伸路线继续走。
 
@@ -152,6 +154,7 @@ cd awesome-agentic-ai-zh
 常用入口：
 
 - 🚀 **完全没写过 code、第一次接触 AI agent？** → [`resources/setup-guide.zh-Hans.md`](resources/setup-guide.zh-Hans.md)（30-45 分钟从零装好）
+- 🆘 **卡在 tool calling？**（LLM 不调用、schema 写不好、ReAct loop 跑不停）→ [`examples/stage-5/tool-calling-tutor/`](examples/stage-5/tool-calling-tutor/) — 可装进 Claude Code 的 skill、自动 4-symptom diagnostic + 5-step schema 修法。双重用途：学习者自用 + Stage 5 §5.3 SKILL.md 写法样板
 - 🗺️ **想搞懂为什么有的 agent 在 terminal、有的在 Telegram、有的在 Jetson 板子？** → [`resources/agent-paradigms.zh-Hans.md`](resources/agent-paradigms.zh-Hans.md) — Agent 5 种型态 mental model（含 Hermes Agent + OpenClaw 具体例子）
 
 ### 三个核心用语：MCP / Skills / Plugins
