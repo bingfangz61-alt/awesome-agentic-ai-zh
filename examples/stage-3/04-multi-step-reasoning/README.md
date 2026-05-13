@@ -25,6 +25,6 @@ python test.py
 
 ## 🦙 Path B — 本機 Ollama（qwen2.5:3b）
 
-對應 Ollama 版 pattern 完全照 [`../03-react-from-scratch/starter_ollama.py`](../03-react-from-scratch/starter_ollama.py) — 同樣 ReAct loop、同樣 schema wrap（加一層 `{"type": "function", "function": {...}}`）、同樣用 `r.choices[0].message.tool_calls` 抓 call。tools 換成 `lookup_population / divide / to_percentage / round_int` 即可。
+對應 Ollama 版 pattern 完全照 [`../03-react-from-scratch/starter.py`](../03-react-from-scratch/starter.py) — 同樣 ReAct loop、同樣 schema wrap（加一層 `{"type": "function", "function": {...}}`）、同樣用 `r.choices[0].message.tool_calls` 抓 call。tools 換成 `lookup_population / divide / to_percentage / round_int` 即可。
 
 **注意**：4 步推理 task 對小 model 是挑戰。qwen2.5:3b 可能在中間漏掉一步（譬如忘了乘 100 轉百分比）；Claude haiku 比較穩。**這恰好是 Stage 3 練習 4 的教學重點**——拿來對照觀察「同樣 ReAct loop、不同 model 在哪一步開始崩」。

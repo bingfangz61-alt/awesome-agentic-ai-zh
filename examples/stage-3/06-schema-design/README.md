@@ -26,7 +26,7 @@ schema 是 prompt 的一部分，而且是模型做工具選擇時最依賴的 p
 
 ## 🦙 Path B — 本機 Ollama（qwen2.5:3b）
 
-兩個 starter（`starter_bad.py` + `starter_good.py`）的對照邏輯**完全跨 backend**——bad schema 一樣會讓 qwen2.5:3b 挑錯 tool。Ollama 轉換照 [`../03-react-from-scratch/starter_ollama.py`](../03-react-from-scratch/starter_ollama.py) pattern：
+兩個 starter（`starter_bad.py` + `starter_good.py`）的對照邏輯**完全跨 backend**——bad schema 一樣會讓 qwen2.5:3b 挑錯 tool。Ollama 轉換照 [`../03-react-from-scratch/starter.py`](../03-react-from-scratch/starter.py) pattern：
 
 - TOOLS_SPEC 包一層 `{"type": "function", "function": {name, description, parameters}}`
 - response 從 `r.choices[0].message.tool_calls[0].function.name` 抓 tool 選擇

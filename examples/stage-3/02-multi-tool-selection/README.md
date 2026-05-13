@@ -25,7 +25,7 @@ python test.py
 
 ## 🦙 Path B — 本機 Ollama（qwen2.5:3b）
 
-完整 pattern 看 [`../03-react-from-scratch/starter_ollama.py`](../03-react-from-scratch/starter_ollama.py)。三個 SDK 差異要點：
+完整 pattern 看 [`../03-react-from-scratch/starter.py`](../03-react-from-scratch/starter.py)。三個 SDK 差異要點：
 
 1. **Schema wrap**：Anthropic 直接 `tools=[{name, description, input_schema}, ...]`；OpenAI-compat（Ollama）要包一層 `tools=[{"type": "function", "function": {name, description, parameters}}, ...]`
 2. **Response 抓 tool call**：Anthropic 從 `resp.content[i].type == "tool_use"`；OpenAI-compat 從 `resp.choices[0].message.tool_calls[i].function.name`
