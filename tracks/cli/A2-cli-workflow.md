@@ -68,6 +68,13 @@ description: Review staged changes for security + style
 - 第二次：你先拆成 5 個 sub-task，逐一給 CLI → 觀察結果差別
 - 學到：CLI 跟你一樣，太大的任務要拆；給太小的任務又會 over-orchestrate
 
+> ⭐ **進階：Claude Code 3 種原生 multi-agent 機制**（Track A 用 CLI 高頻時值得學）：CLI-7 教的「手動拆 sub-task」其實 Claude Code 有 3 個原生工具可以自動化：
+> 1. **Subagent** — 寫 `.claude/agents/<name>.md`、Claude 自動 delegate 大 context 任務（讀整個 codebase / 並行 research）到隔離 session、回主 session 摘要、省 context window。**完整講解 + 動手練習見 [Stage 5.5](../../stages/05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制)**
+> 2. **Agent team** — 多 sessions 之間互相溝通（譬如 reviewer agent ↔ implementer agent 來回交流）。詳見 [Anthropic 官方 — agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams)
+> 3. **Background agent** — 多 session 背景跑、單一介面監控（一次 spawn 3 個 PR review 同時跑）。詳見 [Anthropic 官方 — agent view](https://docs.claude.com/en/docs/claude-code/agent-view)
+>
+> 這 3 個機制都不需要 framework、不寫 Python orchestration code、直接 Claude Code 內建。**Subagent 是進入點**——先把 Stage 5.5 跑完再評估要不要碰另外兩個。
+
 ### 動手練習 CLI-8：Portable prompt
 寫一個 prompt 給 Claude Code 跑成功了。**換到 Codex / OpenCode / Gemini CLI 跑同一個 prompt**——什麼地方需要改？通常會發現：
 - file path convention 不同（cwd vs absolute）

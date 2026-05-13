@@ -504,6 +504,12 @@ pip install mcp
 
 > 💡 **Subagent 雖然強、不要無腦用**：每個 subagent invoke 都是一個新的 Claude inference call、有 token cost + latency。**簡單 query 用 skill（行為 prompt）即可、不必 spawn subagent**。Subagent 的甜蜜點是：(1) 任務 context 大、會吃光主 session 的 window（譬如 read 整個 codebase），(2) 任務跟主 session 邏輯獨立、隔離 context 有助 main flow，(3) 多 subagent 平行（research / write / critic）能省 wall-clock 時間。
 
+> 🔗 **相關進階機制**（Claude Code 官方、本 stage 不深入講）：
+> - **[Agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams)** — 多 sessions 之間互相溝通（reviewer agent ↔ implementer agent 來回交流）
+> - **[Background agents / agent view](https://docs.claude.com/en/docs/claude-code/agent-view)** — 多 session 背景跑、單一介面監控（一次 spawn N 個 PR review 同時跑）
+>
+> Subagent 是這兩個的進入點——本節學完之後想擴展再看官方文件。
+
 ---
 
 ## 5.6 — Harness Internals（agent runtime 的內部結構）⭐ Track B 必看

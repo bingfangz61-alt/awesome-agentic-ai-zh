@@ -37,14 +37,14 @@
 
 ### 兩個維度先分清楚（workflow vs agent / single vs multi）
 
-要看懂 multi-agent framework 之前、先把兩個正交維度釐清——Anthropic「Building Effective Agents」最重要的洞察是**先區分這兩個維度、再談 single/multi**：
+要看懂 multi-agent framework 之前、有一個有用的釐清方式——把 **workflow vs agent** 跟 **single vs multi LLM** 當成兩個正交維度。Anthropic「Building Effective Agents」原文的核心區分是 workflow（固定 code path）vs agent（LLM 自主決定 next step）；我們把它跟 single/multi 疊起來看 4 個象限：
 
 |  | **Workflow**<br>（你寫好的 code path） | **Agent**<br>（LLM 動態決定下一步） |
 |---|---|---|
 | **Single LLM** | 線性 pipeline、無分支判斷 | 一個 LLM + ReAct loop、自己 plan + adapt<br>（**Stage 3 寫的就是這個**） |
 | **Multi LLM** | 預設 routing（譬如「銷售問題 → agent A、技術問題 → agent B」） | 2+ agent 互相 handoff、orchestrator 動態分配<br>（**本 stage 主題**） |
 
-**為什麼這個區分比「single vs multi」更重要**：production 場景大多落在「single agent workflow」象限（Anthropic：**90% 用 single agent + tool use 就夠**）。**真正需要 multi-agent framework 的是右下角象限**——LLM 自主性高 + 多角色協作。
+**為什麼這個區分有用**：production 場景大多落在「single agent workflow」+「single agent」象限——多數任務根本不需要 multi-agent。**真正需要 multi-agent framework 的是右下角象限**——LLM 自主性高 + 多角色協作。但實作上四個象限的邊界有時模糊（LangGraph 的 conditional edge 可以同時看成 workflow routing 跟 agent 動態決策）、不要把這個 matrix 當互斥分類。
 
 → 本 stage 後續討論都假設你已經知道：**multi-agent framework 解決的是右下角象限的 orchestration boilerplate**。
 
@@ -66,10 +66,10 @@
 
 | 信號 | 描述 | 對應 pattern |
 |---|---|---|
-| **1. 任務天然分解** | debate / peer review / planner-executor — 不同視角看同一個問題 | Debate、Planner-Executor |
+| **1. 任務天然分解** | 大任務有清楚的子步驟、step-by-step 完成 | Sequential / Planner-Executor |
 | **2. Token explosion** | single agent prompt 塞不下所有 tool description / context | Supervisor-Worker（分流給 sub-agent）|
 | **3. 角色衝突** | 同一個 LLM 既當 writer 又當 critic 會 self-justify | Debate / Peer review |
-| **4. 平行加速** | 3 個 research 子任務同時跑、wall-clock 1/3 | Swarm / Map-Reduce 變種 |
+| **4. 平行加速** | 3 個 research 子任務同時跑、wall-clock 1/3 | Parallel / Map-Reduce 變種 |
 
 **4 個信號都不在？** → single agent + 好 prompt + tool use 就夠。**硬上 multi-agent 會付 3-10x token、debug 痛苦、其實不會比較準**。
 
@@ -81,11 +81,13 @@
 |---|---|---|---|---|
 | **1. Routing / Handoff** | ⭐ | agent 之間 1:1 handoff、無中央 orchestrator | customer support routing、context switch | [OpenAI Swarm](https://github.com/openai/swarm)、[OpenAI Agents SDK](https://github.com/openai/openai-agents-python) |
 | **2. Sequential**<br>（Planner → Executor） | ⭐⭐ | planner 規劃多步驟 + executor 執行 | 多步驟自動化、code generation | LangGraph、[ChatDev paper](https://arxiv.org/abs/2307.07924) |
-| **3. Parallel**<br>（平行加速） | ⭐⭐ | N 個 agent 同時跑、結果 aggregate | research / map-reduce 任務、wall-clock 1/N | LangGraph parallel branches、CrewAI parallel tasks |
+| **3. Parallel**<br>（平行加速） | ⭐⭐⭐ | N 個 agent 同時跑、結果 aggregate | research / map-reduce 任務、wall-clock 1/N | LangGraph parallel branches、CrewAI parallel tasks。**坑點**：async coordination + partial failure + state merge 一致性 |
 | **4. Supervisor-Worker**<br>（hub-spoke） | ⭐⭐⭐ | 1 主 + N worker、主分配 + 整合 | 任務拆解、報告整合 | LangGraph、AutoGen GroupChat |
 | **5. Debate / Society**<br>（多視角收斂） | ⭐⭐⭐⭐ | 2+ agent 互相 critique 或角色扮演 | research、judgment task、social simulation | AutoGen GroupChat、[CAMEL paper](https://arxiv.org/abs/2303.17760)、[Generative Agents paper](https://arxiv.org/abs/2304.03442) |
 
 ### Claude Code subagent — 另一條 orchestration 路線
+
+> **這節跟上面的 5 個 pattern 不同層**：上面 5 個 pattern 是 framework / 自己 code 都能實作的設計選擇；本節介紹的 **Claude Code subagent 是另一個 execution model**（runtime 內建的 orchestration、不寫 framework code）。讀完 5 個 pattern 後、本節讓你知道「multi-agent 還有第二條路」。
 
 **Multi-agent 不只有 framework 這條路**。Anthropic 自家的 Claude Code 提供另一個 abstraction 層：[subagent](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制) — 寫一個 `.claude/agents/<name>.md` 檔就是一個 subagent，**不需要 framework**。
 
@@ -93,10 +95,10 @@
 
 | 維度 | Framework 路線（本 stage 主題） | Claude Code subagent |
 |---|---|---|
-| **跑哪** | 跨 LLM provider 都可以 | 只在 Claude Code runtime 內 |
+| **跑哪** | 多數 framework 跨 LLM provider（LangGraph / CrewAI / AutoGen）；OpenAI Agents SDK 跟 Strands Agents 例外、綁定自家生態 | 只在 Claude Code runtime 內 |
 | **怎麼寫** | Python code + `langgraph.graph()` / `Crew(agents=...)` 之類 | `.claude/agents/X.md` markdown + frontmatter |
 | **適合誰** | 跨 LLM provider production system | 已 commit Claude Code 的工程團隊 |
-| **核心 benefit** | 完整 orchestration 控制 + 跨 provider 可攜 | context preservation + 角色 specialization + tool constraint + cost control（routing 到便宜 model）|
+| **核心 benefit** | **checkpointing + state persistence**（LangGraph）、**audit trail / time-travel debug**（production 稽核必備）、orchestration 控制、跨 provider 可攜 | context preservation + 角色 specialization + tool constraint + cost control（route 到便宜 model）|
 
 **何時選 subagent 而非 framework**：
 - 你已經在用 Claude Code 跑日常工作
@@ -104,7 +106,7 @@
 - 多 subagent 平行（research / write / critic）省 wall-clock 時間
 - 不需要跨 provider migration
 
-詳細寫法 + 動手練習見 [Stage 5.5](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制)。
+詳細寫法 + 動手練習見 [Stage 5.5](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制)（**建議先完成 Stage 5.1 Claude Code 基礎再回來看 5.5**——subagent 是 Claude Code 生態的進階功能、需要先熟悉基礎用法）。
 
 ### Framework 的工作
 
@@ -113,7 +115,7 @@ Framework 把上面這 5 個 pattern 的 orchestration boilerplate（roles、han
 ### 📚 想系統化深入？
 
 **🇺🇸 學術 paper（影響後續所有 framework 設計）**：
-1. [**Anthropic — "Building Effective Agents"**](https://www.anthropic.com/research/building-effective-agents) ⭐⭐⭐ — 何時用 workflow 何時用 agent、5 個經典 orchestration pattern。**英文圈 multi-agent 設計入門必讀**
+1. [**Anthropic — "Building Effective Agents"**](https://www.anthropic.com/engineering/building-effective-agents) ⭐⭐⭐ — 何時用 workflow 何時用 agent、5 個經典 orchestration pattern。**英文圈 multi-agent 設計入門必讀**
 2. [**AutoGen paper (Wu et al. 2023)**](https://arxiv.org/abs/2308.08155) — Microsoft 多 agent 對話框架原 paper
 3. [**CAMEL paper (Li et al. 2023)**](https://arxiv.org/abs/2303.17760) — multi-agent role-play 開山之作
 4. [**ChatDev paper (Qian et al. 2023)**](https://arxiv.org/abs/2307.07924) — multi-agent software dev、planner-executor canonical
