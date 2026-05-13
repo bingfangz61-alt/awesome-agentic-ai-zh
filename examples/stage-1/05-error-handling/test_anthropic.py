@@ -1,17 +1,16 @@
 """
-Stage 1 練習 5 自我驗證 — Path A（Ollama starter.py）。
+Stage 1 練習 5 自我驗證 — Path B（Anthropic starter_anthropic.py）。
 
 跑法：
-    python test.py
+    python test_anthropic.py
 
 驗證內容：
     - with_retry 對 RETRIABLE 錯誤會 retry
     - with_retry 對 non-retriable（譬如 AuthenticationError）直接 raise、不浪費 retry
     - 超過 max_attempts 後 raise 最後一個 exception
     - sleep 確實被叫（透過 mock sleep_fn）
-    - exponential backoff 真的指數增長
 
-Anthropic 版本見 test_anthropic.py。
+Ollama 版本見 test.py（用 openai SDK 的 exception class）。
 """
 
 from __future__ import annotations
@@ -22,18 +21,18 @@ from unittest.mock import MagicMock
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-from openai import APIConnectionError, AuthenticationError, RateLimitError
+from anthropic import APIConnectionError, AuthenticationError, RateLimitError
 
-from starter import with_retry
+from starter_anthropic import with_retry
 
 
 def _make_connection_error():
-    """openai.APIConnectionError 需要 request 參數、用 MagicMock 假裝。"""
+    """anthropic.APIConnectionError 需要 request 參數、用 MagicMock 假裝。"""
     return APIConnectionError(request=MagicMock())
 
 
 def _make_rate_limit_error():
-    """openai.RateLimitError 需要 message + response + body。"""
+    """anthropic.RateLimitError 需要 response 參數。"""
     return RateLimitError(message="rate limited", response=MagicMock(status_code=429), body=None)
 
 
@@ -123,4 +122,4 @@ if __name__ == "__main__":
     test_raise_after_max_attempts()
     test_no_retry_on_auth_error()
     test_exponential_backoff_delays()
-    print("\n🎉 全部通過 — Ollama path retry wrapper 邏輯正確（RETRIABLE 才 retry、exponential backoff 有效）")
+    print("\n🎉 全部通過 — retry wrapper 邏輯正確（RETRIABLE 才 retry、exponential backoff 有效）")
