@@ -467,6 +467,51 @@ pip install mcp
 
 → 本節剩下內容都聚焦在 **Claude Code subagent**。其他平台的進展請追蹤各家 changelog（Codex / Gemini / Cursor 都還在 single-agent + MCP 階段、可能 2026 後段才會跟進）。
 
+### 怎麼派遣 Claude Code 的 3 種 multi-agent 機制（具體 syntax）
+
+| 機制 | 何時用 | 派遣方式 |
+|---|---|---|
+| **Subagent**<br>（穩定版） | delegate 大 context 任務（讀整個 codebase / 整理 logs）給 isolated context worker、結果回主 session | (1) 寫 `.claude/agents/<name>.md`（frontmatter `name` + `description` + `tools` + 可選 `model`）<br>(2) Claude 看 description **自動 delegate**；或 `/agents` 手動列表 |
+| **Agent team**<br>⚠️ experimental | 多 worker 之間要**互相溝通**、challenge 彼此（debate / peer review / 多角度探索） | (1) 啟用：`settings.json` 加 `"env": {"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"}`（需 v2.1.32+）<br>(2) 自然語言派遣：`Create an agent team to explore X from different angles: one on UX, one on architecture, one playing devil's advocate`<br>(3) 跟 teammate 對話：`Shift+Down` 切換、直接輸入訊息<br>(4) 收尾：`Clean up the team` |
+| **Background agent**<br>（research preview） | 多個**獨立任務**各自背景跑、單一介面監控（同時 3 個 PR review） | (1) shell 派遣：`claude --bg "investigate the flaky test"`（需 v2.1.139+）<br>(2) 從現有 session 背景化：`/bg`<br>(3) 監控：`claude agents`（agent view 介面）<br>(4) 操作：`claude attach <id>` / `claude logs <id>` / `claude stop <id>` |
+
+**3 個機制怎麼選**：
+
+- 任務獨立、worker 不互動、結果回主 session 即可 → **Subagent**（最簡單、token 最省）
+- Worker 需要互相溝通 / debate / 共享 task list → **Agent team**（experimental、token 3-5x、適合 research / debug 競爭假設）
+- 多個獨立任務各自跑、想用 1 個介面監控全部 → **Background agent**（research preview、適合長時間任務並行）
+
+<details>
+<summary>👉 具體 subagent 檔案範例（最簡單入門）</summary>
+
+`.claude/agents/code-reviewer.md`：
+
+```markdown
+---
+name: code-reviewer
+description: Review staged git changes for security issues, style violations, and missing tests. Use when user asks "review my changes" or runs /review.
+tools:
+  - Read
+  - Grep
+  - Bash
+model: claude-haiku-4-5  # 可選、想 route 到便宜 model 省成本
+---
+
+You are a senior code reviewer. When invoked:
+1. Run `git diff --cached` to get staged changes
+2. Check for: hard-coded secrets, SQL injection patterns, missing error handling, missing tests
+3. Output: PASS / list of specific issues with file:line references
+```
+
+主 session 之後輸入「review my changes」，Claude 看到 description 匹配、自動透過 Task tool spawn 這個 subagent 跑、回主 session 一段摘要。
+
+</details>
+
+> 📚 **官方完整文件**：
+> - [Subagent spec](https://docs.claude.com/en/docs/claude-code/sub-agents)（frontmatter 欄位、project vs user scope、Task tool 介面）
+> - [Agent team 完整指南](https://docs.claude.com/en/docs/claude-code/agent-teams)（display modes、task list、subagent-as-teammate 進階）
+> - [Agent view / background](https://docs.claude.com/en/docs/claude-code/agent-view)（v2.1.139+、quick start + dispatch 流程）
+
 ### 學習目標
 
 - 講得出 subagent 跟 skill / MCP server 的差別（**subagent ≠ skill**：skill 是行為 prompt，subagent 是**另一個 Claude instance with isolated context**）
