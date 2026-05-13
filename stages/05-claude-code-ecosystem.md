@@ -401,7 +401,7 @@ Plugin
 - 想用 **CLI** 玩 multi-agent → 目前只有 Claude Code 有 native 支援（**本節主題**）
 - 想 **跨 provider / 跨 LLM** → 走 Stage 4 framework path
 - 想 **OpenAI 生態 + 多 agent** → 用 OpenAI Agents SDK 寫 handoff pattern（programmatic、非 CLI）
-- 想 **完全自己控** → 走 [Stage 5.6 Harness Internals](#56--harness-internalsagent-runtime-的內部結構-track-b-必看)（讀 SDK source、自己 wire 多 agent）
+- 想 **完全自己控** → 走 [Stage 5.6 Harness Internals](#56--claude-code-source-解剖reference-harness-implementation-track-b-必看)（讀 SDK source、自己 wire 多 agent）
 
 → 本節剩下內容都聚焦在 **Claude Code subagent**。其他平台的進展請追蹤各家 changelog（Codex / Gemini / Cursor 都還在 single-agent + MCP 階段、可能 2026 後段才會跟進）。
 
@@ -477,7 +477,7 @@ You are a senior code reviewer. When invoked:
 
 | Project | ⭐ | 適合誰 | 為什麼推薦 / 備註 |
 |---|---|---|---|
-| [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) ⭐ 官方 | ⭐⭐⭐⭐⭐ | 5.5 完成後想看「production-grade 怎麼長」 | Anthropic 官方 chapter-length 範例。**`tool_use/customer_service_agent.ipynb`** = orchestrator-workers canonical（multi-agent routing + handoff）。Python / Jupyter notebook、MIT。**註**：`computer_use_demo` 完整版在另一個 repo [`anthropic-quickstarts/computer-use-demo`](https://github.com/anthropics/claude-quickstarts/tree/main/computer-use-demo) |
+| [anthropics/claude-cookbooks](https://github.com/anthropics/claude-cookbooks) ⭐ 官方 | ⭐⭐⭐⭐⭐ | 5.5 完成後想看「production-grade 怎麼長」 | Anthropic 官方 chapter-length 範例。**`tool_use/customer_service_agent.ipynb`** = orchestrator-workers canonical（multi-agent routing + handoff）。Python / Jupyter notebook、MIT。**註**：`computer_use_demo` 完整版在另一個 repo [`claude-quickstarts/computer-use-demo`](https://github.com/anthropics/claude-quickstarts/tree/main/computer-use-demo) |
 | [wshobson/agents](https://github.com/wshobson/agents) ⭐ subagent canonical | ⭐⭐⭐⭐⭐ | 寫過 1-2 個 subagent 想看真實 team 範本 | 50+ subagent definition 的 production workflow pattern collection。**看 `.claude/agents/` 目錄結構 + 命名 convention + 跨 agent handoff 寫法** |
 | [obra/superpowers](https://github.com/obra/superpowers) | ⭐⭐⭐⭐ | 想看 skill + subagent 混搭實作 | 在 Stage 5.3 已介紹。**重點看「什麼任務歸 skill、什麼歸 subagent」決策**——production 範本 |
 | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) 官方 | ⭐⭐⭐⭐ | 看 plugin 怎麼打包 subagent | 在 Stage 5.4 已介紹。每個 plugin 內 `agents/` 子目錄是 subagent definition、看打包方式 |

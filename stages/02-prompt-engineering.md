@@ -433,14 +433,21 @@ text = msg.content[0].text
 
 > 💡 **建議閱讀路徑**：dair-ai guide 入手（理論） → Anthropic Cookbook 看 Claude 實作 → NirDiamant 邊跑邊學 → 進 production 時讀 dspy。
 
-## 🔭 進階：context engineering（不是 prompt engineering 了）
+## 🔭 進階：prompt → context → harness 三層 engineering
 
 當你發現「**單一 prompt 已經 cover 不了**」——要動態組 system prompt + 拉 memory + 塞 retrieved chunks + 接多個 tool definitions——這已經不叫 prompt engineering，叫 **context engineering**。是 prompt engineering 的下一層。
 
-**這個 stage 不用學完它**，只是給個方向性提示：
+再往上一層、把多個 LLM call + tool 包成 production runtime 系統時、就到了 **harness engineering**（2025 後段業界正式詞彙）。
 
-- 在 [Stage 6（Memory · RAG）](06-memory-rag.md) 會碰到（什麼資料塞進 prompt）
-- 在 [Stage 7（Multi-Agent · Production）](07-multi-agent-production.md) 完整面對（context window 預算、memory 階層、observability）
+**完整三層 lineage（本路線的學習進度）**：
+
+| Discipline | 解決什麼 | 在哪一 stage 完整學 |
+|---|---|---|
+| **1. Prompt Engineering** | 單次 LLM call 怎麼問才準 | **本 stage（Stage 2）** |
+| **2. Context Engineering** | 跨多次 call 怎麼動態組 prompt | [Stage 6 — Memory · RAG](06-memory-rag.md) |
+| **3. Harness Engineering** | 把多個 LLM call 包成 production runtime | [**Stage 7 §Harness Engineering**](07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程學--本-stage-核心概念) ⭐ 完整對照表 |
+
+**這個 stage 不用學完後兩層**，只是給方向性提示——進入 Stage 6 / 7 時會接續這個 lineage。
 
 延伸閱讀（不必修、未來想深挖時看）：
 

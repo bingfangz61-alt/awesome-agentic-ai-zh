@@ -52,9 +52,9 @@
 
 → **2025 後段「harness engineering」才正式成為業界共識詞**（Anthropic / Cursor / Cognition 等 AI coding tool 團隊用得最多）——因為前兩層已經被 prompt eng / context eng 解決得差不多了、production agent 的剩餘複雜度都在 runtime 工程。
 
-### Harness 的 6 個核心元件
+### Harness 的 7 個核心元件
 
-**Harness = 把 LLM agent 包成 production 系統的「工具帶」**。一個 production agent runtime 包含這 6 個元件：
+**Harness = 把 LLM agent 包成 production 系統的「工具帶」**。一個 production agent runtime 包含這 7 個元件（前 6 個是 runtime 內建、第 7 個 eval 是外掛工具但也算 harness 的一部分）：
 
 | 元件 | 做什麼 | 對應本 stage 練習 |
 |---|---|---|
@@ -74,7 +74,7 @@
 
 想看 production-grade harness 長什麼樣？兩個 reference：
 
-- **Claude Code 整個 runtime** — 是 reference harness 實作。**讀 source 練習見 [Stage 5.6](05-claude-code-ecosystem.md#56--claude-code-source-解剖reference-harness-implementation)**（clone `claude-agent-sdk-python` 解剖 main loop + 6 元件位置）
+- **Claude Code 整個 runtime** — 是 reference harness 實作。**讀 source 練習見 [Stage 5.6](05-claude-code-ecosystem.md#56--claude-code-source-解剖reference-harness-implementation-track-b-必看)**（clone `claude-agent-sdk-python` 解剖 main loop + 上表前 6 個 runtime 元件位置；第 7 個 Eval harness 是外掛、見本 stage §練習 2 Eval）
 - **`anthropics/claude-agent-sdk-python`** source — 上面練習用的具體 repo
 
 → 本 stage 剩下的 5 個練習（multi-agent / eval / observability / SDK / deploy）每個都是 harness 的一個面向。學完整 stage = 拼出完整的 harness engineering mental model。

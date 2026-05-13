@@ -190,7 +190,7 @@ Stage 3 §反思（基本版）                Stage 6 本節（完整版）
 > 💡 **跟 Stage 3 §反思的分工**：
 > - 想理解「反思 loop 怎麼運作、單次怎麼跑」→ Stage 3 §反思
 > - 想理解「反思怎麼跨 session 累積、agent 怎麼從過去學教訓」→ 本節
-> - 想看 production agent 內怎麼用反思（Cursor / Claude Code）→ [Stage 5 §5.6 Harness Internals](05-claude-code-ecosystem.md#56--harness-internalsagent-runtime-的內部結構-track-b-必看)
+> - 想看 production agent 內怎麼用反思（Cursor / Claude Code）→ [Stage 5 §5.6 Harness Internals](05-claude-code-ecosystem.md#56--claude-code-source-解剖reference-harness-implementation-track-b-必看)
 
 ## 🛠 動手練習（基礎 illustrative 練習）
 
