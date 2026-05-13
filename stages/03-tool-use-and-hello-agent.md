@@ -37,17 +37,81 @@
 ### 練習 1：Function Calling（一個工具、一次呼叫）
 給 Claude 一個工具（假的天氣 API）跟一個問題（「台北現在有下雨嗎？」）。看 Claude 怎麼呼叫工具、拿到結果、再回答你。
 
+<details>
+<summary>📋 <b>起手碼</b>（複製到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
+
+```python
+# 需要：pip install anthropic
+# 環境變數：export ANTHROPIC_API_KEY=sk-ant-...
+import anthropic
+
+client = anthropic.Anthropic()
+
+# Step 1: 定義 tool schema（描述要清楚、讓 LLM 一眼看懂用途）
+weather_tool = {
+    "name": "get_weather",
+    "description": "查詢城市目前天氣（晴/雨/陰），回傳一個短字串。",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "city": {"type": "string", "description": "城市名稱（如「台北」）"},
+        },
+        "required": ["city"],
+    },
+}
+
+# Step 2: 問問題、讓 Claude 自己決定要不要呼叫 tool
+resp = client.messages.create(
+    model="claude-haiku-4-5",  # 用 haiku 省錢；想看更聰明的答案改 claude-sonnet-4-5
+    max_tokens=512,
+    tools=[weather_tool],
+    messages=[{"role": "user", "content": "台北現在有下雨嗎？"}],
+)
+
+# === 自我驗證 ===
+print("stop_reason:", resp.stop_reason)
+for block in resp.content:
+    print(block)
+
+assert resp.stop_reason == "tool_use", "預期 LLM 會選擇呼叫 tool（而非直接回答）"
+tool_calls = [b for b in resp.content if b.type == "tool_use"]
+assert len(tool_calls) >= 1, "預期至少 1 次 tool_use"
+assert tool_calls[0].name == "get_weather", f"預期呼叫 get_weather、實際 {tool_calls[0].name}"
+assert tool_calls[0].input.get("city"), "預期 city 參數有值"
+print("✅ 練習 1 通過 — Claude 正確選了 get_weather、帶 city 參數")
+```
+
+**預期輸出**（前 3 行）：
+```
+stop_reason: tool_use
+TextBlock(text='我來幫你查...', type='text')
+ToolUseBlock(id='toolu_...', input={'city': '台北'}, name='get_weather', type='tool_use')
+✅ 練習 1 通過 — Claude 正確選了 get_weather、帶 city 參數
+```
+
+**沒 API key 也能練習**：把 `client.messages.create(...)` 改包一個 `unittest.mock.MagicMock`、回傳固定 `tool_use` block；assert 邏輯一樣 work。完整 mock 範例見 [`examples/stage-3/03-react-from-scratch/test.py`](../examples/stage-3/03-react-from-scratch/test.py)。
+
+</details>
+
 ### 練習 2：多工具選擇
 給 Claude 三個工具（搜尋、計算機、行事曆）跟一個任務。看 Claude 怎麼挑工具，順便注意它什麼時候會挑錯。
+
+→ **完整可跑版** → [`examples/stage-3/02-multi-tool-selection/`](../examples/stage-3/02-multi-tool-selection/)
 
 ### 練習 3：從零實作 ReAct（不用 framework）
 用 50-80 行 Python 把 Thought → Action → Observation 迴圈寫出來。不要 LangChain、不要 LangGraph，就是純 `while not done: thought; action; observation; ...`。
 
+→ **完整可跑版** → [`examples/stage-3/03-react-from-scratch/`](../examples/stage-3/03-react-from-scratch/)（含 mock-based test.py、不花 API 錢也能驗）
+
 ### 練習 4：多步驟推理任務
 一個需要連續呼叫 3-5 次 tool 的任務。例如：「找出台北人口，除以紐約人口，再把比例換成百分比。」每一步用不同的工具。
 
+→ **完整可跑版** → [`examples/stage-3/04-multi-step-reasoning/`](../examples/stage-3/04-multi-step-reasoning/)
+
 ### 練習 5：錯誤處理
 讓某個工具失敗（網路錯誤、輸入無效）。看看 agent 會怎麼處理錯誤、能不能恢復，再加上 retry 機制。
+
+→ **完整可跑版** → [`examples/stage-3/05-error-handling/`](../examples/stage-3/05-error-handling/)
 
 ### 練習 6：Function schema 設計（壞 schema 修到好）
 **先給 LLM 一份故意寫爛的 schema**——`description` 模糊（「處理資料」）、參數全用 `type: string`、沒分 required / optional、enum 該用沒用。觀察 LLM 怎麼選錯 tool、傳錯參數。然後逐項修：
@@ -57,6 +121,8 @@
 - error 回傳要包 `{"error": "...", "retry_hint": "..."}` 讓 LLM 能恢復
 
 > 💡 詳細 cheatsheet 看 [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.md)——5 條黃金規則 + 5 個常見 anti-pattern。
+
+→ **完整可跑版** → [`examples/stage-3/06-schema-design/`](../examples/stage-3/06-schema-design/)（含 bad schema vs good schema 兩個版本對照）
 
 ## 🎯 精選 Projects
 
