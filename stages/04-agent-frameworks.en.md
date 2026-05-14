@@ -46,7 +46,7 @@ To understand multi-agent frameworks, a useful clarification is to treat **workf
 
 **Why this distinction is useful**: Most production scenarios fall into the "single agent workflow" + "single agent" quadrants. Most tasks simply don't require multi-agent setups. **The quadrant that truly needs a multi-agent framework is the bottom right**—high LLM autonomy + multi-role collaboration. In practice, the boundaries between these quadrants can be blurry (LangGraph's conditional edges can be seen as both workflow routing and dynamic agent decision-making). Don't treat this matrix as a mutually exclusive classification.
 
-→ All subsequent discussions in this stage assume you already know: **multi-agent frameworks solve the orchestration boilerplate in the bottom-right quadrant**.
+→ All later discussion in this stage assumes you already know: **a multi-agent framework mainly handles the coordination, handoff, state management, and repetitive scaffolding code between multiple agents, so you don't have to write the whole collaboration flow from scratch** (the orchestration boilerplate in the lower-right quadrant).
 
 ### Single-agent vs. multi-agent — A comparison table to clarify the differences
 

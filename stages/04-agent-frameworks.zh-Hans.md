@@ -46,7 +46,7 @@
 
 **为什么这个区別有用**：production 场景大多落在「single agent workflow」+「single agent」象限——多数任务根本不需要 multi-agent。**真正需要 multi-agent framework 的是右下角象限**——LLM 自主性高 + 多角色协作。但实作上四个象限的边界有时模糊（LangGraph 的 conditional edge 可以同时看成 workflow routing 跟 agent 动态决策）、不要把这个 matrix 当互斥分类。
 
-→ 本 stage 后续讨论都假设你已经知道：**multi-agent framework 解决的是右下角象限的 orchestration boilerplate**。
+→ 本 stage 后续讨论都假设你已经知道：**Multi-agent framework 主要帮你处理多个 agent 之间的协调、交接、状态管理与重复性样板代码，让你不用从零写整套协作流程**（右下角象限的 orchestration boilerplate）。
 
 ### Single-agent vs multi-agent — 一张对照表先看清楚差异
 

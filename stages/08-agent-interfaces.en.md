@@ -14,7 +14,7 @@
 
 ## 🎯 What are Agent Interfaces? (Positioning)
 
-**Agent Interfaces are the I/O boundary layer where an agent interacts with the "non-API world."** Stages 0-7 taught you **how to build the agent itself** (LLM → prompt → tool → context → memory → multi-agent → harness). This stage teaches you **how the agent, once built, operates in a real environment.**
+**Agent Interfaces refers to how an agent operates the real world beyond APIs—the computer screen, the web, or an isolated code execution sandbox—the agent's IO layer to the non-API world.** Stages 0-7 taught you **how to build the agent itself** (LLM → prompt → tool → context → memory → multi-agent → harness). This stage teaches you **how the agent, once built, operates in a real environment.**
 
 **The 3 Layers of Interfaces**:
 

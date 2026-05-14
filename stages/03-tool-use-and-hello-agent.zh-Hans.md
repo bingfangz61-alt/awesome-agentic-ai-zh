@@ -43,7 +43,7 @@ AI (Artificial Intelligence、人工智能)
 | **LLM** | 把文字映射到文字的单一模型 | 给 prompt → 回字 | GPT-5、Claude、Llama 3、Qwen |
 | **Agent** | LLM + 工具 + loop 的**系统** | 给任务 → 自己跑多步骤达成 | Cursor、Claude Code、Hermes Agent |
 
-**一句 punchline**：LLM 是个会说话的脑袋；agent 是大脑 + 手脚 + 完整工作流程的 worker。
+**一句话**：LLM 像一个理解并生成文字的大脑；Agent 则是把这个大脑接上工具、工作流与反馈回路后，能够作为系统完成多步骤任务的东西。
 
 ### Agent 的 3 个**最小必要**部件（这就是 agent vs LLM 的核心差别）
 

@@ -43,7 +43,7 @@ AI (Artificial Intelligence)
 | **LLM** | A single model that maps text to text | Give a prompt → Get text back | GPT-5, Claude, Llama 3, Qwen |
 | **Agent** | A **system** of LLM + tools + loop | Give a task → It completes it in multiple steps | Cursor, Claude Code, Hermes Agent |
 
-**The punchline**: An LLM is a brain that can talk; an agent is a worker with a brain, hands, and a complete workflow.
+**One sentence**: An LLM is like a brain that understands and generates text; an Agent connects that brain to tools, workflow, and feedback loops so it can finish multi-step tasks as a system.
 
 ### The 3 **Minimum Necessary** Components of an Agent (This is the core difference between an agent and an LLM)
 

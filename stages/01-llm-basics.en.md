@@ -9,6 +9,16 @@
 
 > 💡 **Don't recognize a term?** (LLM / token / context window / temperature / RAG / agent / …) → check [`resources/glossary.en.md`](../resources/glossary.en.md) for 30-second definitions.
 
+### 3 Core Terms (memorize these—all later stages use them)
+
+| Term | Chinese | One-liner |
+|---|---|---|
+| **token** | 詞元 | the unit LLMs use to count text length and price (1 Chinese char ≈ 1.5-2 tokens; 1 English word ≈ 1.3 tokens) |
+| **context window** | 上下文視窗 | How many tokens the model sees at once (Claude 200k / GPT-4o 128k / Gemini 2M) |
+| **temperature** | 隨機程度參數 | Controls how stable or creative the output is (0 = deterministic, 1 = creative; use 0.0-0.3 for classification, 0.7-1.0 for creative writing) |
+
+→ These 3 terms run through every later stage. The goal of Stage 1 is to call the API yourself and feel firsthand how they shape the output.
+
 ## 📌 Learning Goals
 
 After this stage you will be able to:

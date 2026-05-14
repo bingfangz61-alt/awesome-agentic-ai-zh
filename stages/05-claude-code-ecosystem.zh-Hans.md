@@ -16,7 +16,7 @@
 
 > ⚠️ **想用本地 LLM？这个 stage 不是那条路线。** Claude Code 需要 Anthropic API / OAuth，不能直接改接 Ollama 或本地 endpoint。离线、隐私数据或不想用 API 额度时，请看 [`resources/cookbook.zh-Hans.md` Recipe 6](../resources/cookbook.zh-Hans.md#6-本地-llm--cli-agent-快速-walkthrough)，用 OpenCode / goose / Aider / Hermes 这类支持 BYO LLM 的 CLI agent。
 
-> 📋 **本章组成**：6 个子章（5.1 基础 / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Claude Code Source 解剖），每个子章都有「学习目标 → 必修阅读 → 动手练习 → 精选 Projects」 → 章末 自我检查。**注意**：harness engineering 的 **discipline 级概念**在 [Stage 7](07-multi-agent-production.zh-Hans.md) 讲；5.6 是拿 Claude Code 当 reference implementation 的 case study。
+> 📋 **本章组成**：6 个子章（5.1 基础 / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Claude Code Source 解剖），每个子章都有「学习目标 → 必修阅读 → 动手练习 → 精选 Projects」 → 章末 自我检查。**注意**：Harness Engineering（Agent 执行系统设计）的**学科级概念**会在 [Stage 7](07-multi-agent-production.zh-Hans.md) 系统整理；本章 5.6 把 Claude Code 当作案例，观察一个成熟 agent 工具如何处理工具、记忆、配置、权限与执行流程。
 > 🔑 **关键名词**：见 [`resources/glossary.zh-Hans.md` §5](../resources/glossary.zh-Hans.md#5-claude-code-生态)。
 
 ## Stack 一览

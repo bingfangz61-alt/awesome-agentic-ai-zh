@@ -8,6 +8,16 @@
 
 > 掌握 **核心概念**：LLM / token / context window / temperature / RAG / agent，请先阅读 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md)（约 30 分钟）。
 
+### 3 个核心词（先记住，后面 stage 都会用到）
+
+| 词 | 中文 | 一句话 |
+|---|---|---|
+| **token** | 词元 | 模型计算文字长度与费用的基本单位（中文 1 个字 ≈ 1.5-2 token） |
+| **context window** | 上下文窗口 | 模型一次能看到多少 token（Claude 200k / GPT-4o 128k / Gemini 2M） |
+| **temperature** | 随机程度参数 | 控制回答是更稳定还是更发散（0 = 最稳定、1 = 更有创意；分类任务用 0.0-0.3、创作用 0.7-1.0） |
+
+→ 这 3 个词贯穿后续所有 stage。Stage 1 的目标就是让你亲手调用 API、直接感受它们怎么影响输出。
+
 ## 学习目标
 
 完成本阶段后，你将能够：

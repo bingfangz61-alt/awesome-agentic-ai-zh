@@ -16,7 +16,7 @@
 
 > ⚠️ **Looking to use a local LLM? This stage is not that path.** Claude Code requires the Anthropic API / OAuth and cannot be directly pointed to Ollama or a local endpoint. For offline work, sensitive data, or to avoid using API quota, please see [`resources/cookbook.en.md` Recipe 6](../resources/cookbook.en.md#6-local-llm--cli-agent-quick-walkthrough) and use a CLI agent that supports BYO LLM, like OpenCode / goose / Aider / Hermes.
 
-> 📋 **Structure of this chapter**: 6 sub-chapters (5.1 Basics / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Dissecting Claude Code Source), each with "Learning Goals → Required Reading → Hands-on Exercises → Curated Projects" → followed by a self-check at the end of the chapter. **Note**: The **discipline-level concepts** of harness engineering are covered in [Stage 7](07-multi-agent-production.en.md); 5.6 is a case study using Claude Code as a reference implementation.  
+> 📋 **Structure of this chapter**: 6 sub-chapters (5.1 Basics / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Dissecting Claude Code Source), each with "Learning Goals → Required Reading → Hands-on Exercises → Curated Projects" → followed by a self-check at the end of the chapter. **Note**: The **discipline-level** concept of Harness Engineering (the engineering of an agent's execution system) is systematically covered in [Stage 7](07-multi-agent-production.en.md); 5.6 in this chapter uses Claude Code as a case study, observing how a mature agent tool handles tools, memory, configuration, permissions, and execution flow  
 > 🔑 **Key Terms**: See [`resources/glossary.en.md` §5](../resources/glossary.en.md#5-claude-code-ecosystem).
 
 ## Stack at a Glance
