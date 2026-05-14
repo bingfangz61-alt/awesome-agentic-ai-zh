@@ -7,7 +7,7 @@
 > 💡 用語密度高（multi-agent / handoff / eval / observability / guardrails⋯）→ 翻 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)。
 
 > 📋 **本章組成**：〔Multi-Agent · 進階應用 是什麼（先定位）+ Discipline lineage + 何時用 multi-agent〕→ 學習目標 → 進入條件 → 必修閱讀 → Harness Engineering（**8 個核心元件含 Cost/Latency**）→ 動手練習（含練習 6 Cost Optimization）→ **Agent Benchmark Landscape + Berkeley Reward-Hacking 警告（2026）** → 常用工具推薦 → 精選 Projects → 自我檢查  
-> 🔑 **關鍵名詞**：見 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability / harness）
+> 🔑 **關鍵名詞**：見 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability / harness（LLM 外面的 runtime / scaffolding））
 
 最後一個階段。你正從「我會做 agent」走向「我能讓 agent **真的給人穩定用**——多個 agent 協作、有 eval、有 observability、會 deploy」。**「進階應用 / production」 ≠ enterprise scale**——只要 agent 能穩定產出 + 給別人跑、就算進入這 stage 範圍。
 
@@ -35,7 +35,7 @@
 **本 stage 3 個 problem domain**：
 
 1. **Multi-agent 協作** — debate / planner-executor / peer review / handoff / supervisor-worker pattern
-2. **Harness Engineering** — agent loop / tool registry / context manager / safety / retry / telemetry / eval / cost（8 個 component、下面詳述）
+2. **Harness Engineering** — agent loop / tool registry（agent 可呼叫工具的清單 + 介面定義） / context manager / safety / retry / telemetry / eval / cost（8 個 component、下面詳述）
 3. **進階應用**（production-grade）— eval harness / observability / cost & latency 優化 / deploy
 
 **跟 Stage 5 的分工**（避免混淆）：
@@ -47,7 +47,7 @@
 
 ### ⚠ 但你真的需要 multi-agent 嗎？
 
-**Multi-agent 不是 default、是 last resort**。**Anthropic 跟 Cognition 兩家 frontier lab 在 2024-2025 都明白寫過：90% 用例其實不該用 multi-agent**——硬上會付 **3-10× token、debug 困難、context fragmentation 嚴重**。
+**Multi-agent 不是 default、是 last resort**。**Anthropic 跟 Cognition 兩家 frontier lab 在 2024-2025 都明白寫過：90% 用例其實不該用 multi-agent**——硬上會付 **3-10× token、debug 困難、context fragmentation（context 被切散在多個 agent、彼此看不到全貌）嚴重**。
 
 | 立場 | 來源 | 核心論點 |
 |---|---|---|

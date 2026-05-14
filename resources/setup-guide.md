@@ -120,7 +120,7 @@
 #### 本機（不付 API 費、完全 offline）
 
 - **Ollama 本機模型**：不用 API key。走本機路線請看 [Cookbook Recipe 6](cookbook.md#6-本機-llm--cli-agent-快速-walkthrough)。
-  本 repo 的「Path A」默認就是 Ollama；所有 Stage 1-7 練習都能用 `gemma4:e4b`（Stage 1-2）或 `qwen2.5:3b`（Stage 3+）跑通、$0/run。
+  本 repo 的「Path A」預設就是 Ollama；所有 Stage 1-7 練習都能用 `gemma4:e4b`（Stage 1-2）或 `qwen2.5:3b`（Stage 3+）跑通、$0/run。
 
 > 💡 **怎麼挑第一個**：
 > - 想學 agent / production、**美區帳號OK** → **Anthropic Claude**（curriculum canonical）

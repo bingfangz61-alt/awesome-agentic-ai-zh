@@ -16,7 +16,7 @@
 
 > ⚠️ **想用本機 LLM？這個 stage 不是那條路線。** Claude Code 需要 Anthropic API / OAuth，不能直接改接 Ollama 或本機 endpoint。離線、隱私資料或不想用 API 額度時，請看 [`resources/cookbook.md` Recipe 6](../resources/cookbook.md#6-本機-llm--cli-agent-快速-walkthrough)，用 OpenCode / goose / Aider / Hermes 這類支援 BYO LLM 的 CLI agent。
 
-> 📋 **本章組成**：6 個子章（5.1 基礎 / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Claude Code Source 解剖），每個子章都有「學習目標 → 必修閱讀 → 動手練習 → 精選 Projects」 → 章末 自我檢查。**注意**：harness engineering 的 **discipline 級概念**在 [Stage 7](07-multi-agent-production.md) 講；5.6 是拿 Claude Code 當 reference implementation 的 case study  
+> 📋 **本章組成**：6 個子章（5.1 基礎 / 5.2 MCP / 5.3 Skills / 5.4 Plugins / 5.5 Subagents / 5.6 Claude Code Source 解剖），每個子章都有「學習目標 → 必修閱讀 → 動手練習 → 精選 Projects」 → 章末 自我檢查。**注意**：harness engineering（處理 LLM 外面的 runtime / scaffolding 的工程） 的 **discipline 級概念**在 [Stage 7](07-multi-agent-production.md) 講；5.6 是拿 Claude Code 當 reference implementation 的 case study  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md` §5](../resources/glossary.md#5-claude-code-生態)
 
 ## Stack 一覽
@@ -199,7 +199,7 @@
 
 ### Skill 是什麼（先定位）
 
-Skill = **一個 markdown 檔**（`.claude/skills/<name>/SKILL.md`），告訴 Claude「**遇到某情境 → 走某流程**」。Claude 每次 inference 前掃所有可用 skill 的 `description` frontmatter、看是否匹配當前情境、**匹配就把 SKILL.md 自動載入 context**。
+Skill = **一個 markdown 檔**（`.claude/skills/<name>/SKILL.md`），告訴 Claude「**遇到某情境 → 走某流程**」。Claude 每次 inference 前掃所有可用 skill 的 `description` frontmatter（檔案開頭那段 YAML metadata）、看是否匹配當前情境、**匹配就把 SKILL.md 自動載入 context**。
 
 **核心 mental model**：你發現自己「**每次都要打同樣的 prompt 教 Claude 怎麼做某件事**」→ 把它寫成 skill、下次就不用了。Claude Code 生態裡 **skill 是 power user 跟普通用戶的分水嶺**——熟練 skill 寫作的人能把 1 個小時的工作壓到 5 分鐘。
 
@@ -502,7 +502,7 @@ You are a senior code reviewer. When invoked:
 
 完成本節後你會：
 - 看得懂 `claude-agent-sdk-python` source 的 main loop（不是逐行、是抓得到主幹）
-- 在 source 裡標出 [Stage 7 列的 8 個 harness 元件](07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程學--本-stage-核心概念)**中**前 6 個 runtime-internal 元件（agent loop / tool registry / context manager / safety layer / retry / telemetry）各自的 file:line。Stage 7 列的第 7 個 Eval 是外掛、第 8 個 Cost / Latency 是 cross-cutting、不在 source 主 loop 內、不在本練習範圍
+- 在 source 裡標出 [Stage 7 列的 8 個 harness 元件](07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程學--本-stage-核心概念)**中**前 6 個 runtime-internal 元件（agent loop / tool registry（agent 可呼叫工具的清單 + 介面定義） / context manager / safety layer / retry / telemetry）各自的 file:line。Stage 7 列的第 7 個 Eval 是外掛、第 8 個 Cost / Latency 是 cross-cutting、不在 source 主 loop 內、不在本練習範圍
 - 講得出 Claude Code 的 agent loop 跟 Stage 3 練習 3 from-scratch ReAct 差在哪——production-grade 多了哪些東西
 
 > **discipline 級概念在哪**：harness engineering 是什麼 / framework vs harness 差別 / prompt→context→harness 三層 lineage → 全部見 **[Stage 7 §Harness Engineering](07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程學--本-stage-核心概念)**。本節只負責 Claude Code source 的 case study。

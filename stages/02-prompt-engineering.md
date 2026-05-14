@@ -39,17 +39,17 @@
 
 ## 🛠 動手練習
 
-> 🦙 **本 stage 默認用 Ollama gemma4:e4b**（成本考量、$0/run）。Prompt engineering 對小 model 更有教學價值——小 model 對 prompt 質量敏感、能讓你看清楚 system prompt / few-shot / CoT / refinement 各自帶來多少改善。每個練習都有 Path A（Ollama、默認）+ Path B（Anthropic、選擇性）。
+> 🦙 **本 stage 預設用 Ollama gemma4:e4b**（成本考量、$0/run）。Prompt engineering 對小 model 更有教學價值——小 model 對 prompt 質量敏感、能讓你看清楚 system prompt / few-shot / CoT / refinement 各自帶來多少改善。每個練習都有 Path A（Ollama、預設）+ Path B（Anthropic、選擇性）。
 >
 > 💰 **Stage 2 預算估算**（全 4 練習各跑 3-5 次）：**全本機 = $0**、**全 haiku ≈ $0.20**、**全 sonnet ≈ $0.60**。Few-shot 分類任務的 12 calls × 5 reps ≈ $0.30 haiku / $0.90 sonnet。完整預算見 [`examples/README.md#推薦-llm-清單`](../examples/README.md#推薦-llm-清單)。
 >
-> 完整 3 路 trade-off 見 [`examples/README.md`](../examples/README.md#三條路徑--默認用-ollama成本考量)。
+> 完整 3 路 trade-off 見 [`examples/README.md`](../examples/README.md#三條路徑--預設用-ollama成本考量)。
 
 ### 練習 1：System Prompt
 同樣的 user message，三個不同的 system prompt。觀察人格 / 輸出格式怎麼變。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_1.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_1.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
@@ -157,7 +157,7 @@ print(f"\n✅ 練習 1 通過（Anthropic）")
 挑一個分類任務。先用 0-shot 跑，再用 3-shot 跑。量一下準確率差多少。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_2.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_2.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
@@ -262,7 +262,7 @@ def classify(text: str, *, use_few_shot: bool) -> str:
 - 純 prompt + 一個展示 CoT 的範例
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_3.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_3.py</code>）</summary>
 
 ```python
 # 需要：pip install openai
@@ -345,7 +345,7 @@ def ask(prompt: str) -> str:
 拿一個模糊的 prompt，refine 5 次。把每一輪記下來。觀察哪些改動會提升品質。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_4.py</code>）— 這題沒有「對錯」、重點是觀察過程</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_4.py</code>）— 這題沒有「對錯」、重點是觀察過程</summary>
 
 ```python
 # 需要：pip install openai

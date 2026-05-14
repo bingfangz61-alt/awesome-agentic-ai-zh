@@ -58,7 +58,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 否則 Windows reader 在 PowerShell / cmd 跑會炸 `UnicodeEncodeError: 'cp950' codec can't encode character '✅'`。
 
-## 三條路徑 — **默認用 Ollama（成本考量）**
+## 三條路徑 — **預設用 Ollama（成本考量）**
 
 > 💰 **為什麼默認 Ollama？** 練習場景跑 1000 次跑滿 Sonnet ~$4、跑 haiku ~$0.25、跑本機 Ollama $0。**學習階段不該被 API 成本卡住**。Cloud LLM 留給「想看高品質答案 / production deployment」時用。
 

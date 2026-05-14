@@ -63,7 +63,7 @@
 - 區分 3 層 agent interface（Computer Use / Browser Use / Sandbox）+ 跟 Tool / MCP / Harness 的關係
 - 講出 Computer Use / Browser Use **mental model**（screenshot → vision → coords vs DOM-aware）
 - 講出 microVM / Container / Firecracker / gVisor / Cold start 等隔離技術術語
-- 知道 2026-05 OSWorld / WebArena SOTA 數字 + 解讀 reward-hacking 警告
+- 知道 2026-05 OSWorld / WebArena SOTA 數字 + 解讀 reward-hacking（agent 鑽 reward function 漏洞、拿高分但不是真的完成任務）警告
 - **Track A**：在 daily CLI 工作流接 Computer Use + browser MCP + Codex background mode
 - **Track B**：用 browser-use / E2B 在自己 agent 內 embed 環境互動 + sandbox 隔離
 - 設計 4 個 safety pattern（approval gate / sandbox / human-in-loop / output filter）防注入攻擊

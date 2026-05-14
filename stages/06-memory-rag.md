@@ -659,7 +659,7 @@ OpenAI **o1**（2024-09）開啟、DeepSeek **R1**（2025-01）開源化、**Dee
 
 | 場景 | 推薦工具 | 為什麼 |
 |---|---|---|
-| **第一次跑 RAG**（最快上手）| [Chroma](https://github.com/chroma-core/chroma) + [LlamaIndex](https://github.com/run-llama/llama_index) | local-first、零 ops、quickstart 友善。Stage 6 練習默認 |
+| **第一次跑 RAG**（最快上手）| [Chroma](https://github.com/chroma-core/chroma) + [LlamaIndex](https://github.com/run-llama/llama_index) | local-first、零 ops、quickstart 友善。Stage 6 練習預設 |
 | **企業級 RAG framework**（LangChain / LlamaIndex 之外第 3 選擇）| [Haystack (deepset)](https://github.com/deepset-ai/haystack) ★ 25.2k Apache-2.0 | deepset 開源、production-oriented orchestration、enterprise NLP 場景成熟 |
 | **agent 長期記憶**（見 §3 主流 memory layer）| [agentmemory](https://github.com/rohitg00/agentmemory) / [mem0](https://github.com/mem0ai/mem0) / [Letta](https://github.com/letta-ai/letta) / [Zep](https://github.com/getzep/zep) / [LangMem](https://github.com/langchain-ai/langmem) | 詳見上方 §5 個主流 production memory layer 區塊 |
 | **RAG / Memory eval**（必裝、見 §RAG Eval）| [ragas](https://github.com/explodinggradients/ragas) ★ 13.9k | RAG 評估標準工具、faithfulness / context recall / answer relevance 8+ metric |

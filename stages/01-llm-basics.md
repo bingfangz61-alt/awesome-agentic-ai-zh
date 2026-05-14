@@ -42,17 +42,17 @@
 
 ## 🛠 動手練習（基礎 illustrative 練習）
 
-> 🦙 **本 stage 默認用 Ollama**（成本考量、本機 `gemma4:e4b` 跑得動、$0/run）。每個練習都有 Path A（Ollama、默認）+ Path B（Anthropic、選擇性、想看 cloud 高品質時用）。完整 3 路 trade-off 見 [`examples/README.md`](../examples/README.md#三條路徑--默認用-ollama成本考量)。
+> 🦙 **本 stage 預設用 Ollama**（成本考量、本機 `gemma4:e4b` 跑得動、$0/run）。每個練習都有 Path A（Ollama、預設）+ Path B（Anthropic、選擇性、想看 cloud 高品質時用）。完整 3 路 trade-off 見 [`examples/README.md`](../examples/README.md#三條路徑--預設用-ollama成本考量)。
 >
 > 💰 **Stage 1 預算估算**（全 6 練習各跑 3-5 次）：**全本機 = $0**、**全 haiku ≈ $0.30**、**全 sonnet ≈ $0.90**。完整 model 清單 + Stage 1-7 全程預算估算見 [`examples/README.md#推薦-llm-清單`](../examples/README.md#推薦-llm-清單)。
 >
 > 💡 **不裝 Ollama 也能讀** — 每個練習的 Path B 區塊就是 Anthropic 版、選一個跑就行。先 [`pip install openai && ollama pull gemma4:e4b`](https://ollama.com) 就裝好 Path A 環境。
 
 ### 練習 1：LLM API（hello world）
-五行 Python 呼叫 LLM 並印出回應。**默認用 Ollama 本機跑（免費、offline）**；想看 cloud 答案品質改 Path B Anthropic。詳見 [`examples/README.md`](../examples/README.md#三條路徑--默認用-ollama成本考量)。
+五行 Python 呼叫 LLM 並印出回應。**預設用 Ollama 本機跑（免費、offline）**；想看 cloud 答案品質改 Path B Anthropic。詳見 [`examples/README.md`](../examples/README.md#三條路徑--預設用-ollama成本考量)。
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
 
 ```python
 # 需要：pip install openai      (用 OpenAI-compatible SDK 跟 Ollama 溝通)
@@ -143,7 +143,7 @@ usage: Usage(input_tokens=18, output_tokens=42, ...)
 - 注意：同一句話的英文 vs 中文 token 數差異
 
 <details open>
-<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、默認）</b>（複製到 <code>practice_2.py</code>）</summary>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma4:e4b、預設）</b>（複製到 <code>practice_2.py</code>）</summary>
 
 ```python
 # 需要：pip install openai     (OpenAI-compatible SDK 跟 Ollama 溝通)
@@ -416,7 +416,7 @@ print(f"💡 跑這次完全沒花錢（除了你的電力）")
 | | [jingyaogong/minimind](https://github.com/jingyaogong/minimind) | ⭐⭐⭐⭐ | 看完 Karpathy 影片想實際跑訓練 | 2hr 從零訓 64M LLM、Pretrain + SFT + LoRA + DPO + RLHF 全包，★ 48k+、Apache-2.0 |
 | **英文 course**<br>（系統式） | [HuggingFace — LLM Course](https://huggingface.co/learn/llm-course) | ⭐⭐⭐⭐⭐ | 想搞懂 transformer 內部 + HF 生態 | 含 transformer 原理 + 應用、Apache 2.0 |
 | | [LangChain Academy](https://academy.langchain.com/) | ⭐⭐⭐⭐ | 喜歡影片教學的視覺型學習者 | LangChain 官方免費課、含 RAG / agent。**忽略 LangChain 行銷段落** |
-| **本地端執行**<br>（不付 API 費）| [ollama/ollama](https://github.com/ollama/ollama) | ⭐⭐⭐⭐⭐ | 第一次跑本地 LLM | 本 repo Path A 默認、OpenAI-compat API、★ 170k+ |
+| **本地端執行**<br>（不付 API 費）| [ollama/ollama](https://github.com/ollama/ollama) | ⭐⭐⭐⭐⭐ | 第一次跑本地 LLM | 本 repo Path A 預設、OpenAI-compat API、★ 170k+ |
 | | [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) | ⭐⭐⭐⭐⭐ | 想搞懂 quantization / 為什麼 7B 能塞 8GB RAM | Ollama 底層 inference engine，★ 108k+、MIT |
 | | [mudler/LocalAI](https://github.com/mudler/LocalAI) | ⭐⭐⭐⭐ | 團隊合規、要 self-host 全套 OpenAI 替代 | drop-in OpenAI API 替代品（chat / embedding / image / TTS / STT），★ 46k+ |
 | | [ml-explore/mlx](https://github.com/ml-explore/mlx) | ⭐⭐⭐⭐ | Mac 開發、想榨乾 Apple Silicon | Apple 為 M1+ 量身打造的 ML framework，★ 25k+。搭 `mlx-lm` 用最方便 |

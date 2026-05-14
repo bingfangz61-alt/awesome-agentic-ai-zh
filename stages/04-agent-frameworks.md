@@ -62,7 +62,7 @@
 
 ### 什麼時候**真的**需要 multi-agent（不要硬上）
 
-**Multi-agent 不是 default、是 last resort**。**Anthropic 跟 Cognition 兩家 frontier lab 在 2024-2025 都明白寫過：90% 用例其實不該用 multi-agent**——硬上會付 **3-10× token、debug 痛苦、context fragmentation 嚴重**。
+**Multi-agent 不是 default、是 last resort**。**Anthropic 跟 Cognition 兩家 frontier lab 在 2024-2025 都明白寫過：90% 用例其實不該用 multi-agent**——硬上會付 **3-10× token、debug 痛苦、context fragmentation（context 被切散在多個 agent、彼此看不到全貌）嚴重**。
 
 | 立場 | 來源 | 核心論點 |
 |---|---|---|
@@ -105,7 +105,7 @@
 | 維度 | Framework 路線（本 stage 主題） | Claude Code subagent |
 |---|---|---|
 | **跑哪** | 多數 framework 跨 LLM provider（LangGraph / CrewAI / AutoGen）；OpenAI Agents SDK 跟 Strands Agents 例外、綁定自家生態 | 只在 Claude Code runtime 內 |
-| **怎麼寫** | Python code + `langgraph.graph()` / `Crew(agents=...)` 之類 | `.claude/agents/X.md` markdown + frontmatter |
+| **怎麼寫** | Python code + `langgraph.graph()` / `Crew(agents=...)` 之類 | `.claude/agents/X.md` markdown + frontmatter（檔案開頭的 YAML metadata） |
 | **適合誰** | 跨 LLM provider production system | 已 commit Claude Code 的工程團隊 |
 | **核心 benefit** | **checkpointing + state persistence**（LangGraph）、**audit trail / time-travel debug**（production 稽核必備）、orchestration 控制、跨 provider 可攜 | context preservation + 角色 specialization + tool constraint + cost control（route 到便宜 model）|
 
