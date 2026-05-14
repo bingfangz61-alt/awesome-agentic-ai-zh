@@ -12,23 +12,30 @@
 
 ## 🎯 Context Engineering 是什麼（先定位）
 
-**Context Engineering = 工程「每次 LLM call 時、context window 裡裝什麼資訊」的學科**——它不是「跨幾次 call」的問題、是「**送進 LLM 的上下文怎麼組**」的問題。把 RAG retrieve 結果、memory、tool definitions、對話 history **動態組裝成 LLM 看得到的 context**——這就是本 stage 主軸。
+**一句話**：Context Engineering = 決定**每次呼叫 LLM 時、要把哪些資訊塞進它看得到的視窗（context window）**。
 
-> 💡 **Karpathy 2025-06 原話**：「context engineering 是把對下一步有用的資訊**剛好填進** context window 的精細藝術」（[原 tweet](https://x.com/karpathy/status/1937902205765607626)）。重點是 *what goes in the window*、不是開幾個 window。
->
-> 三層 stack 中的位置（[Stage 2 §進階](02-prompt-engineering.md#-進階prompt--context--harness-三層-engineering) 有完整對照）：
-> - **prompt eng**（Stage 2）= 工程那段**字串**
-> - **context eng**（本 stage）= 工程 window 裡的**資訊**
-> - **harness eng**（[Stage 7](07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程學--本-stage-核心概念)）= 工程模型**外面的 runtime**
+重點不是「開了幾次對話」、是「**每次對話裡塞了什麼**」。Karpathy 2025-06 [原 tweet](https://x.com/karpathy/status/1937902205765607626) 講得最精準：「**把對下一步有用的資訊剛好填進視窗**的精細藝術」。
 
-> 📺 **視覺學習**：[李宏毅 2025 第 2 講 — Context Engineering：AI Agent 背後的關鍵技術](https://www.youtube.com/watch?v=lVdajtNpaGI)（NTU 生成式人工智慧與機器學習導論 2025）
+📺 **視覺學習**：[李宏毅 2025 第 2 講 — Context Engineering：AI Agent 背後的關鍵技術](https://www.youtube.com/watch?v=lVdajtNpaGI)（NTU 生成式人工智慧與機器學習導論 2025）
 
-**Context engineering 4 個 sub-problem**（Lance Martin 2025 framework: Write / Select / Compress / Isolate）：
+### 三層 stack 中的位置
 
-1. **Select**（本 stage 主軸）— retrieval：要把**哪些**外部資訊撈進 window（RAG / vector search / GraphRAG / hybrid search）
-2. **Write**（本 stage 主軸）— memory：要把**哪些**互動 / 教訓 / user preference 寫進長期記憶供之後 retrieve
-3. **Compress** — 對話太長時怎麼壓（summary / truncate / hierarchical）—— 部分本 stage、部分 Stage 7 §Harness `context manager`
-4. **Isolate** — 多 agent 時各自 context 怎麼分隔——主要 Stage 7 §multi-agent 處理
+```
+prompt eng（Stage 2）       → 工程那段「字串」
+context eng（本 stage）     → 工程視窗裡的「資訊」
+harness eng（Stage 7）      → 工程模型外面的「runtime」
+```
+
+詳細對照表見 [Stage 2 §進階](02-prompt-engineering.md#-進階prompt--context--harness-三層-engineering)。
+
+### 本 stage 處理 4 個 sub-problem 中的 2 個（Lance Martin 2025 framework）
+
+| Sub-problem | 解決什麼 | 具體例子 | 本 stage cover？ |
+|---|---|---|---|
+| **Select** | 要把**哪些**外部資訊撈進視窗 | user 問「我家附近哪間 cafe 好吃」→ 從 yelp DB 撈 3 家評分高的 → 塞進 prompt | ✅ 主軸（RAG / vector search / GraphRAG） |
+| **Write** | 要把**哪些**互動 / 教訓寫進長期記憶 | user 上週說「我吃純素」→ 寫進 memory；這週又問餐廳推薦時、retrieve 出來避免推肉食 | ✅ 主軸（memory layers） |
+| **Compress** | 對話太長怎麼壓 | 50 輪對話超過 200k token → 自動摘要前 40 輪、保留最後 10 輪原文 | ⚠️ 部分（這裡 + Stage 7 §Harness `context manager`） |
+| **Isolate** | 多 agent 各自視窗怎麼分 | supervisor 看全局、worker 只看自己那段、彼此不串擾 | ❌ Stage 7 §multi-agent 處理 |
 
 ### 4 個常被搞混的概念 — 一張表分清楚
 
