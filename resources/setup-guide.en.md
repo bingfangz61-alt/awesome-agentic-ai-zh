@@ -224,6 +224,8 @@ If Claude introduces itself, your API key, Python, and packages are working.
 
 ### Install Node.js First
 
+> 💡 **What is Node.js?** A runtime for running JavaScript, similar to a Python interpreter but for JS. **`npm`** is its bundled package manager, which plays the same role as Python's `pip`: installing tools other people wrote, including Claude Code below. `npm install -g X` means install X globally so you can use it from any folder.
+
 - **macOS / Linux**: run `brew install node`, or download from https://nodejs.org.
 - **Windows**: download the installer from https://nodejs.org.
 - **Verify**: run `node --version`; v18 or newer is enough.

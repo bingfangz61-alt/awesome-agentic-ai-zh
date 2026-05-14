@@ -224,6 +224,8 @@ uv run --with anthropic --with python-dotenv python hello-claude.py
 
 ### 先裝 Node.js
 
+> 💡 **Node.js 是什麼**：跑 JavaScript 的 runtime（類似 Python interpreter 但是給 JS 用）。**`npm`** 是它附帶的「套件管理器」（package manager）—— 跟 Python 的 `pip` 同角色、用來安裝別人寫好的工具（如下面的 Claude Code）。`npm install -g X` 表示「全域裝 X、之後在任何資料夾都能用」。
+
 - **macOS / Linux**：`brew install node`，或從 https://nodejs.org 下載。
 - **Windows**：從 https://nodejs.org 下載 installer。
 - **驗證**：輸入 `node --version`，看到 v18 以上即可。

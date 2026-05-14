@@ -78,7 +78,44 @@ After completing this section, you will be able to:
 4. [**Anthropic — Settings**](https://docs.claude.com/en/docs/claude-code/settings) — Full `settings.json` schema + env vars
 5. [**KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh**](https://github.com/KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh) — A beginner's guide in Simplified Chinese
 
-> 🛠️ **Writing a good CLAUDE.md?** See [Stage 7.5 § 5 ready-to-use prompts for Skills + CLAUDE.md design](07.5-advanced-agentic-concepts.en.md#-5-ready-to-use-prompts-apply-these-to-skills--claudemd-design) — the 5 Harness Engineering principles map directly onto practical questions like "how long?", "how to split?", "use `@-import` or inline content?".
+> 🛠️ **Writing a good CLAUDE.md?** First read [Stage 7.5 Core Harness Engineering Principles (multi-source synthesis)](07.5-advanced-agentic-concepts.en.md#-core-harness-engineering-principles-multi-source-synthesis) to build the mental model, then use the 2 prompts below.
+
+### 📋 CLAUDE.md design prompts (using the 5 principles)
+
+Copy these directly when writing or revising CLAUDE.md:
+
+#### Prompt 1 — Audit your existing CLAUDE.md
+
+```
+I have a CLAUDE.md at [paste path]. Audit it against these 5 harness engineering principles:
+
+1. Legibility — Markdown headers for sections? Conventions written concretely ("2-space indent") or vaguely ("format properly")?
+2. Progressive Disclosure — Under 200 lines? Are `@-import` or `.claude/rules/<topic>.md` used to split content?
+3. System of Record — Does CLAUDE.md act as an entry map pointing to `docs/` + `.coord/`, or does it cram all rules in one file?
+4. Taste Invariants — Verifiable rules ("run `make lint` before commit") or unverifiable phrases ("follow best practices")?
+5. Transparency — Does it require the agent to show planning steps, or does it expect silent execution?
+
+For each: PASS / FAIL / PARTIAL + reason + fix suggestion. Total X/5 + first thing to fix.
+```
+
+#### Prompt 2 — Generate a new CLAUDE.md (using the 5 principles)
+
+```
+I want to write CLAUDE.md for a [describe project — e.g. Python data-analysis monorepo / academic paper repo / Next.js app] following these 5 harness engineering principles:
+
+- **Under 200 lines**
+- Acts as an **entry map** — use `@-import` to pull in external docs or `.claude/rules/<topic>.md`
+- Every rule must be **verifiable** (avoid "follow best practices" hand-waving)
+- Include **1-2 transparency rules** (e.g. "show the plan before any edit > 50 lines")
+- Mark which content belongs in CLAUDE.md vs `.claude/rules/<topic>.md`
+
+Output:
+1. Full CLAUDE.md content
+2. Suggested `.claude/rules/` directory split (topic list)
+3. One example `.claude/rules/<topic>.md` (pick one topic)
+```
+
+→ **Suggested workflow**: use Prompt 2 to generate a draft before writing CLAUDE.md, then use Prompt 1 to audit the finished file.
 
 ### Common Slash Commands (10 to learn)
 
@@ -204,7 +241,48 @@ For a complete list, see the official [Slash Commands documentation](https://doc
 
 A Skill = **a markdown file** (`.claude/skills/<name>/SKILL.md`) that tells Claude "**when you encounter a certain situation → follow a certain process**." Before each inference, Claude scans the `description` frontmatter of all available skills, checks if they match the current situation, and if there's a match, **automatically loads the SKILL.md into the context**.
 
-> 🛠️ **Writing a good SKILL.md?** See [Stage 7.5 § 5 ready-to-use prompts for Skills + CLAUDE.md design](07.5-advanced-agentic-concepts.en.md#-5-ready-to-use-prompts-apply-these-to-skills--claudemd-design) — the 5 Harness Engineering principles (Legibility / Progressive Disclosure / System of Record / Taste Invariants / Throughput) map directly onto "how long should the SKILL.md be? / how do I use `references/`? / how do I write the description?".
+> 🛠️ **Writing a good SKILL.md?** There are two paths:
+> - **Path A: use Anthropic's official `skill-creator` skill to generate the skeleton** (the installation section later in 5.3.x shows this). It gives you the frontmatter and subdirectory structure automatically and is Anthropic's canonical tool.
+> - **Path B: write it yourself with the §SKILL.md design prompts below** — first read [Stage 7.5 Core Harness Engineering Principles](07.5-advanced-agentic-concepts.en.md#-core-harness-engineering-principles-multi-source-synthesis) for the concepts, then use the prompts to build the file.
+>
+> The two paths are complementary: `skill-creator` gives you structure, while the 5-principle prompts check content quality.
+
+### 📋 SKILL.md design prompts (including `skill-creator` as the alternative)
+
+Copy these directly when writing or revising SKILL.md:
+
+#### Prompt 1 — Audit your existing SKILL.md
+
+```
+I have a SKILL.md at [paste path]. Audit it against the 5 harness engineering principles below. For each, return "PASS / FAIL / PARTIAL" + a 1-line reason + a 1-line fix suggestion:
+
+1. Legibility — Does the description clearly state "when to trigger"? Are tool param names consistent?
+2. Progressive Disclosure — Is SKILL.md under 200 lines? Are details placed in `references/` rather than stuffed into the main file?
+3. System of Record — Is `references/` the single source? Does the main file avoid duplicating that content?
+4. Taste Invariants — Are success criteria hard and verifiable, not subjective phrasing like "as good as possible"?
+5. Throughput / Merge — Is there an acceptance check (lint / test / preset YAML) attached?
+
+End with: total score X/5, which principle to fix first, and why.
+```
+
+#### Prompt 2 — Generate a new SKILL.md (using the 5 principles)
+
+```
+I want to write a skill that handles [describe task — e.g. converting PDFs to markdown / running a banned-word audit on academic papers]. Generate SKILL.md following these 5 harness engineering principles:
+
+- **description** must clearly state "when to trigger" (so Claude can match the situation)
+- **Main file under 200 lines** — push examples / edge cases / detailed rules into `references/<topic>.md`
+- Propose a `references/` directory structure (1-3 topic files)
+- Include a **success-criteria table** (verifiable, not subjective)
+- Include an **acceptance-check section**: which lints / unit tests / preset YAMLs to run
+
+Output:
+1. Full SKILL.md content
+2. references/ directory structure suggestion
+3. Which acceptance-gate preset to use (e.g. multi-locale-mirror-sync / catalog-entry-add)
+```
+
+→ **Suggested workflow**: start with `/skill skill-creator` for a clean skeleton → use Prompt 2 to fill it in → finish with Prompt 1 to audit it.
 
 **Core mental model**: If you find yourself "**typing the same prompt every time to teach Claude how to do something**" → write it as a skill, and you won't have to next time. In the Claude Code ecosystem, **skills are the dividing line between power users and regular users**—those proficient in writing skills can compress an hour of work into 5 minutes.
 

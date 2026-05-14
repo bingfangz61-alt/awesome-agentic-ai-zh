@@ -78,7 +78,44 @@
 4. [**Anthropic — Settings**](https://docs.claude.com/en/docs/claude-code/settings) — `settings.json` 完整 schema + env var
 5. [**KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh**](https://github.com/KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh) — 简中入门指南
 
-> 🛠️ **要写好 CLAUDE.md？** 看 [Stage 7.5 § 5 个 Prompt 直接套到 Skills + CLAUDE.md 设计](07.5-advanced-agentic-concepts.zh-Hans.md#-直接复制用的-5-个-prompt套到-skills--claudemd-设计)——5 个 Harness Engineering 原则直接套到「该多长 / 怎么分 / 用 @-import 还是写死」这些具体问题。
+> 🛠️ **要写好 CLAUDE.md？** 先看 [Stage 7.5 核心 Harness Engineering 原则（多 source 整理）](07.5-advanced-agentic-concepts.zh-Hans.md#-核心-harness-engineering-原则多-source-整理) 建概念、再用下面 2 个 prompt 动手。
+
+### 📋 CLAUDE.md 设计 prompts（依 5 原则）
+
+写 / 改 CLAUDE.md 时直接复制贴上：
+
+#### Prompt 1 — Audit 你现有的 CLAUDE.md
+
+```
+我有一个 CLAUDE.md（在 [贴路径]），请依下面 5 个 harness engineering 原则 audit：
+
+1. Legibility — 用 markdown header 分区吗？conventions 写具体（"2-space indent"）还是模糊（"format properly"）？
+2. Progressive Disclosure — < 200 行吗？有用 `@-import` 或 `.claude/rules/<topic>.md` 拆分吗？
+3. System of Record — CLAUDE.md 是否当 entry map、实际内容指向 `docs/` + `.coord/`？还是把所有规则塞同一档？
+4. Taste Invariants — 规则可验证吗（"run `make lint` before commit"）？还是「follow best practices」这种空话？
+5. Transparency — 有要求 agent show planning step 吗？还是预期它默默做完？
+
+每条给 PASS / FAIL / PARTIAL + 原因 + 改进建议。总分 X/5、最该先修哪条。
+```
+
+#### Prompt 2 — 生成新的 CLAUDE.md（依 5 原则）
+
+```
+我要为一个 [描述项目，例如：Python data analysis monorepo / 学术论文 repo / Next.js app] 写 CLAUDE.md。请依下面 5 个 harness engineering 原则生成：
+
+- **< 200 行**
+- 当 **entry map**，把实际 conventions 用 `@-import` 引外部 docs 或 `.claude/rules/<topic>.md`
+- 每条规则**可验证**（不要「follow best practices」这种空话）
+- 加 **1-2 个 transparency rule**（例如「edit > 50 lines 前先 show plan」）
+- 标明哪些内容该放 CLAUDE.md、哪些该分到 `.claude/rules/<topic>.md`
+
+输出：
+1. 完整 CLAUDE.md 内容
+2. 建议的 `.claude/rules/` 目录切法（topic 列表）
+3. 1 个示范 `.claude/rules/<topic>.md`（任选一个 topic）
+```
+
+→ **建议流程**：写 CLAUDE.md 前用 Prompt 2 生成、写完用 Prompt 1 audit。
 
 ### 常用 slash commands（10 个必学）
 
@@ -204,7 +241,48 @@
 
 Skill = **一个 markdown 文件**（`.claude/skills/<name>/SKILL.md`），告诉 Claude“**遇到某情境 → 走某流程**”。Claude 每次 inference 前扫所有可用 skill 的 `description` frontmatter、看是否匹配当前情境、**匹配就把 SKILL.md 自动加载到 context**。
 
-> 🛠️ **要写好 SKILL.md？** 看 [Stage 7.5 § 5 个 Prompt 直接套到 Skills + CLAUDE.md 设计](07.5-advanced-agentic-concepts.zh-Hans.md#-直接复制用的-5-个-prompt套到-skills--claudemd-设计)——5 个 Harness Engineering 原则（Legibility / Progressive Disclosure / System of Record / Taste Invariants / Throughput）直接套到「SKILL.md 该多长 / `references/` 怎么用 / description 怎么写」这些具体问题。
+> 🛠️ **要写好 SKILL.md？** 两条路：
+> - **路 A：用 Anthropic 官方 `skill-creator` skill 自动产生**（5.3.x 之后安装段落会教），它会自动产 frontmatter + 子目录结构、是 Anthropic 维护的 canonical 工具。
+> - **路 B：用下面 §SKILL.md 设计 prompts 自己写**——先看 [Stage 7.5 核心 Harness Engineering 原则](07.5-advanced-agentic-concepts.zh-Hans.md#-核心-harness-engineering-原则多-source-整理) 建概念、再用 prompt 动手。
+>
+> 两条不冲突：`skill-creator` 给结构、5 原则 prompt 给内容质量检查。
+
+### 📋 SKILL.md 设计 prompts（含 `skill-creator` 替代）
+
+写 / 改 SKILL.md 时直接复制贴上：
+
+#### Prompt 1 — Audit 你现有的 SKILL.md
+
+```
+我有一个 SKILL.md（在 [贴路径]），请依下面 5 个 harness engineering 原则做 audit。每条给「PASS / FAIL / PARTIAL」+ 1 行原因 + 1 行改进建议：
+
+1. Legibility — description 写清楚「何时触发」吗？tool param 命名一致吗？
+2. Progressive Disclosure — SKILL.md < 200 行吗？细节是否放 `references/` 而不是塞主档？
+3. System of Record — `references/` 是 single source、主档不重复吗？
+4. Taste Invariants — success criteria 是否写死可验证、不是「尽量好」这种主观词？
+5. Throughput / Merge — 有附 acceptance check（lint / test / preset YAML）吗？
+
+最后给：总分 X/5、最该先修哪一条、为什么。
+```
+
+#### Prompt 2 — 生成新的 SKILL.md（依 5 原则）
+
+```
+我要写一个 skill 处理 [描述任务，例如：把 PDF 转成 markdown / 跑学术论文 banned-word audit]。请依下面 5 个 harness engineering 原则生成 SKILL.md：
+
+- **description** 写清楚「何时触发」（让 Claude 能 match 对情境）
+- **主档 < 200 行**，所有 examples / edge cases / detailed rules 放 `references/<topic>.md`
+- 列出建议的 `references/` 结构（1-3 个 topic 档案）
+- 加一个 **success criteria 表**（可验证、不主观）
+- 加一段 **acceptance check**：要跑哪些 lint / unit test / preset YAML
+
+输出：
+1. 完整 SKILL.md 内容
+2. references/ 目录结构建议
+3. 用哪个 acceptance gate preset 验证它（如 multi-locale-mirror-sync / catalog-entry-add 之一）
+```
+
+→ **建议流程**：先 `/skill skill-creator` 拿干净骨架 → 用 Prompt 2 填内容 → 写完用 Prompt 1 audit。
 
 **核心 mental model**：你发现自己“**每次都要打同样的 prompt 教 Claude 怎么做某件事**”→ 把它写成 skill、下次就不用了。Claude Code 生态里 **skill 是 power user 跟普通用户的分水岭**——熟练 skill 写作的人能把 1 个小时的工作压到 5 分钟。
 
