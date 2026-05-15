@@ -505,6 +505,48 @@ Plugin
 - Worker 需要互相沟通 / debate / 共享 task list → **Agent team**（已正式有 docs、但仍需 opt-in env var；token 3-5x、适合 research / debug 竞争假设）
 - 多个独立任务各自跑、想用 1 个界面监控全部 → **Background agent**（research preview、适合长时间任务并行）
 
+---
+
+### 可派遣的 subagent 有哪些？
+
+> 💡 **先解释一下名词**：**subagent** = 主 Claude session spawn 出来的“子 Claude”——有自己的 context window（一次能记住的对话量，有上限），跑完回报结果。**派遣（dispatch）**就是叫 subagent 去做事，像派任务给同事。
+
+很多人以为要用 subagent 都得自己写一个——其实 **Claude Code 内置一批 subagent，开箱即用**。下表列三种来源：
+
+| 来源 | 范例 subagent | 何时用 | 需要做什么 |
+|---|---|---|---|
+| **Claude Code 内置** | `general-purpose` / `code-reviewer` / `Explore` / `Plan` / `frontend-developer` / `claude-code-guide` / `statusline-setup` | 一般任务都先看内置有没有合适的 | **什么都不用做，直接调用** |
+| **plugin / marketplace** | `obra/superpowers` 内含的 skill agent、`wshobson/agents` 的多 subagent 组合 | 内置不够用时 | 装 plugin / marketplace（[Stage 5.4](#54--plugins-与-marketplaces)）|
+| **自己写的** | 你公司流程 specific 的 reviewer / domain expert | 上面都不符合时 | 写 `.claude/agents/<name>.md`（范例见下面 details 区块）|
+
+> 🔍 **想知道你的 Claude Code 现在有哪些 subagent 可用？** 终端跑 `/agents` 一个指令列表（内置 + plugin + 自定义全部）。
+
+### 怎么选哪一个 subagent？（decision table）
+
+对应上面 7 个 Claude Code 内置 subagent，下表是“**遇到 X 任务，用 Y subagent**”对照（这叫 **decision table**——“要 X 用 Y”的快速对照，不用自己想）：
+
+| 你要做的事 | 用哪个内置 subagent | 为什么 |
+|---|---|---|
+| 找 code / 探索陌生 codebase 结构 | `Explore` | 专门做 read-only 搜索，不会乱改 |
+| 设计实作 plan（不直接写 code） | `Plan` | 输出 step-by-step 计划，适合大任务拆解前 |
+| Review staged diff / 安全审查 / 发 commit 前检查 | `code-reviewer` | 结构化输出 PASS/FAIL + 具体 fix |
+| 写 / 改 UI component / 处理 accessibility | `frontend-developer` | React / 响应式 / a11y 领域知识 |
+| 多步骤研究，不确定任务该归哪类 | `general-purpose` | 通用，可 web search，适合 fallback |
+| 问 Claude Code 自己的 feature 怎么用 | `claude-code-guide` | hooks / slash command / MCP 等问题 |
+| 上面都不符合 | 自己写 `.claude/agents/<name>.md` | 客制或公司 specific 流程 |
+
+**5 个常见场景的 mini cookbook**（完整 15 个 recipe 见下面）：
+
+| 场景 | 用哪个 |
+|---|---|
+| 写了 ≥ 50 行新 code，要 commit 前 | `code-reviewer` |
+| Clone 完新 repo，不知道该从哪个 file 开始 | `Explore` |
+| 4 个 stage / branch 都要做同样审查 | `general-purpose`（spawn 多个并行）|
+| 想重构 module，先 review architecture | `Plan` |
+| 多 source 比对哪篇 paper 讲得对 | `general-purpose` 跑 deep research |
+
+> 📋 **完整 15 个 recipe**（每个含**场景 + subagent + 直接复制粘贴的 prompt 模板 + 何时不用**）→ [`resources/subagent-cookbook.zh-Hans.md`](../resources/subagent-cookbook.zh-Hans.md)
+
 <details>
 <summary>👉 具体 subagent 文件范例（最简单入门）</summary>
 
@@ -527,7 +569,7 @@ You are a senior code reviewer. When invoked:
 3. Output: PASS / list of specific issues with file:line references
 ```
 
-主 session 之后输入“review my changes”，Claude 看到 description 匹配、自动通过 Task tool spawn 这个 subagent 跑、回主 session 一段摘要。
+主 session 之后输入“review my changes”，Claude 看到 description 匹配、自动通过 Task tool（Claude Code 内部派遣机制，你不用直接调用）spawn 这个 subagent 跑、回主 session 一段摘要。
 
 </details>
 

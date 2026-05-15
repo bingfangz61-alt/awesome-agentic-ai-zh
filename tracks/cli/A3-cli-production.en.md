@@ -66,7 +66,7 @@ Package your `.claude/commands/` and `CLAUDE.md` into a plugin, publish to inter
 - Skill / plugin details in [Stage 5.3 + 5.4](../../stages/05-claude-code-ecosystem.en.md)
 - Template: [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)
 
-## 🧭 Advanced Concepts in Daily CLI Work (6 Playbooks) 🆕
+## 🧭 Advanced Concepts in Daily CLI Work (7 Playbooks) 🆕
 
 Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/07.5-advanced-agentic-concepts.en.md) — they just have not named them yet. Pick the **2-3 playbooks you use most often** and treat the rest as further reading — each in ≤ 6 lines. **Want the deeper theory → go to Stage 7.5.**
 
@@ -111,7 +111,24 @@ Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/0
   | Hamel Husain | [Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) |
   | Simon Willison | [Sub-agents in Claude Code](https://simonwillison.net/2025/Oct/11/sub-agents/) |
 
-### 📋 Playbook 4: Running CLI agent in CI
+### 📋 Playbook 4: Dispatching subagents for independent tasks
+
+> 💡 **First time hearing about subagents?** In one sentence: **a subagent is a “child Claude” spawned from the main Claude session**. It has its own isolated context and reports back when done. **Dispatch** means asking the subagent to do work, like assigning a task to a teammate. Full concept → [Stage 5.5](../../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature).
+
+- **When**: before committing a large change / entering an unfamiliar repo / running an LLM-as-judge auto-eval / applying the same review to 4 targets
+- **Do**: invoke Claude Code **built-in** subagents (no custom file required):
+  - `code-reviewer` — review staged diff, find bugs + security issues
+  - `Explore` — read-only codebase search, find entry points / symbols
+  - `Plan` — design a step-by-step implementation plan
+  - `general-purpose` — fallback when you are unsure which one to use, or for multi-step research
+- **Concepts**: Hierarchical Task Decomposition + Context Isolation · 📊 See [concept-cluster](../../resources/diagrams/concept-cluster.en.png), Service × orchestration cluster
+- **Read more**:
+  - [Stage 5.5 Subagents](../../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature) (full theory + decision table)
+  - [`resources/subagent-cookbook.en.md`](../../resources/subagent-cookbook.en.md) (**15 recipes** with copy-paste prompt templates)
+
+---
+
+### 📋 Playbook 5: Running CLI agent in CI
 
 - **When**: You wire `codex exec` / `claude --print` into GitHub Actions, cannot require a human to hit yes every time, and bandwidth constraints mean you cannot always use Opus
 - **Do**: Use layered autonomy (preset auto-runs / commit requires review / push requires human sign-off); set a fallback cheaper model (if Opus is down, fall back to Haiku)
@@ -124,7 +141,7 @@ Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/0
   | Anthropic Engineering | [Equipping Agents with Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) |
   | Internal | [Stage 5.5 Subagents](../../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature) + Exercise CLI-10 |
 
-### 📋 Playbook 5: Controlling cost
+### 📋 Playbook 6: Controlling cost
 
 - **When**: You use Codex for a large batch of work, the monthly API bill is getting out of control, and you want to stay inside budget
 - **Do**: Set `max_cost_usd` in `plan.yml`; use a cheap model (Haiku) for exploration and an expensive model (Opus) only for polish; turn on prompt caching (can significantly reduce repeated context cost under cache-eligible conditions); automate QA instead of spending human time
@@ -137,7 +154,7 @@ Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/0
   | Anthropic | [Prompt Caching](https://www.anthropic.com/news/prompt-caching) |
   | Internal | This stage's Exercise CLI-11 (token tracking + langfuse integration) |
 
-### 📋 Playbook 6: Hardening workflow, preventing drift
+### 📋 Playbook 7: Hardening workflow, preventing drift
 
 - **When**: You wrote rules in `CLAUDE.md` / `SKILL.md` but nobody enforces them, or you added a preset YAML and do not know whether it actually works
 - **Do**: Intentionally break one rule and run the acceptance gate to see whether it catches it (chaos test); treat `docs/` as the single source of truth and keep `CLAUDE.md` as an entry map only
@@ -152,7 +169,7 @@ Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/0
 
 ---
 
-→ **6 playbooks = a bridge from 6 triggers to 12 concepts and 18 reading sources**. Want the underlying theory / the full set of 12 concepts / all 8 cross-vendor principles → [Stage 7.5](../../stages/07.5-advanced-agentic-concepts.en.md).
+→ **7 playbooks = a bridge from 7 triggers to 12 concepts and the corresponding reading sources**. Want the underlying theory / the full set of 12 concepts / all 8 cross-vendor principles → [Stage 7.5](../../stages/07.5-advanced-agentic-concepts.en.md).
 
 ## 🎯 Curated Projects
 

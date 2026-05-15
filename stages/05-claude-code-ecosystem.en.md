@@ -505,6 +505,48 @@ Many people assume that multi-agent CLIs are a standard feature for Anthropic / 
 - Workers need to communicate / debate / share a task list → **Agent team** (officially documented, but still requires an opt-in env var; uses 3-5x the tokens, suitable for research / debugging competing hypotheses)
 - Multiple independent tasks running, and you want to monitor them all from one interface → **Background agent** (research preview, suitable for long-running parallel tasks)
 
+---
+
+### Which subagents can you dispatch?
+
+> 💡 **First, a quick term explanation**: a **subagent** is a “child Claude” spawned from the main Claude session. It has its own context window (the amount of conversation it can remember at once, with a limit) and reports its result back when done. **Dispatch** means asking a subagent to do work, like assigning a task to a teammate.
+
+Many people assume they have to write a subagent themselves before they can use one. In practice, **Claude Code ships with a set of built-in subagents you can use immediately**. The table below shows the three sources:
+
+| Source | Example subagents | When to use | What you need to do |
+|---|---|---|---|
+| **Built into Claude Code** | `general-purpose` / `code-reviewer` / `Explore` / `Plan` / `frontend-developer` / `claude-code-guide` / `statusline-setup` | Check these first for general tasks | **Nothing; invoke them directly** |
+| **plugin / marketplace** | Skill agents inside `obra/superpowers`, multi-subagent packs from `wshobson/agents` | When the built-ins are not enough | Install a plugin / marketplace item ([Stage 5.4](#54--plugins-and-marketplaces))|
+| **Custom** | A reviewer / domain expert specific to your company workflow | When neither of the above fits | Write `.claude/agents/<name>.md` (see the details block below for an example)|
+
+> 🔍 **Want to know which subagents your Claude Code currently has?** Run `/agents` in the terminal to list them all: built-in, plugin-provided, and custom.
+
+### How do you choose a subagent? (decision table)
+
+For the 7 built-in Claude Code subagents above, this table maps “**when you need to do X, use Y subagent**” (this is a **decision table**: a quick “X → Y” lookup so you do not have to reason from scratch):
+
+| What you want to do | Built-in subagent to use | Why |
+|---|---|---|
+| Find code / explore an unfamiliar codebase structure | `Explore` | Built for read-only search; will not randomly edit |
+| Design an implementation plan without writing code directly | `Plan` | Produces a step-by-step plan, useful before breaking down a large task |
+| Review staged diff / security audit / pre-commit check | `code-reviewer` | Structured PASS/FAIL output + concrete fixes |
+| Write / modify UI components / handle accessibility | `frontend-developer` | React / responsive design / a11y domain knowledge |
+| Multi-step research, or you are unsure which category fits | `general-purpose` | General-purpose, can web search, good fallback |
+| Ask how to use a Claude Code feature | `claude-code-guide` | Questions about hooks / slash commands / MCP |
+| None of the above fits | Write `.claude/agents/<name>.md` yourself | Custom or company-specific workflow |
+
+**Mini cookbook for 5 common scenarios** (see the full 15 recipes below):
+
+| Scenario | Use |
+|---|---|
+| You wrote ≥ 50 lines of new code and are about to commit | `code-reviewer` |
+| You cloned a new repo and do not know where to start reading | `Explore` |
+| 4 stages / branches need the same review | `general-purpose` (spawn several in parallel)|
+| You want to refactor a module and review the architecture first | `Plan` |
+| You need to compare multiple sources and decide which paper is right | `general-purpose` for deep research |
+
+> 📋 **Full 15 recipes** (each includes **scenario + subagent + copy-paste prompt template + when not to use it**) → [`resources/subagent-cookbook.en.md`](../resources/subagent-cookbook.en.md)
+
 <details>
 <summary>👉 Concrete subagent file example (the easiest to start with)</summary>
 
@@ -527,7 +569,7 @@ You are a senior code reviewer. When invoked:
 3. Output: PASS / list of specific issues with file:line references
 ```
 
-Later, in the main session, if you type "review my changes," Claude will see the matching description, automatically spawn this subagent via the Task tool, run it, and return a summary to the main session.
+Later, in the main session, if you type "review my changes," Claude will see the matching description, automatically spawn this subagent via the Task tool (Claude Code's internal dispatch mechanism; you do not call it directly), run it, and return a summary to the main session.
 
 </details>
 
