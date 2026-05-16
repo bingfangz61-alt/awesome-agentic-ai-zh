@@ -169,18 +169,7 @@
 
 ## Decision tree（简化文字版）
 
-```
-你的工作型态
-│
-├─ 主要写 code、要 IDE 视觉辅助 → Type 1 (IDE-coupled)
-│
-├─ 写 code 但要 agent 自主多步骤 → Type 2 (Claude Code / Codex)
-│   └─ 想跨 LLM 比较 cost → Type 3 (Aider / OpenCode)
-│
-├─ 个人助理 / 24×7 / 跨平台通知 / 中国圈 LLM → Type 4 (Hermes Agent)
-│
-└─ 隐私敏感 / 完全离线 / 家用 AI box / physical AI → Type 5 (OpenClaw)
-```
+![选哪个 agent type 决策树](../resources/diagrams/agent-paradigm-decision-tree.zh-Hans.png)
 
 ---
 

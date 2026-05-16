@@ -86,10 +86,7 @@ audience 切太細會：
 ## 兩種 entry 結構：tier vs flat
 
 ### Tier 結構（目前只用在 for-everyday-users）
-```
-Tier 0 → Tier 1 → Tier 2 → Tier 3
-（網頁→桌面→CLI→本地 LLM）
-```
+![Branch tier 漸進結構](../resources/diagrams/branch-tier-progression.png)
 **用 tier 的條件**：audience 內部「動手程度差很多」。Everyday users 從「打開 Claude.ai」到「跑 Ollama 本地 LLM」差距太大，不分 tier 會混亂。
 
 ### Flat 結構（其他 4 個 branch 都用這個）
