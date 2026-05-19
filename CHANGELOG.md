@@ -6,6 +6,66 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-05-19
+
+- **catalog** · `microsoft/ai-agents-for-beginners` added to Stage 3 選讀/進階補充 as a parallel beginner course (explicitly *not* a substitute for the stage's hands-on practice), tri-locale (`2d83f72`, `94f2d73`).
+
+## 2026-05-18
+
+- **catalog** · Kimi-K2 + GLM-4.5 added to §11 中文圈專用 — neutral schema, gh-verified Stars/License, tri-locale (`fd81f31`, `ad80845`).
+- **ci** · weekly catalog-refresh PR now guarded auto-merge: sanity guard (star-token-only diff, ≤150 lines, anchors pass) → squash-merge, else label `needs-manual-review` (`3dc6ecd`).
+
+## 2026-05-17
+
+- **docs** · per-track Capstone + 4-level self-assess rubric (`CAPSTONE`), tri-locale (`dbf1ef3`, `a31dde5`).
+- **docs** · Pages unified — mkdocs at `/`, mdBook at `/book/`, one workflow; README's GitHub-only switcher stripped from rendered site (`5e59c7c`, `001d765`).
+- **docs** · README positioning reframed (trilingual, English fully maintained); stale exercise-folder count corrected 27 → 23 (`b4bb862`, `24a87fe`).
+- **outreach** · English-audience launch drafts — HN / Reddit / newsletters / awesome-lists (`b8f365b`).
+
+## 2026-05-16
+
+- **governance** · CoC + SECURITY + CITATION.cff + issue-template config added, tri-locale mirrors (`9aa2963`, `84bc58f`).
+- **docs** · public ROADMAP.md + learner PROGRESS.md tracker added, tri-locale (`e5cc310`, `3e628e9`).
+- **docs** · GitHub Pages site (mkdocs-material, trilingual) + live docs-site badge (`498932c`, `ea4530f`).
+- **i18n** · zh-Hans mainland-localization pass + Lint gate blocking Taiwan-vocab/「」 drift (`7f73b8a`, `805ae57`).
+- **visuals** · final ASCII concept blocks replaced with generated PNGs — 10/10 complete (tri-locale) (`21a2bbf`).
+- **ci** · actions bumped off deprecated Node20 ahead of June 2026 forced migration (`c6a8c19`).
+- **outreach** · CONTRIBUTORS — @demo112 (#14) + @Rain120 (#18) (`7040738`).
+
+## 2026-05-15
+
+- **content** · Stage 1 §主流 LLM 家族對比 (US 3 + China 7 + Western-OSS 4 + decision tree + benchmark + caveat) (`8f578bf`).
+- **content** · Stage 5 §7-Layer Architecture Map (Claude primitives × 3 engineering disciplines) + embedded figures (`5f99bbb`, `1e5a12b`).
+- **content** · subagent teaching deepened — dispatch who/how/what, vs Skill/Slash-Command disambiguation, advanced doc + figures (`009ddf9`, `21c555b`, `e8a919e`).
+- **content** · 5 audience branches tableized (使用情境 / 流程 / Tier ladder) + academic-style polish, tri-locale (`184015b`, `6b7e5f6`).
+- **i18n** · 97 broken outbound mirror anchors fixed + anchor-checker now enforces mirror files (`e1991a6`, `ab3a6d0`).
+
+## 2026-05-14
+
+- **content** · NEW Stage 7.5 — Advanced Agentic Concepts (OpenAI Harness Engineering 5 principles, Why→What→How map, work-boundary diagram) (`4a6bf18`, `e2c1d11`).
+- **content** · Track A3 §6 advanced-concept playbooks for daily CLI work (`876a457`).
+- **visuals** · § (513×) and 🔄 (24×) symbols stripped across all user-facing docs; concept diagrams embedded as PNG × 3 locales (`29eb774`, `d04c224`).
+- **catalog** · 4 Anthropic-related resources added across stages (`0af7fbc`).
+- **ci** · weekly catalog-refresh workflow + `--apply` flag (`dc91a8b`).
+
+## 2026-05-13
+
+- **content** · Stage 4/6/7 verified + merged to main (`cdb0ae3`); Stage 8 NEW — Agent Interfaces, §1-15 across 3 commits A/B/C (`b83c894`, `6c87a2f`, `069406f`).
+- **content** · curation positioning crystallized — exercises reframed foundational/illustrative; repo = curation hub + simple cases, depth → hello-agents (`00dc046`, `0206dbc`).
+- **content** · 精選 Projects consolidated to single 適合誰 tables across Stages 0-8 + Track A (`fd94d80`, `19a14a8`).
+- **content** · Stage 5 expanded (§5.1-5.6: Claude Code basics, MCP/Plugin/Skill 定位, §5.5 Subagents, Harness Internals) (`2c3f1dd`, `f7de4e7`).
+- **content** · Stage 6 RAG-first restructure + GraphRAG / Contextual Retrieval / Hybrid Search; 2026 frontier-model refresh (`f00e2c2`, `acbc9dc`).
+- **ci** · 4 checks added — anchor validator, mirror-sync reminder, 2026 freshness, stage-template enforce (`a14c809`, `4491e6e`).
+- **i18n** · 8-stage tri-locale mirror catch-up via Codex + Gemini delegation; 37 legacy anchors fixed, validator → strict (`8b39c75`, `706d257`).
+- **catalog** · whale (DeepSeek terminal) + a-stock-data added to Chinese ecosystem (#14) (`3d375bd`).
+
+## 2026-05-12
+
+- **content** · examples/ bootstrapped — Stage 1 (6) + 2 (4) + 3 (6) + 4 (5) + 6 (5) + 7 (5) inline starters + folder examples, tri-locale (`c1fcaa7`, `8051861`, `7d2c1b7`).
+- **content** · dual-path examples — Ollama (default, cost-driven) alongside Anthropic; per-stage budget + LLM recommendation list (`bc37ad8`, `3fa5410`).
+- **content** · tool-calling-tutor — installable Claude Code skill + Stage 5 §5.3 meta-example (`3584669`).
+- **i18n** · diagrams renamed `.zh-Hans.png` per BCP 47 / W3C convention (`78797a3`).
+
 ## 2026-05-11
 
 - **accessibility** · `resources/setup-guide.md` (3 langs) — addresses the dev-fluency assumption gap that subagent audit flagged across 5 non-dev branches. 5 sections covering API key registration, Python install, hello-world, Claude Code first auth, SKILL.md primer (`3c88b2b`). Plus 15 branch-top callouts on all 5 audience branches. `resources/README.{en,zh-Hans}.md` created for trilingual parity.
@@ -52,5 +112,5 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 ## Conventions
 
 - Each commit SHA is clickable: `https://github.com/WenyuChiou/awesome-agentic-ai-zh/commit/<sha>`
-- Categories: `content` (stages/branches/tracks) · `catalog` (mcp-skills-catalog entries) · `funnel` (cross-stage navigation) · `visuals` (diagrams/banners) · `i18n` (translation/locale) · `outreach` (channel partners) · `ci` (workflows/lint) · `launch` (one-time events)
+- Categories: `content` (stages/branches/tracks) · `docs` (project meta-docs: README/ROADMAP/PROGRESS/CAPSTONE/Pages site) · `governance` (CoC/SECURITY/CITATION/issue templates) · `accessibility` (on-ramp/setup friction) · `catalog` (mcp-skills-catalog entries) · `funnel` (cross-stage navigation) · `visuals` (diagrams/banners) · `i18n` (translation/locale) · `outreach` (channel partners) · `ci` (workflows/lint) · `launch` (one-time events)
 - Maintained manually; not auto-generated. Updated alongside substantive commits.
