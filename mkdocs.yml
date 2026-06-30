@@ -13,6 +13,9 @@ edit_uri: edit/main/
 docs_dir: _build/docs
 site_dir: _build/site
 
+extra_css:
+  - docs/stylesheets/extra.css
+
 exclude_docs: |
   *.py
   *.sh
@@ -22,12 +25,21 @@ theme:
   language: zh-TW
   features:
     - navigation.tabs
+    - navigation.sections
     - navigation.top
     - navigation.indexes
     - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
     - search.suggest
     - search.highlight
+    - search.share
     - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
     - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -79,7 +91,9 @@ markdown_extensions:
       permalink: true
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Build-time hooks. mkdocs_hooks.on_page_markdown strips the README's
 # GitHub-only inline language switcher (its ./README.*.md links 404

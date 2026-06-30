@@ -1,0 +1,36 @@
+/* awesome-agentic-ai-zh — site branding.
+   Loaded via mkdocs.yml `extra_css`. Material defaults stay intact;
+   this only refines brand color, grid-card hover, and tables. */
+
+/* ---- Brand color (indigo) ---- */
+:root {
+  --md-primary-fg-color:        #4f46e5;
+  --md-primary-fg-color--light: #6366f1;
+  --md-primary-fg-color--dark:  #4338ca;
+  --md-accent-fg-color:         #6366f1;
+}
+
+/* ---- Grid-card polish (Material `.grid.cards`) ---- */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 12px;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+  transform: translateY(-2px);
+}
+
+/* ---- Tables: tighter, rounded, hover ---- */
+.md-typeset table:not([class]) {
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: .80rem;
+}
+.md-typeset table:not([class]) th {
+  background: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+.md-typeset table:not([class]) tr:hover td {
+  background: var(--md-default-fg-color--lightest);
+}
