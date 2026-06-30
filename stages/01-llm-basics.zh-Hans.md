@@ -53,19 +53,28 @@
 
 ### 🇨🇳 中国商业 + 开源 frontier（7 家）
 
-中文场景的主力——有些纯 API（DeepSeek / Kimi / Hunyuan）、有些**同时发布 OSS weights**（Qwen / GLM-5.1 / Yi 可在 Ollama 跑）：
+中文场景的主力，分两类：**纯 API**（云端付费、不能 self-host）和**有开源 weights**（可在自己机器跑）。
 
-| Model 家族 | 旗舰（2026-05）| Context | 强项 | 适合任务 | 授权 | 官方 |
-|---|---|---|---|---|---|---|
-| **DeepSeek**（深度求索）| V3（`deepseek-chat`）/ R1（`deepseek-reasoner`）| 128k | 推理 / coding / **cost 最低** | 大量 token / code 生成 / math | 商用 API + 部分 OSS | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
-| **Qwen**（阿里）| Qwen3 | 128k+ | **中文最强 OSS** / 多模态 / agent | 中文长文 / agent / self-host | Apache 2.0 + 商用 | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
-| **Kimi**（Moonshot）| K2.6 multimodal + Agent | **超长 1M+** | 长 context / 中文长文 | 整本书读 / 文献分流 | Proprietary | [platform.moonshot.cn](https://platform.moonshot.cn/) |
-| **GLM**（智谱 Zhipu）| GLM-5 / GLM-5.1 | 128k | 中文 / tool use / agent | 中文 agent / 多轮对话 | Apache 2.0（5.1）+ 商用 | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
-| **Hunyuan**（腾讯）| T1（深度思考）+ TurboS | 128k | **可比 DeepSeek R1 推理**、中文 | 中文推理 / 腾讯生态 | Proprietary | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
-| **MiniMax** | abab6.5 + M2.7 | 200k | 多模态 / 中文长 prose | 中文写作 / 影音 multimodal | Proprietary | [platform.minimax.io](https://platform.minimax.io/) |
-| **Yi**（01.AI / 李开复）| Yi-Lightning / Yi-34B-Chat | 200k | **中文 OSS** 替代 Llama | 中文 self-host / 中文 API | Apache 2.0 + 商用 | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+**① 纯 API（云端、付费为主）**
 
-> **注**：DeepSeek V4 系列权重已开源，但消费级 API 还没完全开放。“授权”栏的“Apache 2.0 + 商用”意思是：有开源版（Apache 2.0 权重），也有付费的云端 API；Qwen / Yi 的开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
+| Model 家族 | 旗舰（2026-05）| Context | 强项 | 适合任务 | 官方 |
+|---|---|---|---|---|---|
+| **DeepSeek**（深度求索）| V3（`deepseek-chat`）/ R1（`deepseek-reasoner`）| 128k | 推理 / coding / **cost 最低** | 大量 token / code 生成 / math | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
+| **Kimi**（Moonshot）| K2.6 multimodal + Agent | **超长 1M+** | 长 context / 中文长文 | 整本书读 / 文献分流 | [platform.moonshot.cn](https://platform.moonshot.cn/) |
+| **Hunyuan**（腾讯）| T1（深度思考）+ TurboS | 128k | **可比 DeepSeek R1 推理**、中文 | 中文推理 / 腾讯生态 | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
+| **MiniMax** | abab6.5 + M2.7 | 200k | 多模态 / 中文长 prose | 中文写作 / 影音 multimodal | [platform.minimax.io](https://platform.minimax.io/) |
+
+> **注**：这组以云端 API 为主、多为 proprietary。DeepSeek 另有部分开源权重（在 HF），但 V4 消费级 API 还没完全开放，主要用法仍是 API。
+
+**② 有开源 weights（可 self-host）**
+
+| Model 家族 | 旗舰（2026-05）| Context | 强项 | 适合任务 | 官方 |
+|---|---|---|---|---|---|
+| **Qwen**（阿里）| Qwen3 | 128k+ | **中文最强 OSS** / 多模态 / agent | 中文长文 / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
+| **GLM**（智谱 Zhipu）| GLM-5 / GLM-5.1 | 128k | 中文 / tool use / agent | 中文 agent / 多轮对话 | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
+| **Yi**（01.AI / 李开复）| Yi-Lightning / Yi-34B-Chat | 200k | **中文 OSS** 替代 Llama | 中文 self-host / 中文 API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+
+> **注**：这三家都走 **Apache 2.0 开源版 + 付费云端 API** 两条路（GLM 开源版是 5.1）。开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
 
 > ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
 

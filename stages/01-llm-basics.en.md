@@ -54,19 +54,28 @@ These 3 are SaaS APIs: you pay per token and cannot self-host them.
 
 ### 🇨🇳 Chinese Commercial + Open-Source Frontier (7 providers)
 
-These are the main choices for Chinese-language work. Some are API-only (DeepSeek / Kimi / Hunyuan); others also release **OSS weights** (Qwen / GLM-5.1 / Yi can run through Ollama).
+These are the main choices for Chinese-language work, in two groups: **API-only** (cloud, paid, can't self-host) and **open weights** (can run on your own machine).
 
-| Model family | Flagship (2026-05) | Context | Strengths | Best for | License | Official |
-|---|---|---|---|---|---|---|
-| **DeepSeek** | V3 (`deepseek-chat`) / R1 (`deepseek-reasoner`) | 128k | reasoning / coding / **lowest cost** | high-token workloads / code generation / math | commercial API + some OSS | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
-| **Qwen** (Alibaba) | Qwen3 | 128k+ | **strongest Chinese OSS** / multimodal / agent | Chinese long-form writing / agent / self-host | Apache 2.0 + commercial | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
-| **Kimi** (Moonshot) | K2.6 multimodal + Agent | **very long 1M+** | long context / Chinese long-form writing | whole-book reading / literature triage | Proprietary | [platform.moonshot.cn](https://platform.moonshot.cn/) |
-| **GLM** (Zhipu) | GLM-5 / GLM-5.1 | 128k | Chinese / tool use / agent | Chinese agents / multi-turn chat | Apache 2.0 (5.1) + commercial | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
-| **Hunyuan** (Tencent) | T1 (deep-thinking) + TurboS | 128k | **DeepSeek R1-comparable reasoning**, Chinese | Chinese reasoning / Tencent ecosystem | Proprietary | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
-| **MiniMax** | abab6.5 + M2.7 | 200k | multimodal / Chinese long prose | Chinese writing / video and audio multimodal | Proprietary | [platform.minimax.io](https://platform.minimax.io/) |
-| **Yi** (01.AI / Kai-Fu Lee) | Yi-Lightning / Yi-34B-Chat | 200k | **Chinese OSS** alternative to Llama | Chinese self-host / Chinese API | Apache 2.0 + commercial | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+**① API-only (cloud, mostly paid)**
 
-> **Note**: DeepSeek's V4-series weights are open-source, but the consumer API isn't fully public yet. In the License column, "Apache 2.0 + commercial" means there's an open-source version (Apache 2.0 weights) plus a paid cloud API; the open versions of Qwen / Yi can run on your own machine via [Ollama](https://ollama.com/).
+| Model family | Flagship (2026-05) | Context | Strengths | Best for | Official |
+|---|---|---|---|---|---|
+| **DeepSeek** | V3 (`deepseek-chat`) / R1 (`deepseek-reasoner`) | 128k | reasoning / coding / **lowest cost** | high-token workloads / code generation / math | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
+| **Kimi** (Moonshot) | K2.6 multimodal + Agent | **very long 1M+** | long context / Chinese long-form writing | whole-book reading / literature triage | [platform.moonshot.cn](https://platform.moonshot.cn/) |
+| **Hunyuan** (Tencent) | T1 (deep-thinking) + TurboS | 128k | **DeepSeek R1-comparable reasoning**, Chinese | Chinese reasoning / Tencent ecosystem | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
+| **MiniMax** | abab6.5 + M2.7 | 200k | multimodal / Chinese long prose | Chinese writing / video and audio multimodal | [platform.minimax.io](https://platform.minimax.io/) |
+
+> **Note**: This group is mostly cloud-API and proprietary. DeepSeek also has some open weights (on HF), but its V4 consumer API isn't fully public yet, so the API is still the main way to use it.
+
+**② Open weights (self-hostable)**
+
+| Model family | Flagship (2026-05) | Context | Strengths | Best for | Official |
+|---|---|---|---|---|---|
+| **Qwen** (Alibaba) | Qwen3 | 128k+ | **strongest Chinese OSS** / multimodal / agent | Chinese long-form writing / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
+| **GLM** (Zhipu) | GLM-5 / GLM-5.1 | 128k | Chinese / tool use / agent | Chinese agents / multi-turn chat | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
+| **Yi** (01.AI / Kai-Fu Lee) | Yi-Lightning / Yi-34B-Chat | 200k | **Chinese OSS** alternative to Llama | Chinese self-host / Chinese API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+
+> **Note**: All three offer both an **Apache 2.0 open version and a paid cloud API** (GLM's open version is 5.1). The open versions run on your own machine via [Ollama](https://ollama.com/).
 
 > ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
 
